@@ -1,0 +1,26 @@
+---
+const title = 'Hello world — Sérgio Lopes';
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="O novo site de Sérgio Lopes está começando." />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main>
+      <p>Sérgio Lopes</p>
+      <h1>Hello world.</h1>
+      <p>Uma nova casa para ideias, histórias e código. Em breve.</p>
+    </main>
+  </body>
+</html>
+<style>
+  :global(html) { font-family: system-ui, sans-serif; color: #242424; background: #faf9f6; }
+  :global(body) { margin: 0; }
+  main { max-width: 42rem; margin: 18vh auto; padding: 2rem; }
+  h1 { font-size: clamp(3rem, 10vw, 5rem); letter-spacing: -0.06em; line-height: 1.1; margin: 1rem 0; }
+  p { font-size: 1.125rem; line-height: 1.6; }
+</style>
