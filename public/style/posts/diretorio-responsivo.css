@@ -1,0 +1,7 @@
+/* Static version of the responsive directory article theme. */
+.archive-entry__content .diretorio-responsivo,
+.archive-entry__content .directory { max-width: 58rem; }
+.archive-entry__content .diretorio-responsivo img,
+.archive-entry__content .directory img { height: auto; max-width: 100%; }
+.archive-entry__content .diretorio-responsivo .share,
+.archive-entry__content .directory .share { border-top: 1px solid rgba(237,129,55,.35); margin-top: 2rem; padding-top: 1rem; }

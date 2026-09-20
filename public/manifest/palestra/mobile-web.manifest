@@ -1,0 +1,38 @@
+CACHE MANIFEST
+# REV 24
+
+CACHE:
+
+# fontes
+/img/palestra/mobile-web/YanoneKaffeesatz-Regular.ttf
+/img/palestra/mobile-web/YanoneKaffeesatz-Bold.ttf
+/img/palestra/mobile-web/caelum-logo.ttf
+
+# base das palestras
+/img/palestra/sergio-lopes.jpg
+/img/base/noise.png
+/livro-web-mobile/capa-a-web-mobile.png
+
+# imagens da palestra
+/img/palestra/mobile-web/gestures.svg
+/img/palestra/mobile-web/android-chrome-input-date.png
+/img/palestra/mobile-web/ios-input-date.png
+/img/palestra/mobile-web/ios-input-tel.png
+/img/palestra/mobile-web/ios-input-url.png
+/img/palestra/mobile-web/android-input-email.png
+/img/palestra/mobile-web/ios-input-email.png
+/img/palestra/mobile-web/ios-input-text.png
+/img/palestra/mobile-web/android-input-tel.png	
+/img/palestra/mobile-web/ios-input-number.png
+/img/palestra/mobile-web/ios-input-time.png
+/img/palestra/mobile-web/basquete.svg
+/img/palestra/mobile-web/caelum-logo.ttf
+/img/palestra/mobile-web/appicon.png
+
+NETWORK:
+
+# other, like analytics
+*
+
+# FALLBACK:
+# /api offline.html

@@ -1,0 +1,5 @@
+somadora.view /somadora.jsp
+inversor.view /inversor.jsp
+
+somadora.action br.com.caelum.cj05.Somadora
+inversor.action br.com.caelum.cj05.Inversor

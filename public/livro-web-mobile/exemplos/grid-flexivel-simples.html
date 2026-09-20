@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Grid glexivel</title>
+
+	<style>
+	body {
+		background: #f0f0f0;
+		font-family: Georgia, serif;
+		font-size: 1.125em;
+	}
+	.logo {
+		padding: 0.25em;
+		margin: 2% 2% 0;
+		font-size: 2em;
+		text-align: center;
+
+		font-family: Arial, sans-serif;
+		font-weight: bold;
+		background: #f90;
+		color: #222;
+	}
+	.logo span {
+		color: #555;
+	}
+
+	.painel {
+		float: left;
+		margin: 0 1%;
+	}
+	.noticia-secundaria {
+		float: left;
+		margin: 2% 1%;
+		width: 23%;
+	}
+	.noticia-secundaria-foto {
+		width: 100%;
+	}
+	h2 {
+		margin: 0;
+		font-size: 1.3em;
+		padding: 2%;
+	}
+
+	.noticia-principal {
+		float: left;
+		margin: 2% 2% 0;
+
+		background: #080903;
+	}
+	.noticia-principal-foto {
+		float: left;
+		width: 60%;
+	}
+	.noticia-principal-titulo {
+		float: left;
+		margin: 0;
+		padding: 3%;
+		width: 34%;
+
+		color: white;
+		font-size: 2.5em;
+		font-weight: normal;
+	}
+	</style>
+</head>
+<body>
+
+	<div class="logo">
+		<span>as</span>notícias
+	</div>
+
+	<div class="noticia-principal">
+		<img src="foto1.jpg" class="noticia-principal-foto">
+		<h1 class="noticia-principal-titulo">Promoção relâmpago no centro atrai fãs de bisnaguinha</h1>
+	</div>
+
+	<div class="painel">
+		<div class="noticia-secundaria">
+			<img src="foto2.jpg" class="noticia-secundaria-foto">
+			<h2>Energia elétrica vai cair de preço</h2>
+		</div>
+		<div class="noticia-secundaria">
+			<img src="foto3.jpg" class="noticia-secundaria-foto">
+			<h2>Estradas com tráfego leve</h2>
+		</div>
+		<div class="noticia-secundaria">
+			<img src="foto4.jpg" class="noticia-secundaria-foto">
+			<h2>Calor chega às praias cariocas</h2>
+		</div>
+		<div class="noticia-secundaria">
+			<img src="foto5.jpg" class="noticia-secundaria-foto">
+			<h2>Inaugurado novo parque</h2>
+		</div>
+	</div>
+
+	<hr>
+	<p>Demo de um grid flexível simples. Tudo é proporcional, mas fica apertado em telas pequenas e espaçoso demais em telas grandes.</p>
+	<div id="qrcode"></div>
+
+	<hr>
+	<div class="footer">
+		Exemplo do livro <a href="../">A Web Mobile</a>. Veja o <a href="https://github.com/sergiolopes/blog/blob/master/src/files/livro-web-mobile/exemplos/" id="link-source">código fonte desse exemplo</a>.
+	</div>
+	<script src="script.js"></script>
+
+</body>
+</html>

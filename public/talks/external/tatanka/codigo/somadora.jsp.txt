@@ -1,0 +1,16 @@
+<%@ include file="topo.jsp" %>
+
+<h2>Somando Números</h2>
+<p>Vamos somar uns números.</p>
+<form>
+<input type="hidden" name="pagina" value="somadora"/>
+		
+<input type="text" name="numero1" value="<%= request.getParameter("numero1") %>"/> +
+<input type="text" name="numero2" value="<%= request.getParameter("numero2") %>"/> = 
+<b><%= request.getAttribute("resultado") %></b>
+		
+<br/><input type="submit" value="Somar!">
+</form>
+
+<%@ include file="rodape.jsp" %>
+

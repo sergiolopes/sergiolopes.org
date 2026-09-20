@@ -1,0 +1,23 @@
+/* The original SVG animation examples, compiled to plain CSS for the archive. */
+.archive-entry__content .ilustracao { display: block; margin: 1em 0; overflow: hidden; padding-top: 73.406%; position: relative; width: 100%; }
+.archive-entry__content .ilustracao > svg { height: 100%; left: 0; position: absolute; top: 0; width: 100%; }
+.archive-entry__content .no-svg .ilustracao,
+.archive-entry__content .no-svg .exemplo { background: #fc1; font-style: italic; margin: 1em 0; padding: 1em; }
+.archive-entry__content .no-svg .ilustracao svg { display: none; }
+.archive-entry__content .ilustracao .engrenagem-pequena { animation: gira-horario 9s linear infinite; transform-origin: 297px 309px; }
+.archive-entry__content .ilustracao .engrenagem-grande { animation: gira-anti 9s linear infinite; transform-origin: 266px 226px; }
+.archive-entry__content .ilustracao .nuvem-branca { animation: move-nuvem 6s ease-out infinite alternate; }
+.archive-entry__content .ilustracao .nuvem-fundo { animation: move-nuvem 7s ease-in infinite alternate; }
+.archive-entry__content .ilustracao .seta { animation: muda-cor 2s linear infinite; }
+.archive-entry__content .ilustracao .seta + .seta { animation-delay: -.5s; }
+.archive-entry__content .ilustracao .seta + .seta + .seta { animation-delay: -1s; }
+.archive-entry__content .ilustracao .seta + .seta + .seta + .seta { animation-delay: -1.5s; }
+.archive-entry__content .exemplo2 .seta { fill: #fcb870; }
+.archive-entry__content .exemplo3 .seta { animation: exemplo3-muda-cor 3s linear infinite; }
+.archive-entry__content .exemplo4 .engrenagem { animation: gira-horario 2s linear infinite; }
+.archive-entry__content .exemplo5 .engrenagem { animation: gira-horario 4s linear infinite; transform-origin: 43px 40px; }
+@keyframes gira-horario { to { transform: rotate(360deg); } }
+@keyframes gira-anti { to { transform: rotate(-360deg); } }
+@keyframes move-nuvem { to { transform: translateX(25px); } }
+@keyframes muda-cor { 0%, 74% { fill: #fcb870; } 75%, 100% { fill: #f89c33; } }
+@keyframes exemplo3-muda-cor { 0%, 49% { fill: #fcb870; } 50%, 100% { fill: #f89c33; } }

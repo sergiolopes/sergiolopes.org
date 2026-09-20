@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="exemplos.css">
+	<link rel="stylesheet" href="switch.css">
+	
+	<title>Touch events</title>
+</head>
+<body>
+	
+	<h1>smart touch</h1>
+	<div class="switch smart-touch">
+		<div class="switch-container">
+			<span class="switch-control"></span>
+			<span class="switch-on">ON</span>
+			<span class="switch-off">OFF</span>
+		</div>
+	</div>
+
+	<p id="log"></p>
+	<div id="qrcode"></div>
+	
+	<hr>
+	<div class="footer">
+		Exemplo do livro <a href="../">A Web Mobile</a>. Veja o <a href="https://github.com/sergiolopes/blog/blob/master/src/files/livro-web-mobile/exemplos/" id="link-source">código fonte desse exemplo</a>.
+	</div>
+	
+	<script src="script.js"></script>
+	<script>
+	// implementação do smart touch
+	(function(){
+		var startTimestamp;
+
+		$('.switch.smart-touch').on('touchstart', function(e){
+			startTimestamp = new Date().getTime();
+			log('Event: ' + event.type + ' (smart) (#'+e.touches[0].identifier+')');
+		});
+
+		$('.switch.smart-touch').on('touchend', function(e){
+			var now = new Date().getTime();
+			log('Event: '+event.type+' (smart) '+ (now-startTimestamp) +'ms (#'+e.changedTouches[0].identifier+')');
+
+			if (now <= startTimestamp + 150) {
+				event.currentTarget.classList.toggle('active');
+				log('Activate (smart)');
+			} else {
+				log('Discarded (smart)');
+			}
+		});		
+
+	})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sergiolopes.github.io/sergiolopes.org/sitemap.xml

@@ -1,0 +1,9 @@
+/* Compact presentation skin for legacy slides embedded in the new archive. */
+.archive-entry--talk .archive-entry__content { max-width: 70rem; }
+.archive-entry--talk .archive-entry__content .slide,
+.archive-entry--talk .archive-entry__content section[data-slide] { background: rgba(255,255,255,.025); border: 1px solid rgba(237,129,55,.25); border-radius: .35rem; min-height: 12rem; padding: clamp(1.25rem, 4vw, 3rem); }
+.archive-entry--talk .archive-entry__content .slide + .slide,
+.archive-entry--talk .archive-entry__content section[data-slide] + section[data-slide] { margin-top: 1rem; }
+.archive-entry--talk .archive-entry__content .notes { border-left: 2px solid var(--color-accent, #ed8137); font-size: .86rem; padding-left: 1rem; }
+.archive-entry--talk .archive-entry__content img,
+.archive-entry--talk .archive-entry__content svg { height: auto; max-height: 75vh; object-fit: contain; }

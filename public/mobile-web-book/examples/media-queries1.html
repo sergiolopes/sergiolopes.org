@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Media queries</title>
+
+	<style>
+	body {
+		background: #f0f0f0;
+		font-family: Georgia, serif;
+		font-size: 1.125em;
+	}
+	.logo {
+		padding: 0.25em;
+		margin: 2% 2% 0;
+		font-size: 2em;
+		text-align: center;
+
+		font-family: Arial, sans-serif;
+		font-weight: bold;
+		background: #f90;
+		color: #222;
+	}
+	.logo span {
+		color: #555;
+	}
+
+	.painel {
+		float: left;
+		margin: 0 1%;
+	}
+	.noticia-secundaria {
+		float: left;
+		margin: 2% 1%;
+		width: 23%;
+	}
+	.noticia-secundaria-foto {
+		width: 100%;
+	}
+
+	@media (max-width: 400px) {
+		.noticia-secundaria {
+			float: none;
+			width: 98%;
+		}
+	}
+
+	h2 {
+		margin: 0;
+		font-size: 1.3em;
+		padding: 2%;
+	}
+	</style>
+</head>
+<body>
+
+	<div class="logo">
+		<span>the</span>news
+	</div>
+
+	<div class="painel">
+		<div class="noticia-secundaria">
+			<img src="foto2.jpg" class="noticia-secundaria-foto">
+			<h2>Your eletric bill will increase</h2>
+		</div>
+		<div class="noticia-secundaria">
+			<img src="foto3.jpg" class="noticia-secundaria-foto">
+			<h2>Low traffic os state roads</h2>
+		</div>
+		<div class="noticia-secundaria">
+			<img src="foto4.jpg" class="noticia-secundaria-foto">
+			<h2>Rio's beaches are hot</h2>
+		</div>
+		<div class="noticia-secundaria">
+			<img src="foto5.jpg" class="noticia-secundaria-foto">
+			<h2>New park opening</h2>
+		</div>
+	</div>
+
+	<hr>
+	<p>Exemplo de uma media query ajustando layout em telas pequenas (até 400px).</p>
+	<div id="qrcode"></div>
+
+	<hr>
+	<div class="footer">
+		Example from the book <a href="../">The Mobile Web</a>. See this example's <a href="https://github.com/sergiolopes/blog/blob/master/src/files/mobile-web-book/examples/" id="link-source">source code</a>.
+	</div>
+	<script src="script.js"></script>
+
+</body>
+</html>

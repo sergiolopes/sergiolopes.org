@@ -1,0 +1,75 @@
+package br.com.caelum.cj05;
+
+import java.util.HashMap;
+
+@SuppressWarnings("serial")
+public class Controller extends HttpServlet {
+
+	private Properties properties;
+
+	@Override
+	public void init() throws ServletException {
+		this.properties = new Properties();
+		InputStream in = getClass().getClassLoader().getResourceAsStream("controller.properties");
+		try {
+			this.properties.load(in);
+		} catch (IOException e) {
+			throw new ServletException(e);
+		}
+	}
+	
+	@Override
+	protected void service(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		try {
+			String pagina = request.getParameter("pagina");
+			
+			Map<Class,Object> context = new HashMap<Class,Object>();
+			context.put(HttpServletRequest.class, request);
+			context.put(HttpServletResponse.class, response);
+			
+			Action action = criaAction(pagina, context);
+			setterInjection(request, action);
+			action.execute();
+			
+			MagicRequest magicRequest = new MagicRequest(request, action);
+			
+			String view = properties.getProperty(pagina + ".view");
+			request.getRequestDispatcher(view).forward(magicRequest, response);
+			
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+	}
+
+	private void setterInjection(HttpServletRequest request, Object action) throws IllegalAccessException, InvocationTargetException {
+		for (Method method : action.getClass().getMethods()) {
+			String m = method.getName(); 
+			if (m.startsWith("set")) {
+				String p = request.getParameter(m.substring(3,4).toLowerCase() + m.substring(4));
+				if (p != null) {
+					method.invoke(action, p);
+				}
+			}
+		}
+	}
+
+	private Action criaAction(String pagina, Map context) throws Exception {
+		Class action = Class.forName(properties.getProperty(pagina + ".action"));
+		Constructor[] constructors = action.getConstructors();
+		if (constructors.length == 0)
+			return (Action) action.newInstance();
+			
+		Constructor constructor = constructors[0];
+		Class[] types = constructor.getParameterTypes();
+			
+		Object[] parameters = new Object[types.length];
+		int i = 0;
+			
+		for (Class type: types) {
+			parameters[i++] = context.get(type);
+		}
+		
+		return (Action) constructor.newInstance(parameters);
+	}
+}

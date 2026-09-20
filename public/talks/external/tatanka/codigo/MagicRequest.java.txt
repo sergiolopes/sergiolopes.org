@@ -1,0 +1,35 @@
+package br.com.caelum.cj05;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+
+public class MagicRequest extends HttpServletRequestWrapper {
+	private Object action;
+
+	public MagicRequest( HttpServletRequest request, Object action) {
+		super(request);
+		this.action = action;
+	}
+	
+	@Override
+	public Object getAttribute(String key) {
+		if (action != null) {
+			for (Method method : action.getClass().getMethods()) {
+				if (method.getName().equalsIgnoreCase("get" + key))
+					try {
+						return method.invoke(action, null);
+					} catch (IllegalArgumentException e) {
+						e.printStackTrace();
+					} catch (IllegalAccessException e) {
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						e.printStackTrace();
+					}
+			}
+		}
+		return super.getAttribute(key);
+	}
+}

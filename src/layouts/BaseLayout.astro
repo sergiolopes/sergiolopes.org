@@ -1,0 +1,188 @@
+---
+import ThemeToggle from '../components/ThemeToggle.astro';
+import { siteBase, siteUrl } from '../lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  section?: string;
+}
+
+const {
+  title = 'Sérgio Lopes — arquivo',
+  description = 'Um arquivo pessoal de artigos, palestras, livros e podcasts de Sérgio Lopes.',
+  section = '',
+} = Astro.props;
+const fullTitle = title === 'Sérgio Lopes — arquivo' ? title : title + ' — Sérgio Lopes';
+const path = Astro.url.pathname;
+const isCurrent = (value: string) => section === value || path.includes('/' + value + '/');
+---
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#151310" />
+    <link rel="icon" href={siteBase + '/favicon.svg'} />
+    <title>{fullTitle}</title>
+    <script is:inline>
+      try {
+        const saved = localStorage.getItem('sergiolopes-theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="wordmark" href={siteUrl()} aria-label="Sérgio Lopes, início">
+          <span class="wordmark__mark">SL</span>
+          <span class="wordmark__text">sergio<span>lopes</span><i>.org</i></span>
+        </a>
+        <nav class="site-nav" aria-label="Navegação principal">
+          <a class:list={{ active: isCurrent('artigos') }} href={siteUrl('artigos')}>Artigos</a>
+          <a class:list={{ active: isCurrent('podcasts') }} href={siteUrl('podcasts')}>Podcasts</a>
+          <a class:list={{ active: isCurrent('palestras') }} href={siteUrl('palestras')}>Palestras</a>
+          <a class:list={{ active: isCurrent('livros') }} href={siteUrl('livros')}>Livros</a>
+          <a class:list={{ active: isCurrent('sobre') }} href={siteUrl('sobre')}>Sobre</a>
+        </nav>
+        <ThemeToggle />
+      </div>
+    </header>
+    <main id="main-content">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p><span class="footer-dot"></span> Um arquivo pessoal, em construção.</p>
+        <nav aria-label="Links externos">
+          <a href="https://x.com/sergio_caelum" rel="me external noopener">X / Twitter</a>
+          <a href="https://www.linkedin.com/in/sergiolopesjr/" rel="me external noopener">LinkedIn</a>
+          <a href={siteUrl('sobre')}>Sobre</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: dark;
+    --color-bg: #151310;
+    --color-panel: #201c18;
+    --color-panel-strong: #29231d;
+    --color-text: #f1eadf;
+    --color-muted: #a99f93;
+    --color-faint: #746b60;
+    --color-line: rgba(241, 234, 223, .15);
+    --color-accent: #ed8137;
+    --color-accent-soft: rgba(237, 129, 55, .13);
+    --color-accent-strong: #ff9c50;
+    --color-shadow: rgba(0, 0, 0, .22);
+    --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --font-sans: "Avenir Next", "Segoe UI", Helvetica, sans-serif;
+    --content-width: 75rem;
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --color-bg: #f3eee5;
+    --color-panel: #e9e1d5;
+    --color-panel-strong: #ded3c4;
+    --color-text: #251f1a;
+    --color-muted: #6e6258;
+    --color-faint: #8b7c6d;
+    --color-line: rgba(37, 31, 26, .16);
+    --color-accent: #bf5a20;
+    --color-accent-soft: rgba(191, 90, 32, .12);
+    --color-accent-strong: #9d4818;
+    --color-shadow: rgba(66, 45, 27, .12);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { background: var(--color-bg); scroll-behavior: smooth; }
+  body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-sans); line-height: 1.55; margin: 0; min-width: 18rem; }
+  body::before { background: var(--color-accent); content: ""; display: block; height: 3px; left: 0; position: fixed; right: 0; top: 0; z-index: 20; }
+  a { color: inherit; text-decoration-thickness: .08em; text-underline-offset: .2em; }
+  a:hover { color: var(--color-accent-strong); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent-strong); outline-offset: 4px; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; }
+  ::selection { background: var(--color-accent); color: #1e130c; }
+  .skip-link { background: var(--color-accent); color: #1e130c; left: 1rem; padding: .5rem .8rem; position: fixed; top: -5rem; z-index: 30; }
+  .skip-link:focus { top: 1rem; }
+  .site-header { background: color-mix(in srgb, var(--color-bg) 94%, transparent); border-bottom: 1px solid var(--color-line); position: sticky; top: 0; z-index: 10; }
+  .site-header__inner { align-items: center; display: flex; gap: 1.4rem; justify-content: space-between; margin: 0 auto; max-width: var(--content-width); min-height: 4.75rem; padding: 0 1.5rem; }
+  .wordmark { align-items: center; display: inline-flex; flex-shrink: 0; gap: .7rem; text-decoration: none; }
+  .wordmark__mark { align-items: center; background: var(--color-accent); color: #21150d; display: inline-flex; font-family: var(--font-display); font-size: .82rem; font-weight: 700; height: 2.05rem; justify-content: center; letter-spacing: -.08em; width: 2.05rem; }
+  .wordmark__text { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: -.03em; }
+  .wordmark__text span { color: var(--color-accent-strong); }
+  .wordmark__text i { color: var(--color-muted); font-family: var(--font-sans); font-size: .72em; font-style: normal; letter-spacing: .02em; margin-left: .08em; }
+  .site-nav { align-items: center; display: flex; gap: 1.15rem; margin-left: auto; }
+  .site-nav a { color: var(--color-muted); font-size: .79rem; letter-spacing: .05em; padding: .4rem 0; text-decoration: none; text-transform: uppercase; }
+  .site-nav a:hover, .site-nav a.active { color: var(--color-text); }
+  .site-nav a.active { border-bottom: 2px solid var(--color-accent); }
+  .theme-toggle { align-items: center; background: transparent; border: 1px solid var(--color-line); color: var(--color-muted); cursor: pointer; display: inline-flex; gap: .35rem; padding: .42rem .6rem; text-transform: uppercase; }
+  .theme-toggle:hover { border-color: var(--color-accent); color: var(--color-text); }
+  .theme-toggle__sun, .theme-toggle__moon { color: var(--color-accent); font-size: 1rem; line-height: 1; }
+  .theme-toggle__label { font-size: .63rem; letter-spacing: .08em; }
+  .theme-toggle[data-theme="light"] .theme-toggle__moon, .theme-toggle:not([data-theme="light"]) .theme-toggle__sun { display: none; }
+  .site-footer { border-top: 1px solid var(--color-line); margin-top: 4rem; }
+  .site-footer__inner { align-items: center; color: var(--color-muted); display: flex; font-size: .78rem; gap: 1.5rem; justify-content: space-between; margin: 0 auto; max-width: var(--content-width); padding: 1.8rem 1.5rem 2.5rem; }
+  .site-footer p { margin: 0; }
+  .site-footer nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .site-footer nav a { color: var(--color-muted); }
+  .footer-dot { background: var(--color-accent); border-radius: 50%; display: inline-block; height: .45rem; margin-right: .45rem; width: .45rem; }
+  .page-shell { margin: 0 auto; max-width: var(--content-width); padding: 4.4rem 1.5rem 5rem; }
+  .section-kicker { color: var(--color-accent-strong); font-size: .72rem; font-weight: 700; letter-spacing: .16em; margin: 0 0 1rem; text-transform: uppercase; }
+  .section-heading { font-size: clamp(2.25rem, 5vw, 4.7rem); letter-spacing: -.055em; line-height: .98; margin: 0; max-width: 48rem; }
+  .section-heading em { color: var(--color-accent-strong); font-style: normal; }
+  .section-intro { color: var(--color-muted); font-size: 1.08rem; line-height: 1.7; margin: 1.5rem 0 0; max-width: 43rem; }
+  .section-head { align-items: end; border-bottom: 1px solid var(--color-line); display: flex; gap: 2rem; justify-content: space-between; margin-bottom: 2.4rem; padding-bottom: 1.3rem; }
+  .section-head h1, .section-head h2 { font-size: clamp(2rem, 4vw, 3.6rem); letter-spacing: -.045em; line-height: 1; margin: 0; }
+  .section-head p { color: var(--color-muted); margin: 0; max-width: 27rem; }
+  .archive-grid { display: grid; gap: 1px; grid-template-columns: repeat(3, 1fr); }
+  .archive-card { background: var(--color-panel); display: flex; flex-direction: column; min-height: 17.5rem; padding: 1.35rem 1.35rem 1.15rem; transition: background .2s ease, transform .2s ease; }
+  .archive-card:hover { background: var(--color-panel-strong); transform: translateY(-3px); }
+  .archive-card__meta { align-items: center; color: var(--color-faint); display: flex; font-size: .68rem; gap: .6rem; letter-spacing: .12em; text-transform: uppercase; }
+  .archive-card__index { color: var(--color-accent); font-variant-numeric: tabular-nums; }
+  .archive-card__kind { color: var(--color-accent-strong); }
+  .archive-card__year { color: var(--color-muted); margin-left: auto; text-decoration: none; }
+  .archive-card h3 { font-size: 1.52rem; letter-spacing: -.025em; line-height: 1.08; margin: 2.6rem 0 .7rem; }
+  .archive-card h3 a { text-decoration: none; }
+  .archive-card p { color: var(--color-muted); font-size: .93rem; line-height: 1.55; margin: 0; }
+  .archive-card__footer { align-items: center; border-top: 1px solid var(--color-line); color: var(--color-faint); display: flex; font-size: .72rem; justify-content: space-between; margin-top: auto; padding-top: 1rem; }
+  .archive-card__footer a { color: var(--color-accent-strong); text-decoration: none; }
+  .archive-card--compact { min-height: 12rem; }
+  .archive-card--compact h3 { font-size: 1.25rem; margin-top: 1.8rem; }
+  .archive-card--compact p { display: none; }
+  .year-nav { display: flex; flex-wrap: wrap; gap: .55rem; margin: 0 0 2rem; }
+  .year-nav a { border: 1px solid var(--color-line); color: var(--color-muted); font-size: .76rem; padding: .4rem .7rem; text-decoration: none; }
+  .year-nav a:hover, .year-nav a.active { border-color: var(--color-accent); color: var(--color-accent-strong); }
+  .empty-state { border-left: 3px solid var(--color-accent); color: var(--color-muted); max-width: 45rem; padding: .8rem 1rem; }
+  .link-arrow { color: var(--color-accent-strong); font-size: .8rem; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
+  .button-link { background: var(--color-accent); color: #20130c; display: inline-flex; font-size: .75rem; font-weight: 700; letter-spacing: .09em; padding: .8rem 1rem; text-decoration: none; text-transform: uppercase; }
+  .button-link:hover { background: var(--color-accent-strong); color: #20130c; }
+  .prose { max-width: 48rem; }
+  .prose p { color: var(--color-muted); font-size: 1.08rem; line-height: 1.8; }
+  .prose h2 { font-size: 2rem; margin: 2.6rem 0 .75rem; }
+  .prose ul { color: var(--color-muted); line-height: 1.8; padding-left: 1.3rem; }
+  .prose li + li { margin-top: .55rem; }
+  @media (max-width: 62rem) {
+    .site-nav { gap: .7rem; }
+    .archive-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 45rem) {
+    .site-header__inner { align-items: flex-start; flex-wrap: wrap; gap: .8rem 1rem; padding-bottom: .9rem; padding-top: .9rem; }
+    .wordmark { margin-right: auto; }
+    .site-nav { flex-basis: 100%; gap: 1rem; justify-content: space-between; order: 3; overflow-x: auto; }
+    .site-nav a { font-size: .68rem; }
+    .theme-toggle { font-size: .7rem; }
+    .page-shell { padding-top: 3rem; }
+    .section-head { align-items: flex-start; flex-direction: column; gap: .9rem; }
+    .archive-grid { grid-template-columns: 1fr; }
+    .site-footer__inner { align-items: flex-start; flex-direction: column; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  }
+</style>

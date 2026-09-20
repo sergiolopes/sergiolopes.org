@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../../livro-web-mobile/exemplos/exemplos.css">
+	<link rel="stylesheet" href="switch.css">
+	
+	<title>Touch events</title>
+</head>
+<body>
+	
+	<h1>onclick</h1>
+	<div class="switch click">
+		<div class="switch-container">
+			<span class="switch-control"></span>
+			<span class="switch-on">ON</span>
+			<span class="switch-off">OFF</span>
+		</div>
+	</div>
+
+	<h1>ontouchstart</h1>
+	<div class="switch touchstart">
+		<div class="switch-container">
+			<span class="switch-control"></span>
+			<span class="switch-on">ON</span>
+			<span class="switch-off">OFF</span>
+		</div>
+	</div>
+
+	<h1>ontouchend</h1>
+	<div class="switch touchend">
+		<div class="switch-container">
+			<span class="switch-control"></span>
+			<span class="switch-on">ON</span>
+			<span class="switch-off">OFF</span>
+		</div>
+	</div>
+
+	<p id="log"></p>
+	<div id="qrcode"></div>
+	
+	<hr>
+	<div class="footer">
+		Example from the book <a href="../">The Mobile Web</a>. See this example's <a href="https://github.com/sergiolopes/blog/blob/master/src/files/mobile-web-book/examples/" id="link-source">source code</a>.
+	</div>
+	<script src="script.js"></script>
+<script>
+	function toggle(event) {
+		event.currentTarget.classList.toggle('active');
+		event.preventDefault();
+		log('Event: ' + event.type);
+	}
+
+	// eventos simples
+	$('.switch.click').on('click', toggle);
+	$('.switch.touchstart').on('touchstart', toggle);
+	$('.switch.touchend').on('touchend', toggle);
+	</script>
+</body>
+</html>

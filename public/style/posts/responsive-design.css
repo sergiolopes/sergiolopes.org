@@ -1,0 +1,38 @@
+/* Static preservation of the 2012 Responsive Web Design presentation. */
+body:has(.archive-entry--full-page) {
+  background: #004e66 url('../../img/posts/responsive-design/background.jpg') center top / cover fixed;
+}
+.archive-entry--full-page .archive-entry__header,
+.archive-entry--full-page .archive-entry__footer,
+.archive-entry--full-page .archive-entry__note { color: rgba(255,255,255,.9); }
+.archive-entry--full-page .archive-entry__content { color: rgba(255,255,255,.95); font-family: Georgia, serif; line-height: 1.6; }
+.archive-entry--full-page .archive-entry__content h1.title { color: rgba(255,255,255,.95); font-family: 'Della Respira', Georgia, serif; font-size: clamp(2.4rem, 6vw, 3.4rem); font-weight: 400; line-height: 1.4; margin: .75em 0 1em; max-width: 10.3em; text-align: right; text-shadow: -1px -1px 2px rgba(30,30,50,.6); }
+.archive-entry--full-page .archive-entry__content h1.title span { display: block; }
+.archive-entry--full-page .archive-entry__content h1.title .pu { font-size: .6em; font-style: italic; line-height: 1.5em; }
+.archive-entry--full-page .archive-entry__content section { clear: both; margin-bottom: 5em; position: relative; }
+.archive-entry--full-page .archive-entry__content section em { color: #fff0a5; font-style: normal; }
+.archive-entry--full-page .archive-entry__content section strong { color: #edc951; font-weight: 600; }
+.archive-entry--full-page .archive-entry__content a { color: #edaa51; }
+.archive-entry--full-page .archive-entry__content .intro { font-size: 1.125em; line-height: 1.6; margin-left: 7%; }
+.archive-entry--full-page .archive-entry__content .intro p { max-width: 30em; width: 90%; }
+.archive-entry--full-page .archive-entry__content .comeco { padding-left: min(210px, 12vw); }
+.archive-entry--full-page .archive-entry__content .destaque { color: #ffb03b; font-family: 'Della Respira', Georgia, serif; font-size: 1.5em; padding: .5em 0; text-shadow: -1px -1px 2px rgba(0,0,0,.4); }
+.archive-entry--full-page .archive-entry__content h2.sub { color: #ffb03b; font-family: 'Della Respira', Georgia, serif; font-size: clamp(2.8rem, 8vw, 5rem); line-height: .8em; margin: 0; text-align: right; text-transform: lowercase; }
+.archive-entry--full-page .archive-entry__content h2.sub span { display: block; }
+.archive-entry--full-page .archive-entry__content .rwd div.txt { float: right; margin-top: 1em; max-width: 32em; padding-left: 1em; }
+.archive-entry--full-page .archive-entry__content .rwd::after { clear: both; content: ''; display: block; }
+.archive-entry--full-page .archive-entry__content .demo { background: url('../../img/posts/responsive-design/regua.png') no-repeat 7px 0; margin-bottom: 2em; padding-top: 2.4em; }
+.archive-entry--full-page .archive-entry__content .demo .wrapper { background: url('../../img/posts/responsive-design/demobg.png'); border-radius: 8px; box-shadow: inset 1px 1px 12px rgba(0,0,0,.35); height: 340px; overflow: hidden; padding: 10px; position: relative; }
+.archive-entry--full-page .archive-entry__content .demo .wrapper iframe { border: 0; height: 320px; position: relative; width: 240px; z-index: 2; }
+.archive-entry--full-page .archive-entry__content .demo.up .wrapper { height: 470px; transition: height 3s linear; }
+.archive-entry--full-page .archive-entry__content .demo.up .wrapper iframe { height: 100%; transition: width 5s linear; }
+.archive-entry--full-page .archive-entry__content .rwd button { background: #ffb03b; border: 0; border-radius: .3em; box-shadow: 1px 1px 5px rgba(0,0,0,.35); color: #222; display: block; font-size: 1.5em; margin: 1em auto; max-width: 300px; padding: .2em .7em .3em; width: 96%; }
+.archive-entry--full-page .archive-entry__content .como h2,
+.archive-entry--full-page .archive-entry__content .mas h2,
+.archive-entry--full-page .archive-entry__content .fim h2 { color: #123745; font-family: 'Della Respira', Georgia, serif; font-size: clamp(2.8rem, 8vw, 5rem); font-weight: 400; line-height: .9; text-transform: lowercase; }
+@media (max-width: 44rem) {
+  .archive-entry--full-page .archive-entry__content .comeco { padding-left: 0; }
+  .archive-entry--full-page .archive-entry__content .rwd div.txt { float: none; padding-left: 0; }
+  .archive-entry--full-page .archive-entry__content .demo { background: none; padding-top: 0; }
+  .archive-entry--full-page .archive-entry__content .demo .wrapper { height: 240px; }
+}

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArchiveCard from '../../components/ArchiveCard.astro';
+import { entries, entriesForYear, years } from '../../lib/archive';
+import { articleEntries, siteUrl, sortedEntries } from '../../lib/site';
+
+const listed = sortedEntries(articleEntries(entries));
+const articleYears = years.filter((year) => articleEntries(entriesForYear(year)).length);
+---
+<BaseLayout title="Artigos" description="Artigos, ensaios e textos de Sérgio Lopes." section="artigos">
+  <div class="page-shell">
+    <header class="section-head">
+      <div><p class="section-kicker">arquivo de leitura</p><h1>Artigos</h1></div>
+      <p>Textos publicados ao longo dos anos, incluindo mirrors de artigos que moravam na Caelum, Alura e em outras casas.</p>
+    </header>
+    <nav class="year-nav" aria-label="Índice por ano">
+      <a class="active" href={siteUrl('artigos')}>todos</a>
+      {articleYears.map((year) => <a href={siteUrl('artigos/ano/' + year)}>{year}</a>)}
+    </nav>
+    {listed.length ? (
+      <div class="archive-grid">{listed.map((entry, index) => <ArchiveCard entry={entry} index={index + 1} />)}</div>
+    ) : (
+      <p class="empty-state">Os artigos ainda estão sendo organizados.</p>
+    )}
+  </div>
+</BaseLayout>

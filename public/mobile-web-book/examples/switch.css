@@ -1,0 +1,3 @@
+/* Small static switch skin used by the touch examples. */
+.switch { align-items: center; display: inline-flex; gap: .5rem; }
+.switch input { accent-color: #f47e35; }

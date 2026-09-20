@@ -1,0 +1,33 @@
+---
+import { archiveUrl, hasLocalSnapshot, yearOf, type ArchiveEntry } from '../lib/archive';
+import { formatDate, kindLabel, siteUrl } from '../lib/site';
+
+interface Props {
+  entry: ArchiveEntry;
+  index?: number;
+  compact?: boolean;
+}
+
+const { entry, index, compact = false } = Astro.props;
+const year = yearOf(entry);
+const date = formatDate(entry.date);
+const isArticleShelfEntry = entry.kind === 'article' || (entry.kind === 'external' && hasLocalSnapshot(entry));
+const summary = entry.description || (entry.kind === 'podcast'
+  ? 'Registro de uma participação em podcast, preservado como parte deste arquivo.'
+  : entry.kind === 'external'
+    ? 'Texto publicado originalmente em outro site e preservado aqui como referência.'
+    : 'Registro do arquivo pessoal de Sérgio Lopes.');
+---
+<article class:list={['archive-card', { 'archive-card--compact': compact }]}>
+  <div class="archive-card__meta">
+    {index !== undefined && <span class="archive-card__index">{String(index).padStart(2, '0')}</span>}
+    <span class="archive-card__kind">{kindLabel(entry.kind)}</span>
+    {year && <a class="archive-card__year" href={isArticleShelfEntry ? siteUrl('artigos/ano/' + year) : entry.kind === 'podcast' ? siteUrl('podcasts/ano/' + year) : siteUrl('arquivo/ano/' + year)}>{year}</a>}
+  </div>
+  <h3><a href={archiveUrl(entry.slug)}>{entry.title}</a></h3>
+  <p>{summary}</p>
+  <div class="archive-card__footer">
+    <time datetime={entry.date || undefined}>{date}</time>
+    {entry.originalUrl && <a href={entry.originalUrl} target="_blank" rel="external noopener">fonte ↗</a>}
+  </div>
+</article>

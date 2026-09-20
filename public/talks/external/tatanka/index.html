@@ -1,0 +1,602 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>Conexão Java 2005: Dite as regras na sua aplica&ccedil;&atilde;o: Web MVC com IoC e Reflection</title>
+
+<style>
+:root { color-scheme: dark; --bg:#15120f; --panel:#211b16; --text:#f3e9df; --muted:#cdb8a7; --accent:#f27a24; }
+* { box-sizing:border-box; }
+body { max-width: 72rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; background: var(--bg); color:var(--text); font: 1rem/1.6 system-ui, sans-serif; }
+a { color:var(--accent); }
+.archive-note { padding:1rem 1.25rem; margin-bottom:2rem; border:1px solid #5b3d27; border-radius:.75rem; background:var(--panel); }
+.archive-note strong { color:var(--accent); }
+.slide { padding:1.2rem 1.35rem; margin:1.25rem 0; border-left:3px solid var(--accent); border-radius:.25rem .75rem .75rem .25rem; background:rgba(255,255,255,.035); }
+pre { overflow:auto; padding:1rem; background:#0e0c0a; border-radius:.5rem; }
+code { color:#ffd3ac; }
+</style>
+</head>
+<body>
+
+<div class="archive-note"><strong>Arquivo local de palestra (2005)</strong><br>
+Esta transcrição e os exemplos foram preservados a partir da página histórica.
+<a href="http://www.tatanka.com.br/palestras/cj2005-Web+MVC+IoC+Reflection/">Ver a página original</a>.
+Os links de código abaixo apontam para cópias locais dos arquivos publicados junto da palestra.
+</div>
+
+<p><a href="http://tatanka.com.br">Tatanka.com.br: Sérgio Lopes</a></p>
+
+<div class="slide">
+	<h1>Dite as regras na sua aplica&ccedil;&atilde;o:<br />
+		Web MVC com IoC e Reflection</h1>
+	<p>
+		Essa palestra foi apresentada como Tutorial no <a href="http://www.conexaojava.com.br">Conexão Java 2005</a>. 
+		O conteúdo abaixo contém mais explicações que
+		os slides exibidos, assim todos podem acompanhar melhor. Os códigos também estão disponíveis em links. 
+		(no final da página estão todos os códigos juntos)
+
+	</p>
+	<h4>S&eacute;rgio L. Lopes Jr. (endereço de contato omitido na migração)</h4>
+	<h5><a href="http://www.caelum.com.br/">Caelum - www.caelum.com.br</a></h5>
+</div>
+
+
+<div>
+
+
+<div class="slide">
+	<h2>A Palestra</h2>
+	<ul>
+		<li>Construir nosso pr&oacute;prio framework Web do zero!</li>
+		<li>Recursos:
+			<ul>
+				<li>MVC</li>
+				<li>IoC</li>
+				<li>Reflection</li>
+				<li>Refactoring</li>
+			</ul>
+		</li>
+		<li>Vejamos uma aplicação Web completa! (<a href="codigo/MinhaAplicacaoWebEmUmaServletNojenta.java.txt">código aqui</a>)</li>
+</div>
+
+<div class="slide">
+	<h2>Problemas</h2>
+	<ul>
+		<li>&Eacute; grande</li>
+		<li>&Eacute; dif&iacute;cil de manter</li>
+		<li>Desemprega o WebDesigner ou o Programador</li>
+		<li>&Eacute; feio, nojento, cheira mal...</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>MVC, uma solu&ccedil;&atilde;o</h2>
+	<p>Dividir tudo em camadas</p>
+	<ul>
+		<li>Tudo pequeno</li>
+		<li>Bem mais f&aacute;cil de manter</li>
+		<li>Garante o ganha-p&atilde;o de todo mundo</li>
+		<li>&Eacute; bonito, agrad&aacute;vel e cheiroso...</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>MVC, uma solu&ccedil;&atilde;o</h2>
+	<p>As camadas:</p>
+	<ul>
+		<li>Modelo (Model)</li>
+		<li>Visualiza&ccedil;&atilde;o (View)</li>
+		<li>Controlador (Controller)</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Qual o papel de um controlador?</h2>
+	<ol>
+		<li>Recebe a requisi&ccedil;&atilde;o</li>
+		<li>Decide o que executar</li>
+		<li>Executa!</li>
+		<li>Redireciona pra View</li>
+	</ol>
+	<ul>
+		<li>Vamos renomear nossa servlet para Controller</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Onde ficam as a&ccedil;&otilde;es?</h2>
+	<p>A&ccedil;&otilde;es s&atilde;o o que est&aacute; no "switch"... Mas:</p>
+	<ul>
+		<li>Deveriam estar fora de quem as controla</li>
+		<li>Classes separadas para cada a&ccedil;&atilde;o</li>
+		<li>E como padronizar?</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Command Pattern</h2>
+	<ul>
+		<li>&Eacute; um padr&atilde;o de projeto comportamental</li>
+		<li>Usado para executar comandos independentemente de suas implementa&ccedil;&otilde;es</li>
+	</ul><pre>
+public interface Action {
+  void execute(
+    HttpServletRequest request, HttpServletResponse response
+  );
+}
+	</pre>
+</div>
+
+<div class="slide">
+	<h2>Separando as a&ccedil;&otilde;es</h2>
+	<ul>
+		<li>Uma Action pra cada a&ccedil;&atilde;o</li>
+		<li>Controlador decide qual Action executar</li>
+	</ul>
+	<ul>
+		<li>Criar Actions Somadora e Inversor copiando e colocando o código do switch no execute()</li>
+		<li>Colocar <code>throws Exception</code> no execute() de Action</li>
+		<li>Instanciar as Actions no switch e chamar execute depois do switch</li>
+		<li>Refatorar: criar método criaAction(pagina) no Controller</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>HTML no c&oacute;digo Java?</h2>
+	<ul>
+		<li>Algu&eacute;m ainda est&aacute; perdendo o emprego!</li>
+		<li>JSP para visualiza&ccedil;&atilde;o; sem HTML nas Actions</li>
+		<li>Questão: como passar atributos da Action para o JSP? setAttributte e getAttribute no request!</li>
+		<li>Retirar HTML das Actions e criar arquivos: <a href="codigo/inversor.jsp.txt">inversor.jsp</a>,  <a 
+href="codigo/somadora.jsp.txt">somadora.jsp</a>, <a href="codigo/topo.jsp.txt">topo.jsp</a>, <a href="codigo/rodape.jsp.txt">rodape.jsp</a></li>
+	</ul>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Executar e Visualizar</h2>
+	<ul class="incremental">
+		<li>Como redirecionar para o JSP ap&oacute;s a Action?</li>
+		<li><pre>
+request.getRequestDispatcher("/arquivo.jsp").
+	forward(request, response);
+		</pre></li>
+		<li>Problema: mais ifs para saber qual &eacute; a View?</li>
+		<li>Controlador muito íntimo com nossa aplica&ccedil;&atilde;o!</li>
+		<li>Podemos configurar nossa aplica&ccedil;&atilde;o e deixar o controlador mais gen&eacute;rico</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>controller.properties</h2>
+	<ul>
+		<li><pre>
+somadora.view = somadora.jsp
+inversor.view = inversor.jsp
+		</pre></li>
+		<li>Carregamos as propriedades no m&eacute;todo init():</li>
+	</ul>
+	<pre>
+this.properties = new Properties();
+this.properties.load(getClass().getClassLoader().
+	getResourceAsStream("controller.properties"));
+	</pre>
+	<ul>
+		<li>Redirecionamos para o JSP assim: <br/>
+			<code>request.getRequestDispatcher(properties.getProperty(pagina + ".view")).forward(request,response);</code>
+		</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Ainda temos um switch</h2>
+	<ul>
+		<li>Controlador continua muito &iacute;ntimo com a aplica&ccedil;&atilde;o</li>
+		<li>E se colocarmos a classe da Action no .properties?</li>
+		<li><pre>
+somadora.action = br.com.caelum.cj05.Somadora
+inversor.action = br.com.caelum.cj05.Inversor
+		</pre></li>
+		<li>Mas como instanciar essas classes?</li>
+		<li>Reflection!</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>O que &eacute; Reflection?</h2>
+	<ul>
+		<li>API para manipular classes, m&eacute;todos, construtores, atributos etc em tempo de execução</li>
+		<li>&Eacute; a abstra&ccedil;&atilde;o da abstra&ccedil;&atilde;o</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Instanciar a Action</h2>
+	<ul>
+		<li>Precisamos:
+			<ol>
+				<li>Carregar a classe com base no seu nome</li>
+				<li>Instanciar um objeto dessa classe</li>
+			</ol>
+		</li>
+		<li><pre>
+Class c = Class.forName("pacote.classe");
+Action a = (Action) c.newInstance();
+		</pre></li>
+	</ul>
+        <ul>
+		<li>O método criaAction() agora: <br/><pre>
+private Action criaAction(String pagina) throws Exception {
+	Class klass = Class.forName(properties.getProperty(pagina + ".action"));
+	return (Action) klass.newInstance();
+}
+		</pre></li>
+        </ul>
+</div>
+
+<div class="slide">
+	<h2>Independ&ecirc;ncia</h2>
+	<ul>
+		<li>Pr&oacute;ximo passo: Actions independentes da Web
+			<ul>
+			<li>Somar um n&uacute;mero n&atilde;o depende da Web</li>
+			<li>Inverter uma String n&atilde;o depende da Web</li>
+			</ul>
+		</li>
+		<li>Estamos atrelados ao request em dois pontos:
+			<ul>
+				<li>setAttribute</li>
+				<li>getParameter</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Passando Atributos</h2>
+	<ul>
+	        <li>Action coloca o atributo no request com setAttribute(); JSP pega o resultado com getAttribute()</li>
+		<li>E se a View pegasse os atributos <strong>direto</strong> na Action?</li>
+		<li>Action teria um m&eacute;todo:<br /><br />
+			<code>public String getInvertida() </code>
+			<br /><br />
+			E o JSP exibe com: <code>${invertida}</code>
+			<br /><br />
+			<strong>Simples! Só isso! O resto é mágica...</strong>
+		</li>
+		<li>Isso se chama MVC Pull
+        	<ul>
+	          <li>Conectar a View e a Action de forma transparente</li>
+		  <li>A View pega na Actions os objetos para serem mostrados</li>
+		  <li>A Action não precisa mais colocar os objetos em nenhum lugar</li>
+		  <li>E vamos usar mais Reflection!</li>
+		</ul>
+		</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Nosso MVC Pull</h2>
+	<ul>
+		<li><code>class MagicRequest extends HttpServletRequestWrapper</code></li>
+		<li>Nosso m&eacute;todo getAttribute(String):
+			<ul>
+				<li>Procura um getter na Action com o nome do atributo pedido</li>
+				<li>Invoca o m&eacute;todo em tempo de execu&ccedil;&atilde;o!</li>
+			</ul>
+		</li>
+		<li>Pseudocódigo para o getAttribute:<br><pre>
+paraCada (metodo nos metodosDaAction) {
+   se (eh getter do atributo) {
+      invoca o metodo e devolve o resultado;
+   }
+}
+		</pre></li>
+		<li>O código do MagicRequest está <a href="codigo/MagicRequest.java.txt">aqui</a></li>
+        </ul>
+</div>
+
+<div class="slide">
+	<h2>Mudanças no Controller</h2>
+	<ul>
+		<li>Instanciar o MagicRequest:<pre>
+MagicRequest magicRequest = new MagicRequest(request, action);
+		</pre> e usamos no forward: <pre>
+request.getRequestDispatcher(view).forward(magicRequest, response);
+		</pre></li>
+		<li>JSP agora invoca o getAttribute() da MagicRequest</li>
+		<li>Criamos os métodos getInvertida() e getNome() no Inversor; e getNumero1(), getNumero2(), getResultado() na Somadora</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Mais Independ&ecirc;ncia</h2>
+	<ul>
+		<li>Estamos atrelados ao request em dois pontos:
+		<ul>
+			<li><strike>setAttribute</strike></li>
+			<li>getParameter</li>
+		</ul>
+		</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Pegar par&acirc;metros</h2>
+	<ul>
+		<li>Usamos o request.getParameter()</li>
+		<li>E se n&atilde;o peg&aacute;ssemos os par&acirc;metros?</li>
+		<li> E se eles fossem magicamente colocados na nossa Action?</li>
+		<li>Hein??</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Invers&atilde;o de Controle</h2>
+	<ul>
+		<li>Sem IoC: a classe &eacute; respons&aacute;vel por pegar de fora o que ela precisa</li>
+		<li>Com IoC: o "ambiente" entrega pra classe tudo que ela precisa.</li>
+		<li>O controle da aplica&ccedil;&atilde;o &eacute; invertido! A classe n&atilde;o se serve mais, &eacute; servida...</li>
+		<li>Traduzindo: nossa Action n&atilde;o precisaria mais pegar os par&acirc;metros
+			<ul><li>o ambiente (o Controlador) se encarrega de colocar os par&acirc;metros dentro da Action</li></ul>
+		</li>
+		<li>Dependency Injection (Injeção de Dependências): nossa Action depende de certas coisas que são injetadas dentro dela</li>
+	</ul>
+	</div>
+</div>
+
+<div class="slide">
+	<h2>IoC: Setter Injection</h2>
+	<ul>
+		<li class="handout">Mas como as coisas chegam magicamente para a Action?</li>
+		<li>1&deg; tipo de IoC: Setter Injection
+			<ul class="handout">
+				<li>Action tem setters pra tudo que ela precisar</li>
+				<li>Controlador chama esse setter passando o par&acirc;metro esperado!</li>
+			</ul>
+		</li>
+		<li>Exemplo para o Inversor:
+			<ul>
+				<li>M&eacute;todo <code>setNome(String nome)</code> na classe Inversor</li>
+				<li>O controlador se encarrega de fazer:<br />
+				<code>inversor.setNome(request.getParameter("nome"));</code>
+				</li>
+			</ul>
+		</li>
+		<li>Tiramos os request.getParameter() da Action</li>
+		<li>Criamos, nas Actions, campos e seus setters para cada par&acirc;metro</li>
+		<li>Agora falta fazer a m&aacute;gica acontecer no controlador... Mais Reflection!</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Setter Injection</h2>
+	<pre>
+paraCada (metodo nos metodosDaAction) {
+   se (&eacute; um setter) {
+      procura um parametro com esse nome;
+      chama o setter passando o valor do parametro;
+   }
+}
+	</pre>
+	<pre>
+for (Method method : action.getClass().getMethods()) {
+	String m = method.getName(); 
+	if (m.startsWith("set")) {
+		String p = request.getParameter(m.substring(3,4).toLowerCase() + m.substring(4));
+		if (p != null) {
+			method.invoke(action, p);
+		}
+	}
+}
+	</pre>
+</div>
+
+<div class="slide">
+	<h2>Independentes!</h2>
+	<ul>
+		<li>Nossas Actions n&atilde;o dependem mais do Request ou do Response!</li>
+		<li>Podemos tirar o request e o response do m&eacute;todo execute()
+			<ul><li>Refatorar: No Eclipse: Refactor -> Change Method Signature</li></ul>
+		</li>
+		<li><a href="codigo/Action.java.txt">Código da Action aqui</a></li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Muita independ&ecirc;ncia?</h2>
+	<ul class="incremental">
+		<li>Mas, e se precisamos... 
+		<ul>
+			<li>...fazer aquela mega-super-ultra feature que precisa muito do Request?</li>
+			<li>...da Sess&atilde;o do usu&aacute;rio para gravar uma informa&ccedil;&atilde;o?</li>
+		</ul>
+		</li>
+		<li>Solu&ccedil;&atilde;o: mais m&aacute;gica! Mais IoC! Mais Reflection!</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>IoC: Constructor Injection</h2>
+	<ul>
+	<li>2&deg; tipo de IoC: Contructor Injection</li>
+	<li>A Action tem um construtor que recebe o tipo de argumento necess&aacute;rio</li>
+	<li>O controlador chama esse construtor passando exatamente o que a Action precisa</li>
+	<li>Exemplo para o Inversor:
+		<ul>
+		<li>Construtor <code>Inversor(HttpServletRequest request){ ... }</code> na classe Inversor</li>
+		<li>O controlador magicamente faz:<br />
+		<code>Action a = new Inversor(request);</code>
+		</li>
+		</ul>
+	</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Diferentes inje&ccedil;&otilde;es</h2>
+	<ul>
+	<li>Diferen&ccedil;a entre setter injection (SI) e constructor injection (CI):
+		<ul>
+		<li>SI: setter chamado &eacute; resolvido em fun&ccedil;&atilde;o do <strong>nome do campo</strong></li>
+		<li>CI: par&acirc;metros passados ao construtor s&atilde;o resolvidos em fun&ccedil;&atilde;o do <strong>tipo</strong></li>
+		</ul>
+	</li>
+ 	<li>Constructor Injection é mais recomendado porque é atômico. Todas as dependências são injetadas
+	de uma vez e somente na instanciação. Com Setter Injection podemos esquecer alguma dependência e não é atômico.</li> 
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Constructor Injection: Exemplo</h2>
+	<pre>
+public class Login implements Action {
+  private HttpServletRequest request;
+  private String nome;
+  public Login(HttpServletRequest r) {
+    request = r;
+  }
+  public void execute() {
+    this.request.getSession().
+	setAttribute("usuario", this.nome);
+  }
+  //setter para o campo nome
+}
+	</pre>
+	<ul>
+		<li>Criamos essa classe e colocamos no controller.properties</li>
+		<li>Criamos <a href="codigo/login.jsp.txt">login.jsp</a></li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Constructor Injection: Implementando</h2>
+	<pre>
+construtor := o construtor da Action;
+paraCada (parametro nos parametrosDoConstrutor) {
+  acha um objeto que satisfa&ccedil;a o tipo do parametro;
+}
+chama o construtor passando os objetos encontrados;
+	</pre>
+	<ul>
+		<li>Principal quest&atilde;o: onde <strong>achar</strong> um objeto que satisfa&ccedil;a aquele tipo?</li>
+		<li>Resposta: criamos um contexto onde o controlador procura objetos (um simples mapa)</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Constructor Injection: O contexto</h2>
+	<ul>
+		<li>Mapa onde salvamos objetos que podem ser usados em constructor injection</li>
+		<li>Colocar um objeto nesse contexto significa que eles est&atilde;o dispon&iacute;veis para 
+as Actions que os solicitarem</li>
+		<li><pre>
+Map<Class,Object> context = new HashMap<Class,Object>();
+context.put(HttpServletRequest.class, request);
+context.put(HttpServletResponse.class, response);
+		</pre></li>
+		<li>Novo criaAction() usando IoC: <br><pre>
+private Action criaAction(String pagina, Map<Class,Object> context) throws Exception {
+	Class action = Class.forName(properties.getProperty(pagina + ".action"));
+	Constructor[] constructors = action.getConstructors();
+	if (constructors.length == 0)
+		return (Action) action.newInstance();
+		
+	Constructor constructor = constructors[0];
+	Class[] types = constructor.getParameterTypes();
+		
+	Object[] parameters = new Object[types.length];
+	int i = 0;
+		
+	for (Class type: types) {
+		parameters[i++] = context.get(type);
+	}
+	
+	return (Action) constructor.newInstance(parameters);
+}
+		</pre></li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Código final:</h2>
+	<ul>
+		<li><a href="codigo/Controller.java.txt">Controller</a></li>
+		<li><a href="codigo/Inversor.java.txt">Inversor</a></li>
+		<li><a href="codigo/Somadora.java.txt">Somadora</a></li>
+		<li><a href="codigo/Action.java.txt">Action</a></li>
+		<li><a href="codigo/MagicRequest.java.txt">MagicRequest</a></li>
+		<li><a href="codigo/Login.java.txt">Login</a></li>
+		<li><a href="codigo/controller.properties.txt">controller.properties</a></li>
+		<li><a href="codigo/inversor.jsp.2.txt">inversor.jsp</a></li>
+		<li><a href="codigo/somadora.jsp.2.txt">somadora.jsp</a></li>
+		<li><a href="codigo/login.jsp.txt">login.jsp</a></li>
+		<li><a href="codigo/topo.jsp.2.txt">topo.jsp</a></li>
+		<li> <a href="codigo/rodape.jsp.txt">rodape.jsp</a></li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Como está o framework?</h2>
+	<ul>
+		<li>Separamos tudo em camadas
+		<ul>
+			<li>A visualização está nos JSPs</li>
+			<li>O controlador é totalmente reaproveitável</li>
+		</ul>
+		</li>
+		<li>As ações estão em classes separadas
+		<ul>
+			<li>São totalmente independentes da Web (ou qualquer outro contexto)</li>
+			<li>Mas, se precisamos de algo específico, conseguimos também</li>
+		</ul>
+		</li>
+		<li>Tudo configurado num .properties muito simples</li>
+		<li>Está muito bem encaminhado; agora é só melhorar...</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h2>Sugestões: Algumas melhorias no nosso framework</h2>
+	<ul>
+		<li>Tirar o parâmetro "pagina"</li>
+		<li>Não usar a interface Action!
+		<ul>
+			<li>Podemos configurar qual método chamar</li>
+			<li>Ou marcar o método com uma Anotação</li>
+		</ul>
+		</li>
+		<li>Setter Injection que converte automaticamente para outros tipos</li>
+		<li>Constructor Injection mais inteligente (instanciando objetos também)
+			<ul><li>PicoContainer (www.picocontainer.org)</li></ul>
+		</li>
+		<li>Há mais 2 "tipos de Reflection": nos campos (Fields) e anotações (Annotations)</li>
+	</ul>
+</div>
+
+<div class="slide">
+        <h2>Sugestões: Alguns links legais</h2>
+        <ul>
+                <li><a href="http://www.picocontainer.org">PicoContainer</a>: Legal ler as introduções deles onde explicam o que é IoC. É um 
+framework para auxiliar no trabalho com IoC.</li>
+                <li><a href="http://www.martinfowler.com/articles/injection.html">Inversion of Control Containers and the Dependency Injection 
+pattern</a>: Artigo de IoC do Martin Fowler (excelente!)</li>
+<li><a href="http://java.sun.com/docs/books/tutorial/reflect/">The Reflection API</a>: Tutorial de Reflection da Sun</li>
+                <li><a href="http://www.vraptor.org">VRaptor</a>: framework Web que roda por trás do GUJ. Boa parte das idéias da palestra estão 
+no vRaptor também.</li>
+                <li><a href="http://www.javaworld.com/javaworld/jw-08-2003/jw-0801-toolbox.html">Why extends is evil</a>: artigo do JavaWorld que fala 
+porque herança deve ser evitada sempre.</li>
+                <li><a href="http://www.guj.com.br">GUJ</a>: Grupo de Usuários Java, do qual participo e sou Moderador</li>
+                <li><a href="http://www.caelum.com.br">Caelum</a>: Empresa onde trabalho, com pessoal muito bom. Tem cursos de Java ótimos.</li>
+                <li><a href="http://www.conexaojava.com.br">Conexão Java</a>: Evento onde esta palestra foi dada. É organizado pelo CUJ, Portal 
+Java e Anhembi Morumbi.</li>
+                <li><a href="http://tatanka.com.br">Meu Blog e Site</a></li>
+        </ul>
+</div>
+
+<p><i>Achou algum erro? Tem alguma sugestão ou dúvida? Escreva pra mim em endereço de contato omitido na migração</i></p>
+
+<p><a href="http://tatanka.com.br">Tatanka.com.br: Sérgio Lopes</a></p>
+
+</body>
+</html>

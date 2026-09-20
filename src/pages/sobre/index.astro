@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteBase, siteUrl } from '../../lib/site';
+---
+<BaseLayout title="Sobre" description="Links para artigos, palestras, livros, podcasts e perfis de Sérgio Lopes." section="sobre">
+  <div class="page-shell about">
+    <header class="about__hero">
+      <div>
+        <p class="section-kicker">sobre este arquivo</p>
+        <h1>Um pouco do que<br /><em>ficou guardado.</em></h1>
+      </div>
+      <img src={siteBase + '/images/sergio-lopes.jpg'} alt="Sérgio Lopes" width="400" height="400" />
+    </header>
+    <div class="about__body">
+      <div class="prose">
+        <p>Este site reúne coisas que fiz: artigos, palestras, livros e participações em podcasts. É um arquivo pessoal, com espaço para contexto e para links antigos encontrarem uma casa novamente.</p>
+        <p>A biografia aqui é curta de propósito. O restante está nas gavetas ao lado.</p>
+      </div>
+      <nav class="about__links" aria-label="Conteúdos e perfis">
+        <a href={siteUrl('artigos')}><span>01</span><strong>Artigos</strong><small>textos e ensaios</small></a>
+        <a href={siteUrl('palestras')}><span>02</span><strong>Palestras</strong><small>slides e apresentações</small></a>
+        <a href={siteUrl('livros')}><span>03</span><strong>Livros</strong><small>autoria e edição</small></a>
+        <a href={siteUrl('podcasts')}><span>04</span><strong>Podcasts</strong><small>conversas gravadas</small></a>
+        <a href="https://x.com/sergio_caelum" rel="me external noopener"><span>05</span><strong>X / Twitter</strong><small>@sergio_caelum ↗</small></a>
+        <a href="https://www.linkedin.com/in/sergiolopesjr/" rel="me external noopener"><span>06</span><strong>LinkedIn</strong><small>perfil profissional ↗</small></a>
+      </nav>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .about__hero { align-items: end; border-bottom: 1px solid var(--color-line); display: grid; gap: 3rem; grid-template-columns: 1fr 13rem; padding-bottom: 3.5rem; }
+  .about__hero h1 { font-size: clamp(3rem, 7vw, 7rem); letter-spacing: -.07em; line-height: .88; margin: 0; }
+  .about__hero h1 em { color: var(--color-accent-strong); font-style: normal; }
+  .about__hero img { aspect-ratio: 1; border: .55rem solid var(--color-accent); display: block; filter: saturate(.82); object-fit: cover; width: 100%; }
+  .about__body { display: grid; gap: 6rem; grid-template-columns: minmax(0, 1fr) minmax(19rem, 1fr); padding-top: 4rem; }
+  .about__links { border-top: 1px solid var(--color-line); display: grid; grid-template-columns: repeat(2, 1fr); }
+  .about__links a { border-bottom: 1px solid var(--color-line); display: grid; gap: .1rem; grid-template-columns: 2rem 1fr; padding: 1rem 0; text-decoration: none; }
+  .about__links a:nth-child(odd) { padding-right: 1.5rem; }
+  .about__links span { color: var(--color-accent); font-size: .7rem; }
+  .about__links strong { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; }
+  .about__links small { color: var(--color-muted); grid-column: 2; }
+  @media (max-width: 52rem) { .about__body { gap: 3rem; grid-template-columns: 1fr; } }
+  @media (max-width: 45rem) { .about__hero { grid-template-columns: 1fr 8rem; } .about__hero h1 { font-size: 3.1rem; } }
+</style>

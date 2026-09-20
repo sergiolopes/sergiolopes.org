@@ -1,0 +1,178 @@
+[
+  {
+    "slug": "slideshare-caelumdev",
+    "title": "Perfil Caelum Dev no SlideShare",
+    "kind": "profile",
+    "category": "SlideShare",
+    "originalUrl": "http://www.slideshare.net/caelumdev/",
+    "recoveryStatus": "outbound-collection"
+  },
+  {
+    "slug": "qcon-http2",
+    "title": "Rumo ao HTTP/2: o que vem por aí e o que você pode utilizar já com SPDY",
+    "kind": "document",
+    "category": "Google Slides",
+    "originalUrl": "https://docs.google.com/presentation/d/1BVyBcR5AE2kwY7akcmM0O3dDJ5TccY3ew0U9Ux7wsQs/pub?start=false&loop=false&delayms=3000&utm_content=buffer7886e&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer#slide=id.p",
+    "localPath": "talks/external/qcon-http2/",
+    "assetPath": "talks/external/qcon-http2.pdf",
+    "recoveryStatus": "local-pdf",
+    "httpStatus": 200,
+    "pageCount": 76,
+    "bytes": 967271
+  },
+  {
+    "slug": "tatanka-web-mvc-ioc-reflection",
+    "title": "Dite as regras na sua aplicação: Web MVC com IoC e Reflection",
+    "kind": "html",
+    "category": "Tatanka / Conexão Java 2005",
+    "originalUrl": "http://www.tatanka.com.br/palestras/cj2005-Web+MVC+IoC+Reflection/",
+    "localPath": "talks/external/tatanka/",
+    "recoveryStatus": "local-html",
+    "httpStatus": 200,
+    "localFiles": 16
+  },
+  {
+    "slug": "imasters-progressive-web-apps-7masters",
+    "title": "Progressive Web Apps — 7 Masters",
+    "kind": "recording",
+    "category": "iMasters",
+    "originalUrl": "http://imasters.com.br/design-ux/design-responsivo/video-progressive-web-apps-7masters/",
+    "recoveryStatus": "outbound-video",
+    "note": "Página de vídeo preservada como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "infoq-novidades-web-mobile",
+    "title": "Entrevista: novidades no Web Mobile",
+    "kind": "recording",
+    "category": "InfoQ",
+    "originalUrl": "http://www.infoq.com/br/interviews/novidades-no-web-mobile",
+    "recoveryStatus": "outbound-video",
+    "note": "Entrevista preservada como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "infoq-google-appengine-cloud",
+    "title": "Mitos e verdades do cloud do Google: experiências no App Engine",
+    "kind": "recording",
+    "category": "InfoQ",
+    "originalUrl": "http://www.infoq.com/br/presentations/appengine-google-cloud",
+    "recoveryStatus": "outbound-video",
+    "note": "Gravação preservada como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "infoq-truques-web-mobile",
+    "title": "Uma tonelada de truques de Web Mobile",
+    "kind": "recording",
+    "category": "InfoQ",
+    "originalUrl": "http://www.infoq.com/br/presentations/tonelada-truques-web",
+    "recoveryStatus": "outbound-video",
+    "note": "Gravação preservada como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "infoq-performance-rail",
+    "title": "Performance na web: o modelo RAIL e outras novidades",
+    "kind": "recording",
+    "category": "InfoQ",
+    "originalUrl": "https://www.infoq.com/br/presentations/performance-na-web-o-modelo-rail-e-outras-novidades",
+    "recoveryStatus": "outbound-video",
+    "note": "Gravação preservada como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "youtube-front-in-bh",
+    "title": "Front In BH — Por uma Web mais rápida",
+    "kind": "recording",
+    "category": "YouTube",
+    "originalUrl": "http://www.youtube.com/watch?v=GuPEcngbNAw",
+    "recoveryStatus": "outbound-video",
+    "note": "Vídeo preservado como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "youtube-7-masters",
+    "title": "Mesa redonda do 7 Masters",
+    "kind": "recording",
+    "category": "YouTube",
+    "originalUrl": "http://www.youtube.com/watch?v=bRrZYlbre7M",
+    "recoveryStatus": "outbound-video",
+    "note": "Vídeo preservado como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "youtube-braziljs-performance",
+    "title": "BrazilJS — Desafios práticos de performance web",
+    "kind": "recording",
+    "category": "YouTube",
+    "originalUrl": "https://www.youtube.com/watch?v=EMCBd3kw4zs",
+    "recoveryStatus": "outbound-video",
+    "note": "Vídeo preservado como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "youtube-devcast-web-mobile",
+    "title": "DevCast — Uma tonelada de truques de Web Mobile",
+    "kind": "recording",
+    "category": "YouTube",
+    "originalUrl": "https://www.youtube.com/watch?v=_wMx_Yb2lBk",
+    "recoveryStatus": "outbound-video",
+    "note": "Vídeo preservado como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "youtube-front-in-sampa",
+    "title": "Front In Sampa — vídeo oficial",
+    "kind": "recording",
+    "category": "YouTube",
+    "originalUrl": "https://www.youtube.com/watch?v=aH9eVa2cTcM",
+    "recoveryStatus": "outbound-video",
+    "note": "Vídeo preservado como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "youtube-responsive-design",
+    "title": "Front In Sampa — Além do responsive design",
+    "kind": "recording",
+    "category": "YouTube",
+    "originalUrl": "https://www.youtube.com/watch?v=bJdFqCnxmVY",
+    "recoveryStatus": "outbound-video",
+    "note": "Vídeo preservado como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "youtube-service-workers-porto-alegre",
+    "title": "Front In Porto Alegre — Service Workers",
+    "kind": "recording",
+    "category": "YouTube",
+    "originalUrl": "https://www.youtube.com/watch?v=mchPQdKbbus",
+    "recoveryStatus": "outbound-video",
+    "note": "Vídeo preservado como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "youtube-sampajs-offline",
+    "title": "SampaJS — Dominando HTML5 offline com AppCache",
+    "kind": "recording",
+    "category": "YouTube",
+    "originalUrl": "https://www.youtube.com/watch?v=mrS4ivgj1Es",
+    "recoveryStatus": "outbound-video",
+    "note": "Vídeo preservado como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "youtube-front-in-sampa-pwa",
+    "title": "Front In Sampa — Progressive Web Apps",
+    "kind": "recording",
+    "category": "YouTube",
+    "originalUrl": "https://www.youtube.com/watch?v=sH7dlRnuh-k&feature=youtu.be&a=",
+    "recoveryStatus": "outbound-video",
+    "note": "Vídeo preservado como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "youtube-web-day-offline",
+    "title": "Web Day — Dominando HTML5 offline com AppCache",
+    "kind": "recording",
+    "category": "YouTube",
+    "originalUrl": "https://www.youtube.com/watch?v=sVBSNJznDF0",
+    "recoveryStatus": "outbound-video",
+    "note": "Vídeo preservado como referência externa; o arquivo audiovisual não foi baixado."
+  },
+  {
+    "slug": "eventials-service-workers",
+    "title": "TablelessConf — Service Workers: o jeito certo de fazer offline",
+    "kind": "recording",
+    "category": "Eventials",
+    "originalUrl": "https://www.eventials.com/tableless/service-workers-o-jeito-certo-de-fazer-offline/?playlist=palestras-do-tableless-conference-2014",
+    "recoveryStatus": "outbound-video",
+    "note": "Página de evento/vídeo preservada como referência externa; o arquivo audiovisual não foi baixado."
+  }
+]

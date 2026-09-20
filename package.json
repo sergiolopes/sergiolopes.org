@@ -3,7 +3,21 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "scripts": { "dev": "astro dev", "build": "astro build", "preview": "astro preview" },
-  "dependencies": { "astro": "7.3.3" },
-  "engines": { "node": ">=22.12.0" }
+  "scripts": {
+    "dev": "astro dev",
+    "build": "npm run generate:indexes && astro build",
+    "preview": "astro preview",
+    "check:links": "node scripts/check-links.mjs",
+    "generate:indexes": "node scripts/generate-site-indexes.mjs",
+    "migrate": "node scripts/migrate-content.mjs"
+  },
+  "dependencies": {
+    "astro": "7.3.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "devDependencies": {
+    "satteri": "0.10.5"
+  }
 }

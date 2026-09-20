@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../../livro-web-mobile/exemplos/exemplos.css">
+	
+	<title>Viewport</title>
+</head>
+<body>
+	<!-- conteudo -->
+	
+	<h1>Viewport testing</h1>
+	
+	<p id="screen">Screen (screen.width): <span></span></p>
+	<p id="outer">Window (window.outerWidth): <span></span></p>
+	<p id="inner">Visual viewport (window.innerWidth): <span></span></p>
+	<p id="client">Layout viewport (document.documentElement.clientWidth): <span></span></p>
+	<p id="offset">&lt;html&gt; size (document.documentElement.offsetWidth): <span></span></p>
+	<p id="pxr">devicePixelRatio: <span></span></p>
+
+	<script>
+		function showVar(id, width, height) {
+			document.querySelector('#'+id+' span').innerHTML = width +' / ' + height
+		}
+
+		function showVars(){
+			showVar('screen', screen.width, screen.height);
+			showVar('outer', window.outerWidth, window.outerHeight);
+			showVar('inner', window.innerWidth, window.innerHeight);
+			showVar('client', document.documentElement.clientWidth, document.documentElement.clientHeight);
+			showVar('offset', document.documentElement.offsetWidth, document.documentElement.offsetHeight);
+			document.querySelector('#pxr span').innerHTML = devicePixelRatio;
+		}
+		window.onload = showVars;
+	</script>
+	<button onclick="showVars()">Recalculate</button>
+
+	<div id="qrcode"></div>
+
+	<hr>
+
+	<div class="lorem">
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente ipsum nostrum at neque nihil harum. A aperiam sunt dolorum quod culpa est impedit adipisci beatae officiis provident doloremque consectetur!</p>
+	</div>
+	
+	<!-- /conteudo -->
+	
+	
+	<hr>
+	<div class="footer">
+		Example from the book <a href="../">The Mobile Web</a>. See this example's <a href="https://github.com/sergiolopes/blog/blob/master/src/files/mobile-web-book/examples/" id="link-source">source code</a>.
+	</div>
+	<script src="script.js" async></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+package br.com.caelum.cj05;
+
+public class Inversor implements Action {
+
+	private String nome = "";
+	private String invertida;
+
+	public void execute() throws Exception {
+		char[] onome = nome.toCharArray();
+		char[] inverso = new char[onome.length];
+		for (int i = 0; i < onome.length; i++) {
+			inverso[onome.length - i - 1] = onome[i];
+		}
+		String invertida = new String(inverso);
+		this.invertida = invertida;
+	}
+
+	public String getInvertida() {
+		return invertida;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+}
+

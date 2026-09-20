@@ -1,0 +1,25 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Quadro Família Andrade Lopes</title></head><body>
+<style>
+body {
+    background: #333336;
+    border: none;
+    padding: 1em;
+    margin-top: 35vh
+}
+</style>
+
+<div id="waveform"></div>
+
+<script src="https://unpkg.com/wavesurfer.js"></script>
+<script>
+var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: 'white',
+    progressColor: 'gold'
+});
+wavesurfer.load('./quadro.mp3');
+
+document.documentElement.onclick = function() {
+    wavesurfer.playPause();
+}
+</script></body></html>

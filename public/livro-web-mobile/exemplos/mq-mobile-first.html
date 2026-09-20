@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="exemplos.css">
+	
+	<title></title>
+</head>
+<body>
+	<!-- conteudo -->
+	
+	<p>
+	<img src="foto2.jpg" class="foto">
+	Imagine o seguinte cenário: você tem um texto e uma foto que flutua à direita, com o texto passando ao redor. Nada de mais, algo bastante comum. Mas em telas pequenas, o design fica estranho. A imagem ocupa quase toda a largura da tela e o texto flui bizarramente ao redor. Seria melhor não fluir a imagem em telas menores. Quem vai resolver isso? Media queries, claro.
+	</p>
+
+	<style>
+	.foto {
+		float: right;
+		margin: 0 0 0.5em 0.5em;
+		width: 282px;
+	}
+	body {
+		background: #ddd;
+		font-size: 1.125em;
+		line-height: 1.4;
+	}
+	</style>
+	
+	<!-- /conteudo -->
+	
+	<hr>
+	<div class="footer">
+		Exemplo do livro <a href="../">A Web Mobile</a>. Veja o <a href="https://github.com/sergiolopes/blog/blob/master/src/files/livro-web-mobile/exemplos/" id="link-source">código fonte desse exemplo</a>.
+	</div>
+	<script src="script.js" async></script>
+</body>
+</html>

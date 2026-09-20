@@ -1,0 +1,22 @@
+CACHE MANIFEST
+# REV 1
+
+CACHE:
+
+# fontes
+/img/palestra/mobile-web/caelum-logo.ttf
+/fonts/Acme-Regular.ttf
+
+# base das palestras
+/img/palestra/sergio-lopes.jpg
+/img/base/noise.png
+
+# imagens da palestra
+/img/palestra/appcache/mallandro1.jpg
+/img/palestra/appcache/mallandro2.jpg
+/img/palestra/appcache/mallandro3.jpg
+/img/palestra/appcache/mallandro4.jpg
+/img/palestra/appcache/appicon.png
+
+NETWORK:
+*

@@ -1,0 +1,14 @@
+<%@ include file="topo.jsp" %>
+
+<h2>Invertendo nomes</h2>
+<form>
+<input type="hidden" name="pagina" value="inversor"/>
+<input type="text" name="nome" size=120/><br/>
+		
+Original: <b>${nome}</b><br/>
+Inverso: <b>${invertida}</b>
+		
+<br/><input type="submit" value="Inverter!">
+</form>
+
+<%@ include file="rodape.jsp" %>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../../livro-web-mobile/exemplos/exemplos.css">
+	
+	<title>Retina images</title>
+	
+	<style>
+	.img {
+		margin: 0 auto;
+		height: 500px;
+		width: 100%;
+		max-width: 500px;
+		background-position: top center;
+	}
+
+	.primeira {
+		background-image: url(retina-1x-80.jpg);
+	}
+
+	.segunda {
+		background-image: url(retina-2x-20.jpg);
+		background-size: 500px 500px;
+	}
+
+	.botao {
+		margin: 1em;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<h1>Two JPEGs, one 1x and another 2x (retina)</h1>
+	
+	<div class="img primeira"></div>
+	<div class="img segunda"></div>
+	
+	<div class="botao">
+		<button onclick="document.getElementById('segredo').style.display='block';">Reveal secret</button>
+	</div>
+	<div id="segredo" style="display:none">
+		<p>Both images have <b>80 kb</b> size.</p>
+		<p>Firt image is a 500px x 500px JPEG, showed at 1x. Was saved with 80 compression/quality.</p>
+		<p>Second image is a 1000px x 1000px JPEG, showed as 2x. Was saved with 20 compression/quality.</p>
+		<p>Do more testes with <a href="http://borismus.github.com/image-zoom/">this tool</a>.</p>
+	</div>
+	
+	<div id="qrcode" class="center"></div>
+	
+	
+	<hr>
+	<div class="footer">
+		Example from the book <a href="../">The Mobile Web</a>. See this example's <a href="https://github.com/sergiolopes/blog/blob/master/src/files/mobile-web-book/examples/" id="link-source">source code</a>.
+	</div>
+	<script src="script.js" async></script>
+</body>
+</html>

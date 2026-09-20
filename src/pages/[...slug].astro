@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { archiveUrl, entries, getEntry, hasLocalSnapshot, htmlForEntry, waybackUrl, yearOf } from '../lib/archive';
+
+export function getStaticPaths() {
+  return entries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry: pathEntry } = Astro.props;
+const slug = Astro.params.slug || '';
+const entry = pathEntry || getEntry(slug);
+
+if (!entry) {
+  return Astro.redirect(archiveUrl(''));
+}
+
+const year = yearOf(entry);
+const dateLabel = entry.date
+  ? new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long' }).format(new Date(`${entry.date}T12:00:00`))
+  : '';
+const content = htmlForEntry(entry);
+const isExternalRecord = entry.kind === 'external' || entry.kind === 'podcast';
+const wayback = waybackUrl(entry);
+const hasSnapshot = hasLocalSnapshot({ ...entry, html: content });
+const base = import.meta.env.BASE_URL || '/';
+const assetUrl = (asset: string) => `${base.replace(/\/$/, '')}/${asset.replace(/^\/+/, '')}`;
+const legacyStyles = entry.legacyCss ? [entry.legacyCss] : [];
+const legacyScripts = entry.legacyScript ? [entry.legacyScript] : [];
+if (entry.kind === 'talk') {
+  legacyStyles.unshift('/style/palestra/presentation-archive.css');
+  legacyScripts.unshift('/script/presentation.js');
+  if (entry.slug === 'palestra-mobile-web') legacyScripts.push('/script/palestra/mobile-web.js');
+  if (entry.slug === 'palestra-appcache-html5-offline') legacyScripts.push('/script/palestra/appcache.js');
+  if (entry.slug === 'palestra-retina-web') legacyScripts.push('/script/palestra/retina.js');
+}
+---
+
+<BaseLayout title={entry.title} description={entry.description}>
+  {legacyStyles.map((style) => <link rel="stylesheet" href={assetUrl(style)} />)}
+  <article class:list={['archive-entry', `archive-entry--${entry.kind}`, { 'archive-entry--full-page': entry.fullPage }]}> 
+    <header class="archive-entry__header">
+      <p class="archive-entry__eyebrow">
+        <span>{entry.kind === 'external' ? 'Participação externa' : entry.kind === 'talk' ? 'Palestra' : entry.kind === 'podcast' ? 'Podcast' : 'Artigo'}</span>
+        {entry.category && <span> · {entry.category}</span>}
+        {year && <span> · {year}</span>}
+      </p>
+      <h1>{entry.title}</h1>
+      {entry.description && <p class="archive-entry__description">{entry.description}</p>}
+      {dateLabel && <time datetime={entry.date || undefined}>{dateLabel}</time>}
+    </header>
+
+    {isExternalRecord && (entry.originalUrl || wayback || hasSnapshot) && (
+      <aside class="archive-entry__links" aria-label="Links da publicação">
+        <p>Referências desta participação:</p>
+        <ul>
+          {entry.originalUrl && <li><a href={entry.originalUrl} rel="external noopener">Publicação original ↗</a></li>}
+          {wayback && <li><a href={wayback} rel="external noopener">Captura no Wayback Machine ↗</a></li>}
+          {hasSnapshot && <li><a href={archiveUrl(entry.slug)}>Cópia local deste arquivo</a></li>}
+        </ul>
+        {entry.recoveryStatus && <small>Recuperação: {entry.recoveryStatus}</small>}
+      </aside>
+    )}
+
+    {hasSnapshot ? (
+      <div class="archive-entry__content" set:html={content} />
+    ) : (
+      <div class="archive-entry__content archive-entry__content--empty">
+        <p>Este registro aponta para uma participação publicada originalmente em outro site.</p>
+        {entry.originalUrl && <p><a href={entry.originalUrl} rel="external noopener">Abrir a publicação original</a></p>}
+      </div>
+    )}
+
+    {entry.fullPage && (
+      <aside class="archive-entry__note">
+        <strong>Registro histórico.</strong> Este artigo tinha uma experiência interativa própria no site original; o texto, exemplos, estilos e controles locais foram preservados aqui como arquivo estático. A sincronização ao vivo antiga foi desativada.
+      </aside>
+    )}
+
+    <footer class="archive-entry__footer">
+      <p>Parte do arquivo pessoal de Sérgio Lopes.</p>
+      {entry.originalUrl && !isExternalRecord && <a href={entry.originalUrl} rel="external noopener">Referência original ↗</a>}
+    </footer>
+  </article>
+  {legacyScripts.map((script) => <script is:inline src={assetUrl(script)}></script>)}
+</BaseLayout>
+
+<style>
+  .archive-entry { max-width: 70rem; margin: 0 auto; padding: 4rem 1.25rem 7rem; }
+  .archive-entry__header { max-width: 50rem; margin-bottom: 2.5rem; }
+  .archive-entry__eyebrow { color: var(--color-accent, #f97316); font-size: .78rem; font-weight: 700; letter-spacing: .13em; margin: 0 0 1rem; text-transform: uppercase; }
+  h1 { font-size: clamp(2.2rem, 6vw, 5rem); letter-spacing: -.045em; line-height: 1.02; margin: 0 0 1.2rem; }
+  .archive-entry__description { color: var(--color-muted, #8f929b); font-size: 1.15rem; line-height: 1.6; margin: 0 0 1rem; max-width: 43rem; }
+  time { color: var(--color-muted, #8f929b); font-size: .9rem; }
+  .archive-entry__links, .archive-entry__note { border-left: 3px solid var(--color-accent, #f97316); margin: 2rem 0; max-width: 56rem; padding: .75rem 1rem; }
+  .archive-entry__links p, .archive-entry__note { margin: .25rem 0; }
+  .archive-entry__links ul { display: flex; flex-wrap: wrap; gap: .45rem 1.4rem; margin: .45rem 0; padding-left: 1.2rem; }
+  .archive-entry__links small { color: var(--color-muted, #8f929b); font-size: .78rem; }
+  .archive-entry__content { color: var(--color-text, #ececec); font-size: 1.08rem; line-height: 1.75; max-width: 56rem; overflow-wrap: anywhere; }
+  .archive-entry--full-page .archive-entry__content { max-width: 70rem; }
+  .archive-entry__content :global(h2) { font-size: 1.8rem; line-height: 1.15; margin: 2.5rem 0 .75rem; }
+  .archive-entry__content :global(h3) { font-size: 1.35rem; margin: 2rem 0 .5rem; }
+  .archive-entry__content :global(p), .archive-entry__content :global(ul), .archive-entry__content :global(ol), .archive-entry__content :global(blockquote) { margin: 1.1rem 0; }
+  .archive-entry__content :global(img), .archive-entry__content :global(video), .archive-entry__content :global(iframe) { max-width: 100%; }
+  .archive-entry__content :global(iframe) { border: 0; min-height: 20rem; width: 100%; }
+  .archive-entry__content :global(.video-wrapper) { aspect-ratio: 16 / 9; }
+  .archive-entry__content :global(.video-wrapper iframe) { height: 100%; min-height: 0; }
+  .archive-entry__content :global(pre) { background: #111318; border: 1px solid color-mix(in srgb, var(--color-text, #fff) 14%, transparent); border-radius: .5rem; overflow: auto; padding: 1rem; }
+  .archive-entry__content :global(code) { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .9em; }
+  .archive-entry__content :global(a), .archive-entry__links a, .archive-entry__footer a { color: var(--color-accent, #f97316); }
+  .archive-entry__content :global(.slide) { border-top: 1px solid color-mix(in srgb, var(--color-text, #fff) 14%, transparent); margin: 2rem 0; padding: 2rem 0; }
+  .archive-entry__content :global(.slide .notes) { color: var(--color-muted, #8f929b); }
+  .archive-entry__content--empty { color: var(--color-muted, #8f929b); }
+  .archive-entry__footer { border-top: 1px solid color-mix(in srgb, var(--color-text, #fff) 14%, transparent); color: var(--color-muted, #8f929b); display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin-top: 4rem; padding-top: 1rem; }
+  .archive-entry__footer p { margin: 0; }
+  .archive-entry__footer code { font-size: .78rem; }
+  @media (max-width: 45rem) { .archive-entry { padding-top: 2.5rem; } .archive-entry__content { font-size: 1rem; } }
+</style>

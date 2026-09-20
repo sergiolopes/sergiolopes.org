@@ -1,0 +1,26 @@
+---
+const label = 'Alternar entre modo escuro e claro';
+---
+<button class="theme-toggle" type="button" data-theme-toggle aria-label={label} aria-pressed="false">
+  <span class="theme-toggle__sun" aria-hidden="true">☼</span>
+  <span class="theme-toggle__moon" aria-hidden="true">◐</span>
+  <span class="theme-toggle__label">tema</span>
+</button>
+
+<script is:inline>
+  const toggle = document.querySelector('[data-theme-toggle]');
+  const root = document.documentElement;
+  const getTheme = () => root.dataset.theme || 'dark';
+  const setTheme = (theme) => {
+    root.dataset.theme = theme;
+    toggle?.setAttribute('aria-pressed', String(theme === 'light'));
+    toggle?.setAttribute('data-theme', theme);
+  };
+  setTheme(localStorage.getItem('sergiolopes-theme') || 'dark');
+  toggle?.addEventListener('click', () => {
+    const next = getTheme() === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('sergiolopes-theme', next);
+    setTheme(next);
+  });
+</script>
+

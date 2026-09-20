@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArchiveCard from '../../components/ArchiveCard.astro';
+import { talks } from '../../lib/archive';
+import { siteUrl, sortedEntries } from '../../lib/site';
+import slideDecks from '../../data/talks-external.json';
+import externalMaterials from '../../data/talks-external-links.json';
+
+const listed = sortedEntries(talks);
+const localDocuments = externalMaterials.filter((item) => item.localPath);
+const recordings = externalMaterials.filter((item) => item.kind === 'recording');
+const collections = externalMaterials.filter((item) => item.kind === 'profile');
+---
+<BaseLayout title="Palestras" description="Palestras, workshops e apresentações de Sérgio Lopes." section="palestras">
+  <div class="page-shell">
+    <header class="section-head">
+      <div><p class="section-kicker">ao vivo, em público</p><h1>Palestras</h1></div>
+      <p>Slides, workshops e registros de encontros em que uma ideia precisou sair da tela.</p>
+    </header>
+    {listed.length ? (
+      <div class="archive-grid">{listed.map((entry, index) => <ArchiveCard entry={entry} index={index + 1} />)}</div>
+    ) : (
+      <p class="empty-state">As palestras estão sendo catalogadas.</p>
+    )}
+
+    <section class="talk-archive" aria-labelledby="talk-archive-title">
+      <div class="section-head section-head--sub">
+        <div><p class="section-kicker">cópias locais</p><h2 id="talk-archive-title">Slides e materiais preservados</h2></div>
+        <p>Quando o arquivo original ainda estava acessível, trouxe uma cópia navegável para cá e mantive o link da fonte.</p>
+      </div>
+      <div class="material-grid">
+        {slideDecks.map((deck) => (
+          <article class="material-card">
+            <p class="material-card__meta">SlideShare · {deck.slideCount} slides</p>
+            <h3>{deck.title}</h3>
+            <div class="material-card__links">
+              <a href={siteUrl(deck.localPath)}>cópia local ↗</a>
+              <a href={deck.originalUrl} target="_blank" rel="external noopener">original ↗</a>
+            </div>
+          </article>
+        ))}
+        {localDocuments.map((material) => (
+          <article class="material-card">
+            <p class="material-card__meta">{material.category}{material.pageCount ? ` · ${material.pageCount} páginas` : ''}</p>
+            <h3>{material.title}</h3>
+            <p>{material.kind === 'html' ? `${material.localFiles} arquivos de código também foram preservados.` : 'Versão PDF capturada da apresentação publicada.'}</p>
+            <div class="material-card__links">
+              <a href={siteUrl(material.localPath)}>cópia local ↗</a>
+              {material.assetPath && <a href={siteUrl(material.assetPath)}>PDF ↗</a>}
+              <a href={material.originalUrl} target="_blank" rel="external noopener">original ↗</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="talk-recordings" aria-labelledby="talk-recordings-title">
+      <div class="section-head section-head--sub">
+        <div><p class="section-kicker">registros externos</p><h2 id="talk-recordings-title">Vídeos e entrevistas</h2></div>
+        <p>As gravações permanecem nos serviços que as hospedam. O arquivo preserva os links e o contexto de cada participação.</p>
+      </div>
+      <div class="recording-list">
+        {recordings.map((recording) => (
+          <article class="recording-row">
+            <div>
+              <p class="material-card__meta">{recording.category}</p>
+              <h3>{recording.title}</h3>
+            </div>
+            <a href={recording.originalUrl} target="_blank" rel="external noopener">abrir fonte ↗</a>
+          </article>
+        ))}
+      </div>
+      {collections.map((collection) => (
+        <p class="collection-link"><span>Acervo complementar:</span> <a href={collection.originalUrl} target="_blank" rel="external noopener">{collection.title} ↗</a></p>
+      ))}
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .talk-archive, .talk-recordings { border-top: 1px solid var(--color-line); margin-top: 5rem; padding-top: 3rem; }
+  .section-head--sub { margin-bottom: 2rem; }
+  .section-head--sub h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); letter-spacing: -.04em; line-height: 1.05; margin: 0; }
+  .material-grid { display: grid; gap: 1px; background: var(--color-line); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .material-card { background: var(--color-bg); display: flex; flex-direction: column; min-height: 11rem; padding: 1.4rem; }
+  .material-card__meta { color: var(--color-accent); font-size: .74rem; letter-spacing: .08em; margin: 0 0 .8rem; text-transform: uppercase; }
+  .material-card h3, .recording-row h3 { font-size: 1.08rem; letter-spacing: -.015em; line-height: 1.2; margin: 0; }
+  .material-card > p:not(.material-card__meta) { color: var(--color-muted); font-size: .92rem; line-height: 1.45; margin: .85rem 0 0; }
+  .material-card__links { display: flex; gap: 1rem; margin-top: auto; padding-top: 1.4rem; }
+  .material-card__links a, .recording-row > a { color: var(--color-ink); font-size: .84rem; text-decoration: none; }
+  .material-card__links a:hover, .recording-row > a:hover { color: var(--color-accent); }
+  .recording-list { border-top: 1px solid var(--color-line); }
+  .recording-row { align-items: center; border-bottom: 1px solid var(--color-line); display: flex; gap: 1.5rem; justify-content: space-between; padding: 1.2rem 0; }
+  .recording-row .material-card__meta { margin-bottom: .35rem; }
+  .recording-row > a { flex: 0 0 auto; }
+  .collection-link { color: var(--color-muted); margin: 1.5rem 0 0; }
+  .collection-link span { color: var(--color-ink); }
+  @media (max-width: 56rem) { .material-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 38rem) { .material-grid { grid-template-columns: 1fr; } .recording-row { align-items: flex-start; flex-direction: column; gap: .6rem; } }
+</style>

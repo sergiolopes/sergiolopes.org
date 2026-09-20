@@ -1,0 +1,20 @@
+package br.com.caelum.cj05;
+
+public class Login implements Action {
+
+  private HttpServletRequest request;
+  private String nome;
+
+  public Login(HttpServletRequest request) {
+    request = request;
+  }
+
+  public void execute() {
+    this.request.getSession().setAttribute("usuario", this.nome);
+  }
+
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+
+}

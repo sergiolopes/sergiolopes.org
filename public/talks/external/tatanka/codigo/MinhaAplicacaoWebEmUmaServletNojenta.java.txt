@@ -1,0 +1,120 @@
+package br.com.caelum.cj05;
+import java.io.IOException;
+import java.io.PrintStream;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@SuppressWarnings("serial")
+public class MinhaAplicacaoWebEmUmaServletNojenta extends HttpServlet {
+
+	@Override
+	protected void service(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		String pagina = request.getParameter("pagina");
+		if (pagina == null) {
+			pagina = "inicial";
+		}
+		
+		if (pagina.equals("inicial")) {
+			PrintStream out = new PrintStream(response.getOutputStream());
+			out.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">");
+			out.append("<html xmlns=\"http://www.w3.org/1999/xhtml\"  lang=\"pt-br\">");
+			out.append("<head>");
+			out.append("<title>Minha Aplicacao Web</title>");
+			out.append("<link rel=\"stylesheet\" type=\"text/css\" href=\"estilo.css\" />");
+			out.append("</head>");
+			out.append("<body>");
+			out.append("<h1>Minha Aplicacao Web</h1>");
+			out.append("<ul>");
+			out.append("<li><a href=\"?pagina=inicial\">Pagina Inicial</a></li>");
+			out.append("<li><a href=\"?pagina=inversor\">Inversor</a></li>");
+			out.append("<li><a href=\"?pagina=somadora\">Somadora</a></li>");
+			out.append("</ul>");
+			out.append("<h2>Pagina Inicial</h2>");
+			out.append("<p>Bem-vindo ao nosso Site!</p>");
+			out.append("</body>");
+			out.append("</html>");
+			out.close();
+		} else if (pagina.equals("somadora")) {
+			PrintStream out = new PrintStream(response.getOutputStream());
+			out.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">");
+			out.append("<html xmlns=\"http://www.w3.org/1999/xhtml\"  lang=\"pt-br\">");
+			out.append("<head>");
+			out.append("<title>Minha Aplicacao Web</title>");
+			out.append("<link rel=\"stylesheet\" type=\"text/css\" href=\"estilo.css\" />");
+			out.append("</head>");
+			out.append("<body>");
+			out.append("<h1>Minha Aplicacao Web</h1>");
+			out.append("<ul>");
+			out.append("<li><a href=\"?pagina=inicial\">Pagina Inicial</a></li>");
+			out.append("<li><a href=\"?pagina=inversor\">Inversor</a></li>");
+			out.append("<li><a href=\"?pagina=somadora\">Somadora</a></li>");
+			out.append("</ul>");
+			out.append("<h2>Somando Numeros</h2>");
+			out.append("<p>Vamos somar uns numeros.</p>");
+			out.append("<form>");
+			out.append("<input type=\"hidden\" name=\"pagina\" value=\"somadora\"/>");
+			
+			String numero1 = request.getParameter("numero1");
+			String numero2 = request.getParameter("numero2");
+			
+			if (numero1 != null && numero2 != null) {
+				int a = Integer.parseInt(numero1);
+				int b = Integer.parseInt(numero2);
+				out.append("<input type=\"text\" name=\"numero1\" value=\""+ numero1 +"\"/> + ");
+				out.append("<input type=\"text\" name=\"numero2\" value=\""+ numero2 +"\"/> = ");
+				out.append("<b>" + (a+b) + "</b>");
+			} else {
+				out.append("<input type=\"text\" name=\"numero1\"/> + ");
+				out.append("<input type=\"text\" name=\"numero2\"/> = ");
+				out.append("<b>?</b>");	
+			}
+			
+			out.append("<br/><input type=\"submit\" value=\"Somar!\">");
+			out.append("</form>");
+			out.append("</body>");
+			out.append("</html>");
+			out.close();
+		} else if (pagina.equals("inversor")) {
+			PrintStream out = new PrintStream(response.getOutputStream());
+			out.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">");
+			out.append("<html xmlns=\"http://www.w3.org/1999/xhtml\"  lang=\"pt-br\">");
+			out.append("<head>");
+			out.append("<title>Minha Aplicacao Web</title>");
+			out.append("<link rel=\"stylesheet\" type=\"text/css\" href=\"estilo.css\" />");
+			out.append("</head>");
+			out.append("<body>");
+			out.append("<h1>Minha Aplicacao Web</h1>");
+			out.append("<ul>");
+			out.append("<li><a href=\"?pagina=inicial\">Pagina Inicial</a></li>");
+			out.append("<li><a href=\"?pagina=inversor\">Inversor</a></li>");
+			out.append("<li><a href=\"?pagina=somadora\">Somadora</a></li>");
+			out.append("</ul>");
+			out.append("<h2>Invertendo</h2>");
+			out.append("<form>");
+			out.append("<input type=\"hidden\" name=\"pagina\" value=\"inversor\"/>");
+			out.append("<input type=\"text\" name=\"nome\" size=120 />");
+						
+			String nome = request.getParameter("nome");
+			if (nome != null) {
+				out.append("<br />Invertido: ");
+				char[] onome = nome.toCharArray();
+				char[] inverso = new char[onome.length];
+				for (int i = 0; i < onome.length; i++) {
+					inverso[onome.length - i - 1] = onome[i];
+				}
+				out.append(new String(inverso));
+			}
+						
+			out.append("<br/><input type=\"submit\" value=\"Inverter!\">");
+			out.append("</form>");
+			out.append("</body>");
+			out.append("</html>");
+			out.close();
+		}
+	}
+}

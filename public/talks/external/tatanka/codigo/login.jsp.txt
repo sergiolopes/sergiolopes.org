@@ -1,0 +1,10 @@
+<%@ include file="topo.jsp" %>
+
+<h2>Digite seu nome para logar</h2>
+<form>
+	<input type="hidden" name="pagina" value="login"/>
+	<input type="text" name="nome"/>
+	<input type="submit" />
+</form>
+
+<%@ include file="rodape.jsp" %>

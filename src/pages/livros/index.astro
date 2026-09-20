@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteUrl } from '../../lib/site';
+
+const books = [
+  {
+    type: 'autor',
+    title: 'A Web Mobile',
+    description: 'Programe para um mundo de muitos dispositivos. O livro que organizou minhas ideias sobre web mobile, design responsivo e as restrições boas do mundo móvel.',
+    href: siteUrl('livro-web-mobile'),
+    label: 'arquivo e exemplos',
+  },
+  {
+    type: 'autor',
+    title: 'Aplicações mobile híbridas com Cordova e PhoneGap',
+    description: 'Um guia prático para construir aplicações híbridas e entender as decisões por trás de uma experiência mobile que vive na web.',
+    href: 'https://www.casadocodigo.com.br/products/livro-cordova-phonegap',
+    label: 'Casa do Código ↗',
+  },
+  {
+    type: 'editor',
+    title: 'Coletânea Front-end',
+    description: 'Uma antologia da comunidade front-end brasileira, reunindo vozes e práticas de uma web em transformação.',
+    href: 'https://casadocodigo.refersion.com/l/f49.5558',
+    label: 'Casa do Código ↗',
+  },
+  {
+    type: 'coautor',
+    title: 'Introdução à arquitetura e design Java',
+    description: 'Um livro sobre decisões de arquitetura, design e as ferramentas que marcaram uma geração de aplicações Java.',
+    href: 'http://www.arquiteturajava.com.br/',
+    label: 'site do projeto ↗',
+  },
+];
+---
+<BaseLayout title="Livros" description="Livros escritos, editados ou co-escritos por Sérgio Lopes." section="livros">
+  <div class="page-shell">
+    <header class="section-head">
+      <div><p class="section-kicker">objetos publicados</p><h1>Livros</h1></div>
+      <p>Algumas ideias precisam de mais páginas. Estes são os livros em que escrevi, editei ou ajudei a construir.</p>
+    </header>
+    <div class="book-list">
+      {books.map((book, index) => (
+        <article class="book-row">
+          <span class="book-row__number">{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <p class="section-kicker">{book.type}</p>
+            <h2><a href={book.href}>{book.title}</a></h2>
+            <p>{book.description}</p>
+          </div>
+          <a class="link-arrow" href={book.href}>{book.label}</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .book-list { border-top: 1px solid var(--color-line); }
+  .book-row { align-items: start; border-bottom: 1px solid var(--color-line); display: grid; gap: 1.5rem; grid-template-columns: 3rem 1fr 12rem; padding: 2.1rem 0; }
+  .book-row__number { color: var(--color-accent); font-size: .78rem; padding-top: .4rem; }
+  .book-row .section-kicker { margin: 0 0 .65rem; }
+  .book-row h2 { font-size: clamp(1.7rem, 3vw, 2.8rem); letter-spacing: -.04em; line-height: 1.04; margin: 0; }
+  .book-row h2 a { text-decoration: none; }
+  .book-row p:last-child { color: var(--color-muted); line-height: 1.7; margin: .9rem 0 0; max-width: 40rem; }
+  .book-row > .link-arrow { align-self: center; }
+  @media (max-width: 45rem) { .book-row { grid-template-columns: 2rem 1fr; } .book-row > .link-arrow { grid-column: 2; } }
+</style>
+

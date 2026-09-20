@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="exemplos.css">
+	
+	<title>Touch slider</title>
+
+	<style>
+	* {
+		-moz-box-sizing: content-box;
+		     box-sizing: content-box;
+	}
+	.slider {
+		overflow: hidden;
+
+		height: 8em;
+		max-width: 400px;
+		width: 100%;
+
+		background: #eee;
+	}
+	.slider-container {
+		padding: 1em 1em 0 1em;
+		width: 35em;
+	}
+	.slider-item {
+		float: left;
+		height: 6em;
+		width: 6em;
+		margin-right: 1em;
+	}
+	.slider-item:nth-child(5n)   { background: #FF6B6B; }
+	.slider-item:nth-child(5n+1) { background: #4ECDC4; }
+	.slider-item:nth-child(5n+2) { background: #C7F464; }
+	.slider-item:nth-child(5n+3) { background: #C44D58; }
+	.slider-item:nth-child(5n+4) { background: #556270; }
+	</style>
+	
+</head>
+<body>
+
+	<h1>Slider com ontouchmove</h1>
+	<div class="slider">
+		<div class="slider-container">
+			<div class="slider-item"></div>
+			<div class="slider-item"></div>
+			<div class="slider-item"></div>
+			<div class="slider-item"></div>
+			<div class="slider-item"></div>
+		</div>
+	</div>
+	
+	<p>Exemplo implementado com touchmove sem fallback para mouse. So funciona em navegadores com suporte a eventos touch.</p>
+	
+	<p id="log"></p>
+	<div id="qrcode" class="center"></div>
+	
+	<hr>
+	<div class="footer">
+		Exemplo do livro <a href="../">A Web Mobile</a>. Veja o <a href="https://github.com/sergiolopes/blog/blob/master/src/files/livro-web-mobile/exemplos/" id="link-source">código fonte desse exemplo</a>.
+	</div>
+	<script src="script.js"></script>
+
+	
+	<script>
+	var slider = document.querySelector('.slider');
+	var container = slider.querySelector('.slider-container');
+
+	var total = 0;
+	var origem = 0;
+
+	slider.ontouchstart = function(e){
+		origem = e.changedTouches[0].clientX;
+		console.log('origem ' + origem)
+		e.preventDefault();
+	};
+	
+	slider.ontouchmove = function(e){
+		console.log('move ' + e.changedTouches[0].clientX)
+		var delta = e.changedTouches[0].clientX - origem;
+		console.log('delta ' + delta)
+		container.style['-webkit-transform'] = 'translateX(' + (total + delta) + 'px)';
+		e.preventDefault();
+	};
+
+	slider.ontouchend = function(e) {
+		total += e.changedTouches[0].clientX - origem;
+		console.log('end total ' + total)
+		e.preventDefault();
+	};
+	</script>
+				
+</body>
+</html>

@@ -1,0 +1,41 @@
+package br.com.caelum.cj05;
+
+
+public class Somadora implements Action {
+
+	private String numero1;
+	private String numero2;
+	private int resultado;
+
+	public void execute()
+			throws Exception {
+		if (numero1 != null && numero2 != null) {
+			int a = Integer.parseInt(numero1);
+			int b = Integer.parseInt(numero2);
+			int resultado = a+ b;
+			this.resultado = resultado;
+		}
+	}
+
+	public String getNumero1() {
+		return numero1;
+	}
+
+	public String getNumero2() {
+		return numero2;
+	}
+
+	public int getResultado() {
+		return resultado;
+	}
+
+	public void setNumero1(String numero1) {
+		this.numero1 = numero1;
+	}
+
+	public void setNumero2(String numero2) {
+		this.numero2 = numero2;
+	}
+
+}
+
