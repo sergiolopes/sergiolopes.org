@@ -162,6 +162,104 @@ function talkInventory() {
   };
 }
 
+function talkHistoryInventory() {
+  const historyPath = path.join(root, 'src', 'data', 'talks-history.json');
+  const indexPath = path.join(dist, 'palestras', 'index.html');
+  if (!fs.existsSync(historyPath) || !fs.existsSync(indexPath)) {
+    return {
+      expected: 102,
+      records: 0,
+      missingIds: [],
+      duplicateIds: [],
+      sourceRecords: null,
+      sourceMissing: [],
+      sourceUrlsMissing: [],
+      sourceCounts: null,
+      dataCounts: null,
+      skipped: true,
+    };
+  }
+
+  const records = JSON.parse(fs.readFileSync(historyPath, 'utf8'));
+  const ids = records.map((record) => record.id);
+  const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
+  const indexHtml = fs.readFileSync(indexPath, 'utf8');
+  const missingIds = ids.filter((id) => !indexHtml.includes(`data-talk-id="${id}"`));
+  const dataCounts = Object.fromEntries(
+    [...new Set(records.map((record) => record.year))]
+      .sort((a, b) => b - a)
+      .map((year) => [year, records.filter((record) => record.year === year).length]),
+  );
+  const dataWithoutLinks = records.filter((record) => !record.links?.length).length;
+
+  const sourceDocument = path.join(sourceRoot, 'src', 'documents', 'palestras.html.md');
+  if (!fs.existsSync(sourceDocument)) {
+    return {
+      expected: 102,
+      records: records.length,
+      missingIds,
+      duplicateIds,
+      sourceRecords: null,
+      sourceMissing: [],
+      sourceUrlsMissing: [],
+      sourceCounts: null,
+      dataCounts,
+      dataWithoutLinks,
+      skipped: false,
+    };
+  }
+
+  const sourceLines = fs.readFileSync(sourceDocument, 'utf8').split(/\r?\n/);
+  let sourceYear = null;
+  const sourceRecords = [];
+  const sourceUrls = new Set();
+  for (let index = 0; index < sourceLines.length; index += 1) {
+    const line = sourceLines[index];
+    const heading = line.match(/^#\s+(\d{4})\s*$/);
+    if (heading) sourceYear = Number(heading[1]);
+    if (!/^\*\s+/.test(line)) continue;
+    const event = line.match(/^\*\s+(?:\*[^*]+\*\s+-\s+)?\*\*([^*]+)\*\*\s*(?:-|:)\s*/);
+    if (!event) continue;
+    sourceRecords.push({ line: index + 1, year: sourceYear, event: event[1], text: line });
+    for (const match of line.matchAll(/\]\((https?:\/\/[^)]+|\/[^)]+)\)/g)) sourceUrls.add(match[1]);
+    let nestedIndex = index + 1;
+    while (nestedIndex < sourceLines.length && /^\s+\*\s+/.test(sourceLines[nestedIndex])) {
+      for (const match of sourceLines[nestedIndex].matchAll(/\]\((https?:\/\/[^)]+|\/[^)]+)\)/g)) sourceUrls.add(match[1]);
+      nestedIndex += 1;
+    }
+  }
+  const recordsByLine = new Map(records.map((record) => [record.sourceLine, record]));
+  const sourceMissing = sourceRecords
+    .filter((sourceRecord) => {
+      const record = recordsByLine.get(sourceRecord.line);
+      return !record
+        || record.year !== sourceRecord.year
+        || record.event !== sourceRecord.event
+        || !sourceRecord.text.replaceAll('*', '').includes(record.title);
+    })
+    .map((sourceRecord) => ({ line: sourceRecord.line, year: sourceRecord.year, event: sourceRecord.event }));
+  const historyUrls = new Set(records.flatMap((record) => (record.links || []).map((link) => link.url)));
+  const sourceUrlsMissing = [...sourceUrls].filter((url) => !historyUrls.has(url));
+  const sourceCounts = Object.fromEntries(
+    [...new Set(sourceRecords.map((record) => record.year))]
+      .sort((a, b) => b - a)
+      .map((year) => [year, sourceRecords.filter((record) => record.year === year).length]),
+  );
+  const sourceWithoutLinks = records.filter((record) => !record.links?.length).length;
+  return {
+    expected: 102,
+    records: records.length,
+    missingIds,
+    duplicateIds,
+    sourceRecords: sourceRecords.length,
+    sourceMissing,
+    sourceUrlsMissing,
+    sourceCounts: { ...sourceCounts, withoutLinks: sourceWithoutLinks },
+    dataCounts: { ...dataCounts, withoutLinks: dataWithoutLinks },
+    skipped: false,
+  };
+}
+
 if (!fs.existsSync(dist)) {
   console.error('dist/ não existe; rode npm run build antes de checar links.');
   process.exit(2);
@@ -192,6 +290,7 @@ const uniqueFailures = [...new Map(failures.map((failure) => [`${failure.from}\n
 const source = sourceInventory();
 const documents = documentInventory();
 const talks = talkInventory();
+const talkHistory = talkHistoryInventory();
 console.log(JSON.stringify({
   distFiles: walk(dist).length,
   htmlFiles: htmlFiles.length,
@@ -199,8 +298,12 @@ console.log(JSON.stringify({
   source,
   documents: { count: documents.documents, missing: documents.missing },
   talks,
+  talkHistory,
   brokenInternalReferences: uniqueFailures,
 }, null, 2));
 
 if (uniqueFailures.length || source.missing.length || source.duplicated.length || documents.missing.length
-  || talks.missingLocal.length || talks.slideCountMismatches.length || talks.unclassified?.length || talks.extraClassifications?.length) process.exitCode = 1;
+  || talks.missingLocal.length || talks.slideCountMismatches.length || talks.unclassified?.length || talks.extraClassifications?.length
+  || talkHistory.records !== talkHistory.expected || talkHistory.missingIds.length || talkHistory.duplicateIds.length
+  || talkHistory.sourceMissing.length || talkHistory.sourceUrlsMissing.length
+  || (talkHistory.sourceCounts && JSON.stringify(talkHistory.sourceCounts) !== JSON.stringify(talkHistory.dataCounts))) process.exitCode = 1;

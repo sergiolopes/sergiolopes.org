@@ -1,0 +1,70 @@
+---
+import { archiveUrl, getEntry } from '../lib/archive';
+import { talkDateLabel, type TalkRecord } from '../lib/talks';
+import { siteUrl } from '../lib/site';
+
+interface Props {
+  talk: TalkRecord;
+}
+
+const { talk } = Astro.props;
+
+function linkTarget(link: TalkRecord['links'][number]): string {
+  if (link.localPath) return siteUrl(link.localPath);
+  if (link.archiveSlug) {
+    const entry = getEntry(link.archiveSlug);
+    if (entry) return archiveUrl(entry.slug);
+  }
+  return link.url;
+}
+
+function linkLabel(link: TalkRecord['links'][number]): string {
+  if (link.localPath && link.type === 'slides') return 'cópia local';
+  if (link.localPath && link.type === 'document') return 'material local';
+  if (link.archiveSlug) return 'página preservada';
+  return link.label;
+}
+
+const linkIsExternal = (link: TalkRecord['links'][number]) => !link.localPath && !link.archiveSlug;
+---
+<article class="talk-record" id={talk.id} data-talk-id={talk.id}>
+  <div class="talk-record__date" aria-label={`Data: ${talkDateLabel(talk)}`}>
+    <span>{talkDateLabel(talk)}</span>
+  </div>
+  <div class="talk-record__body">
+    <p class="talk-record__event">{talk.event}</p>
+    <h3>{talk.title}</h3>
+    {talk.notes?.map((note) => <p class="talk-record__note">{note}</p>)}
+    {talk.links.length ? (
+      <ul class="talk-record__links" aria-label={`Materiais de ${talk.title}`}>
+        {talk.links.map((link) => (
+          <li>
+            <a href={linkTarget(link)} target={linkIsExternal(link) ? '_blank' : undefined} rel={linkIsExternal(link) ? 'external noopener' : undefined}>
+              {linkLabel(link)}
+            </a>
+            {link.localPath && linkIsExternal({ ...link, localPath: undefined }) && (
+              <a class="talk-record__original" href={link.url} target="_blank" rel="external noopener">original</a>
+            )}
+          </li>
+        ))}
+      </ul>
+    ) : null}
+  </div>
+</article>
+
+<style>
+  .talk-record { align-items: start; border-bottom: 1px solid var(--color-line); display: grid; gap: 1rem 1.5rem; grid-template-columns: 7rem minmax(0, 1fr); padding: 1.2rem 0; }
+  .talk-record__date { color: var(--color-faint); display: flex; flex-direction: column; font-size: .78rem; line-height: 1.25; padding-top: .2rem; }
+  .talk-record__event { color: var(--color-accent-strong); font-size: .78rem; letter-spacing: .015em; margin: 0 0 .25rem; }
+  .talk-record h3 { font-size: 1.05rem; line-height: 1.3; margin: 0; }
+  .talk-record__note { color: var(--color-muted); font-size: .86rem; margin: .3rem 0 0; }
+  .talk-record__links { display: flex; flex-wrap: wrap; gap: .4rem .9rem; list-style: none; margin: .65rem 0 0; padding: 0; }
+  .talk-record__links li { align-items: baseline; display: inline-flex; gap: .55rem; }
+  .talk-record__links a { color: var(--color-muted); font-size: .78rem; text-underline-offset: .18em; }
+  .talk-record__links a:hover { color: var(--color-accent-strong); }
+  .talk-record__links .talk-record__original { color: var(--color-faint); font-size: .7rem; text-decoration: none; }
+  @media (max-width: 32rem) {
+    .talk-record { display: block; padding: 1rem 0; }
+    .talk-record__date { display: block; margin-bottom: .45rem; }
+  }
+</style>

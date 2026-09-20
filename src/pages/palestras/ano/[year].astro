@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TalkRecord from '../../../components/TalkRecord.astro';
+import { siteUrl } from '../../../lib/site';
+import { talkYears, talksForYear } from '../../../lib/talks';
+
+export function getStaticPaths() {
+  return talkYears.map((year) => ({ params: { year: String(year) }, props: { year } }));
+}
+
+const year = Number(Astro.params.year);
+const listed = talksForYear(year);
+---
+<BaseLayout title={'Palestras de ' + year} description={'Índice das palestras de Sérgio Lopes em ' + year + '.'} section="palestras">
+  <div class="page-shell">
+    <header class="section-head">
+      <h1>{year}</h1>
+      <p>{listed.length} {listed.length === 1 ? 'registro' : 'registros'} neste ano.</p>
+    </header>
+    <nav class="year-nav" aria-label="Navegar entre anos de palestras">
+      <a href={siteUrl('palestras')}>Todos</a>
+      {talkYears.map((item) => <a class:list={{ active: item === year }} href={siteUrl('palestras/ano/' + item)}>{item}</a>)}
+    </nav>
+    <div class="talk-history__list">
+      {listed.map((talk) => <TalkRecord talk={talk} />)}
+    </div>
+    <p class="back-link"><a href={siteUrl('palestras')}>← Ver materiais e o histórico completo</a></p>
+  </div>
+</BaseLayout>
+
+<style>
+  .talk-history__list { border-top: 1px solid var(--color-line); }
+  .back-link { color: var(--color-muted); margin: 2rem 0 0; }
+  .back-link a { color: var(--color-accent-strong); text-decoration: none; }
+</style>

@@ -49,6 +49,16 @@ function mergeEntries(root) {
   });
 }
 
+function talkYears(root) {
+  const dataRoot = path.join(root, 'src', 'data');
+  const history = readJson(path.join(dataRoot, 'talks-history.json'), []);
+  const additions = readJson(path.join(dataRoot, 'talks-new.json'), []);
+  return [...new Set([...history, ...additions]
+    .map((entry) => Number(entry?.year))
+    .filter((year) => Number.isInteger(year) && year > 0))]
+    .sort((a, b) => b - a);
+}
+
 function hasLocalSnapshot(entry) {
   const html = String(entry.html || entry.mirrorHtml || entry.snapshotHtml || '').trim();
   return Boolean(html)
@@ -73,7 +83,7 @@ function yearOf(entry) {
   return match ? Number(match[1]) : null;
 }
 
-function sitemapRoutes(entries) {
+function sitemapRoutes(entries, root) {
   const routes = new Set([
     '',
     'artigos',
@@ -96,10 +106,12 @@ function sitemapRoutes(entries) {
     .filter((entry) => entry.kind === 'podcast')
     .map(yearOf)
     .filter(Boolean))].sort((a, b) => b - a);
+  const presentationYears = talkYears(root);
 
   for (const year of years) routes.add(`arquivo/ano/${year}`);
   for (const year of articleYears) routes.add(`artigos/ano/${year}`);
   for (const year of podcastYears) routes.add(`podcasts/ano/${year}`);
+  for (const year of presentationYears) routes.add(`palestras/ano/${year}`);
   for (const entry of entries) routes.add(encodeURIComponent(entry.slug));
   return [...routes];
 }
@@ -144,7 +156,7 @@ function writeFeed(publicRoot, origin, entries) {
 }
 
 function writeSitemap(publicRoot, origin, entries) {
-  const routes = sitemapRoutes(entries);
+  const routes = sitemapRoutes(entries, path.dirname(publicRoot));
   const urls = routes.map((route) => absoluteUrl(origin, route ? `${route}/` : ''));
   const lastmodByRoute = new Map(entries.map((entry) => [encodeURIComponent(entry.slug), entry.date]));
   const nodes = routes.map((route, index) => {

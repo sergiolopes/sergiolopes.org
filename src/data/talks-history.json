@@ -1,0 +1,1931 @@
+[
+  {
+    "id": "talk-2019-qconsp-performance-web-gargalos-de-execucao",
+    "year": 2019,
+    "date": "2019-05-06",
+    "dateLabel": "06/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 6,
+    "sortKey": "2019-05-06",
+    "event": "QConSP",
+    "title": "Performance Web: gargalos de execução",
+    "links": [],
+    "sourceLine": 16
+  },
+  {
+    "id": "talk-2019-jussi-tech-talk-performance-na-web-o-modelo-rail",
+    "year": 2019,
+    "date": "2019-02-05",
+    "dateLabel": "05/Fev",
+    "datePrecision": "day",
+    "month": 2,
+    "day": 5,
+    "sortKey": "2019-02-05",
+    "event": "Jussi Tech Talk",
+    "title": "Performance na web: o modelo RAIL",
+    "links": [],
+    "sourceLine": 17
+  },
+  {
+    "id": "talk-2018-it-forum-x-progressive-web-apps-sao-o-futuro-da-web",
+    "year": 2018,
+    "date": "2018-10-17",
+    "dateLabel": "17/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 17,
+    "sortKey": "2018-10-17",
+    "event": "IT Forum X",
+    "title": "Progressive Web Apps são o futuro da Web",
+    "links": [],
+    "sourceLine": 21
+  },
+  {
+    "id": "talk-2018-intercon-7-masters-performance-de-animacoes-e-css-na-web",
+    "year": 2018,
+    "date": "2018-10-05",
+    "dateLabel": "05/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 5,
+    "sortKey": "2018-10-05",
+    "event": "InterCon 7 Masters",
+    "title": "Performance de animações e CSS na Web",
+    "links": [],
+    "sourceLine": 22
+  },
+  {
+    "id": "talk-2017-meetup-social-miner-progressive-web-apps-sao-o-futuro-da-web",
+    "year": 2017,
+    "date": "2017-11-07",
+    "dateLabel": "07/Nov",
+    "datePrecision": "day",
+    "month": 11,
+    "day": 7,
+    "sortKey": "2017-11-07",
+    "event": "Meetup Social Miner",
+    "title": "Progressive Web Apps são o futuro da Web",
+    "links": [],
+    "sourceLine": 26
+  },
+  {
+    "id": "talk-2017-webbr-workshop-performance-de-renderizacao-e-execucao-na-web",
+    "year": 2017,
+    "date": "2017-10-24",
+    "dateLabel": "24/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 24,
+    "sortKey": "2017-10-24",
+    "event": "Webbr",
+    "title": "Workshop: Performance de Renderização e Execução na Web",
+    "links": [],
+    "sourceLine": 27
+  },
+  {
+    "id": "talk-2017-oxigenio-aceleradora-itau-seguros-progressive-web-apps-sao-o-futuro-da-web",
+    "year": 2017,
+    "date": "2017-10-23",
+    "dateLabel": "23/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 23,
+    "sortKey": "2017-10-23",
+    "event": "Oxigênio Aceleradora / Itau Seguros",
+    "title": "Progressive Web Apps são o futuro da Web",
+    "links": [],
+    "sourceLine": 28
+  },
+  {
+    "id": "talk-2017-intercon-apresentacao-do-evento",
+    "year": 2017,
+    "date": "2017-10-21",
+    "dateLabel": "21/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 21,
+    "sortKey": "2017-10-21",
+    "event": "InterCon",
+    "title": "Apresentação do evento",
+    "links": [],
+    "sourceLine": 29
+  },
+  {
+    "id": "talk-2017-intercon-performance-web-muito-alem-do-carregamento",
+    "year": 2017,
+    "date": "2017-10-20",
+    "dateLabel": "20/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 20,
+    "sortKey": "2017-10-20",
+    "event": "InterCon",
+    "title": "Performance Web muito além do carregamento",
+    "links": [],
+    "sourceLine": 30
+  },
+  {
+    "id": "talk-2017-techtalk-netshoes-progressive-web-apps-sao-o-futuro-da-web",
+    "year": 2017,
+    "date": "2017-09-19",
+    "dateLabel": "19/Set",
+    "datePrecision": "day",
+    "month": 9,
+    "day": 19,
+    "sortKey": "2017-09-19",
+    "event": "TechTalk Netshoes",
+    "title": "Progressive Web Apps são o futuro da Web",
+    "links": [],
+    "sourceLine": 31
+  },
+  {
+    "id": "talk-2017-tdc-sp-the-developers-conference-performance-web-muito-alem-do-carregamento",
+    "year": 2017,
+    "date": "2017-07-18",
+    "dateLabel": "18/Jul",
+    "datePrecision": "day",
+    "month": 7,
+    "day": 18,
+    "sortKey": "2017-07-18",
+    "event": "TDC SP - The Developers Conference",
+    "title": "Performance Web muito além do carregamento",
+    "links": [],
+    "sourceLine": 32
+  },
+  {
+    "id": "talk-2017-meetup-css-sp-performance-web-muito-alem-do-carregamento",
+    "year": 2017,
+    "date": "2017-06-27",
+    "dateLabel": "27/Jun",
+    "datePrecision": "day",
+    "month": 6,
+    "day": 27,
+    "sortKey": "2017-06-27",
+    "event": "Meetup CSS SP",
+    "title": "Performance Web muito além do carregamento",
+    "links": [],
+    "sourceLine": 33
+  },
+  {
+    "id": "talk-2017-js-experience-imasters-performance-web-muito-alem-do-carregamento",
+    "year": 2017,
+    "date": "2017-06-23",
+    "dateLabel": "23/Jun",
+    "datePrecision": "day",
+    "month": 6,
+    "day": 23,
+    "sortKey": "2017-06-23",
+    "event": "JS Experience iMasters",
+    "title": "Performance Web muito além do carregamento",
+    "links": [],
+    "sourceLine": 34
+  },
+  {
+    "id": "talk-2017-fluig-meetup-progressive-web-apps-sao-o-futuro-da-web",
+    "year": 2017,
+    "date": "2017-05-31",
+    "dateLabel": "31/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 31,
+    "sortKey": "2017-05-31",
+    "event": "Fluig Meetup",
+    "title": "Progressive Web Apps são o futuro da Web",
+    "links": [],
+    "sourceLine": 35
+  },
+  {
+    "id": "talk-2017-techtalk-netshoes-progressive-web-apps-sao-o-futuro-da-web-2",
+    "year": 2017,
+    "date": "2017-05-25",
+    "dateLabel": "25/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 25,
+    "sortKey": "2017-05-25",
+    "event": "TechTalk Netshoes",
+    "title": "Progressive Web Apps são o futuro da Web",
+    "links": [],
+    "sourceLine": 36
+  },
+  {
+    "id": "talk-2017-cejs-performance-web-muito-alem-do-carregamento",
+    "year": 2017,
+    "date": "2017-05-13",
+    "dateLabel": "13/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 13,
+    "sortKey": "2017-05-13",
+    "event": "CEJS",
+    "title": "Performance Web muito além do carregamento",
+    "links": [],
+    "sourceLine": 37
+  },
+  {
+    "id": "talk-2017-qconsp-performance-web-muito-alem-do-carregamento",
+    "year": 2017,
+    "date": "2017-04-24",
+    "dateLabel": "24/Abr",
+    "datePrecision": "day",
+    "month": 4,
+    "day": 24,
+    "sortKey": "2017-04-24",
+    "event": "QConSP",
+    "title": "Performance Web muito além do carregamento",
+    "links": [],
+    "sourceLine": 38
+  },
+  {
+    "id": "talk-2017-cubo-summit-progressive-web-apps-sao-o-futuro-da-web",
+    "year": 2017,
+    "date": "2017-03-13",
+    "dateLabel": "13/Mar",
+    "datePrecision": "day",
+    "month": 3,
+    "day": 13,
+    "sortKey": "2017-03-13",
+    "event": "Cubo Summit",
+    "title": "Progressive Web Apps são o futuro da Web",
+    "links": [],
+    "sourceLine": 39
+  },
+  {
+    "id": "talk-2017-cubo-summit-performance-na-web-o-modelo-rail-e-outras-novidades",
+    "year": 2017,
+    "date": "2017-03-13",
+    "dateLabel": "13/Mar",
+    "datePrecision": "day",
+    "month": 3,
+    "day": 13,
+    "sortKey": "2017-03-13",
+    "event": "Cubo Summit",
+    "title": "Performance na web: o modelo RAIL e outras novidades",
+    "links": [],
+    "sourceLine": 40
+  },
+  {
+    "id": "talk-2016-gdg-devfest-sp-progressive-web-apps-sao-o-futuro-da-web",
+    "year": 2016,
+    "date": "2016-11-12",
+    "dateLabel": "12/Nov",
+    "datePrecision": "day",
+    "month": 11,
+    "day": 12,
+    "sortKey": "2016-11-12",
+    "event": "GDG DevFest SP",
+    "title": "Progressive Web Apps são o futuro da Web",
+    "links": [],
+    "sourceLine": 44
+  },
+  {
+    "id": "talk-2016-intercon-http-2",
+    "year": 2016,
+    "date": "2016-10-22",
+    "dateLabel": "22/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 22,
+    "sortKey": "2016-10-22",
+    "event": "InterCon",
+    "title": "HTTP/2",
+    "links": [],
+    "sourceLine": 45
+  },
+  {
+    "id": "talk-2016-front-end-carioca-desafios-praticos-de-performance-web",
+    "year": 2016,
+    "date": "2016-10-22",
+    "dateLabel": "22/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 22,
+    "sortKey": "2016-10-22",
+    "event": "Front-end Carioca",
+    "title": "Desafios práticos de performance web",
+    "links": [],
+    "sourceLine": 46
+  },
+  {
+    "id": "talk-2016-webbr-workshop-performance-web",
+    "year": 2016,
+    "date": "2016-10-13",
+    "dateLabel": "13/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 13,
+    "sortKey": "2016-10-13",
+    "event": "Webbr",
+    "title": "Workshop Performance Web",
+    "links": [],
+    "sourceLine": 47
+  },
+  {
+    "id": "talk-2016-rubyconf-brasil-progressive-web-apps-o-melhor-da-web-appficada-2-0",
+    "year": 2016,
+    "date": "2016-09-23",
+    "dateLabel": "23/Set",
+    "datePrecision": "day",
+    "month": 9,
+    "day": 23,
+    "sortKey": "2016-09-23",
+    "event": "RubyConf Brasil",
+    "title": "Progressive Web Apps: o melhor da Web, appficada 2.0",
+    "links": [],
+    "sourceLine": 48
+  },
+  {
+    "id": "talk-2016-braziljs-desafios-praticos-de-performance-web",
+    "year": 2016,
+    "date": "2016-08-26",
+    "dateLabel": "26/Ago",
+    "datePrecision": "day",
+    "month": 8,
+    "day": 26,
+    "sortKey": "2016-08-26",
+    "event": "BrazilJS",
+    "title": "Desafios práticos de performance web",
+    "links": [
+      {
+        "label": "vídeo",
+        "url": "https://www.youtube.com/watch?v=EMCBd3kw4zs",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 49
+  },
+  {
+    "id": "talk-2016-6a-semana-de-sistemas-de-informacao-da-usp-progressive-web-apps-o-melhor-da-web-appficada-2-0",
+    "year": 2016,
+    "date": "2016-08-18",
+    "dateLabel": "18/Ago",
+    "datePrecision": "day",
+    "month": 8,
+    "day": 18,
+    "sortKey": "2016-08-18",
+    "event": "6ª Semana de Sistemas de Informação da USP",
+    "title": "Progressive Web Apps: o melhor da Web, appficada 2.0",
+    "links": [],
+    "sourceLine": 50
+  },
+  {
+    "id": "talk-2016-tdc-the-developers-conference-progressive-web-apps-o-melhor-da-web-appficada-lightning-talk",
+    "year": 2016,
+    "date": "2016-07-07",
+    "dateLabel": "07/Jul",
+    "datePrecision": "day",
+    "month": 7,
+    "day": 7,
+    "sortKey": "2016-07-07",
+    "event": "TDC - The Developers Conference",
+    "title": "Progressive Web Apps: o melhor da Web, appficada (lightning talk)",
+    "links": [],
+    "sourceLine": 51
+  },
+  {
+    "id": "talk-2016-encontro-locaweb-porto-alegre-performance-na-web-o-modelo-rail-e-outras-novidades",
+    "year": 2016,
+    "date": "2016-06-09",
+    "dateLabel": "09/Jun",
+    "datePrecision": "day",
+    "month": 6,
+    "day": 9,
+    "sortKey": "2016-06-09",
+    "event": "Encontro Locaweb Porto Alegre",
+    "title": "Performance na web: o modelo RAIL e outras novidades",
+    "links": [
+      {
+        "label": "Performance na web: o modelo RAIL e outras novidades",
+        "url": "http://www.slideshare.net/caelumdev/",
+        "type": "slides"
+      }
+    ],
+    "sourceLine": 52
+  },
+  {
+    "id": "talk-2016-femug-sp-performance-na-web-o-modelo-rail-e-outras-novidades",
+    "year": 2016,
+    "date": "2016-05-19",
+    "dateLabel": "19/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 19,
+    "sortKey": "2016-05-19",
+    "event": "FEMUG-SP",
+    "title": "Performance na web: o modelo RAIL e outras novidades",
+    "links": [
+      {
+        "label": "Performance na web: o modelo RAIL e outras novidades",
+        "url": "http://www.slideshare.net/caelumdev/",
+        "type": "slides"
+      }
+    ],
+    "sourceLine": 53
+  },
+  {
+    "id": "talk-2016-encontro-locaweb-recife-performance-na-web-o-modelo-rail-e-outras-novidades",
+    "year": 2016,
+    "date": "2016-05-05",
+    "dateLabel": "05/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 5,
+    "sortKey": "2016-05-05",
+    "event": "Encontro Locaweb Recife",
+    "title": "Performance na web: o modelo RAIL e outras novidades",
+    "links": [
+      {
+        "label": "Performance na web: o modelo RAIL e outras novidades",
+        "url": "http://www.slideshare.net/caelumdev/",
+        "type": "slides"
+      }
+    ],
+    "sourceLine": 54
+  },
+  {
+    "id": "talk-2016-qconsp-performance-na-web-o-modelo-rail-e-outras-novidades",
+    "year": 2016,
+    "date": "2016-03-30",
+    "dateLabel": "30/Mar",
+    "datePrecision": "day",
+    "month": 3,
+    "day": 30,
+    "sortKey": "2016-03-30",
+    "event": "QConSP",
+    "title": "Performance na web: o modelo RAIL e outras novidades",
+    "links": [
+      {
+        "label": "Performance na web: o modelo RAIL e outras novidades",
+        "url": "http://www.slideshare.net/caelumdev/",
+        "type": "slides"
+      },
+      {
+        "label": "vídeo oficial",
+        "url": "https://www.infoq.com/br/presentations/performance-na-web-o-modelo-rail-e-outras-novidades",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 55
+  },
+  {
+    "id": "talk-2016-front7-progressive-web-apps-o-melhor-da-web-appficada-2-0",
+    "year": 2016,
+    "date": "2016-03-07",
+    "dateLabel": "07/Mar",
+    "datePrecision": "day",
+    "month": 3,
+    "day": 7,
+    "sortKey": "2016-03-07",
+    "event": "Front7",
+    "title": "Progressive Web Apps: o melhor da Web, appficada 2.0",
+    "links": [
+      {
+        "label": "Progressive Web Apps: o melhor da Web, appficada 2.0",
+        "url": "http://www.slideshare.net/caelumdev/progressive-web-apps-o-melhor-da-web-appficada",
+        "type": "slides",
+        "localPath": "talks/slides/progressive-web-apps-o-melhor-da-web-appficada"
+      }
+    ],
+    "sourceLine": 56
+  },
+  {
+    "id": "talk-2015-front-in-sampa-progressive-webapps-o-melhor-da-web-appficada-2-0",
+    "year": 2015,
+    "date": "2015-11-21",
+    "dateLabel": "21/Nov",
+    "datePrecision": "day",
+    "month": 11,
+    "day": 21,
+    "sortKey": "2015-11-21",
+    "event": "Front In Sampa",
+    "title": "Progressive WebApps: o melhor da Web, Appficada 2.0",
+    "links": [
+      {
+        "label": "Progressive WebApps: o melhor da Web, Appficada 2.0",
+        "url": "http://www.slideshare.net/caelumdev/progressive-web-apps-o-melhor-da-web-appficada",
+        "type": "slides",
+        "localPath": "talks/slides/progressive-web-apps-o-melhor-da-web-appficada"
+      },
+      {
+        "label": "vídeo",
+        "url": "https://www.youtube.com/watch?v=sH7dlRnuh-k&feature=youtu.be&a=",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 60
+  },
+  {
+    "id": "talk-2015-webbr-http-2-0",
+    "year": 2015,
+    "date": "2015-09-22",
+    "dateLabel": "22/Set",
+    "datePrecision": "day",
+    "month": 9,
+    "day": 22,
+    "sortKey": "2015-09-22",
+    "event": "Webbr",
+    "title": "HTTP/2.0",
+    "links": [
+      {
+        "label": "HTTP/2.0",
+        "url": "http://www.slideshare.net/caelumdev/como-o-http2-vai-mudar-sua-vida",
+        "type": "slides",
+        "localPath": "talks/slides/como-o-http2-vai-mudar-sua-vida"
+      }
+    ],
+    "sourceLine": 61
+  },
+  {
+    "id": "talk-2015-qcon-rio-progressive-webapps-o-melhor-da-web-appficada",
+    "year": 2015,
+    "date": "2015-08-28",
+    "dateLabel": "28/Ago",
+    "datePrecision": "day",
+    "month": 8,
+    "day": 28,
+    "sortKey": "2015-08-28",
+    "event": "QCon Rio",
+    "title": "Progressive WebApps: o melhor da Web, Appficada",
+    "links": [],
+    "sourceLine": 62
+  },
+  {
+    "id": "talk-2015-7-masters-progressive-webapps-o-melhor-da-web-appficada",
+    "year": 2015,
+    "date": "2015-08-26",
+    "dateLabel": "26/Ago",
+    "datePrecision": "day",
+    "month": 8,
+    "day": 26,
+    "sortKey": "2015-08-26",
+    "event": "7 Masters",
+    "title": "Progressive WebApps: o melhor da Web, Appficada",
+    "links": [
+      {
+        "label": "vídeo",
+        "url": "http://imasters.com.br/design-ux/design-responsivo/video-progressive-web-apps-7masters/",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 63
+  },
+  {
+    "id": "talk-2015-encontro-locaweb-sao-paulo-tudo-que-voce-precisa-saber-sobre-picture-e-srcset",
+    "year": 2015,
+    "date": "2015-06-18",
+    "dateLabel": "18/Jun",
+    "datePrecision": "day",
+    "month": 6,
+    "day": 18,
+    "sortKey": "2015-06-18",
+    "event": "Encontro Locaweb São Paulo",
+    "title": "Tudo que você precisa saber sobre picture e srcset",
+    "links": [
+      {
+        "label": "Tudo que você precisa saber sobre picture e srcset",
+        "url": "http://www.slideshare.net/caelumdev/tudo-que-voc-precisa-saber-sobre-ltpicture-e-srcset",
+        "type": "slides",
+        "localPath": "talks/slides/tudo-que-voc-precisa-saber-sobre-ltpicture-e-srcset"
+      }
+    ],
+    "sourceLine": 64
+  },
+  {
+    "id": "talk-2015-mobileconf-rio-de-janeiro-como-o-http-2-vai-mudar-sua-vida",
+    "year": 2015,
+    "date": "2015-05-30",
+    "dateLabel": "30/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 30,
+    "sortKey": "2015-05-30",
+    "event": "MobileConf Rio de Janeiro",
+    "title": "Como o HTTP/2 vai mudar sua vida",
+    "links": [
+      {
+        "label": "Como o HTTP/2 vai mudar sua vida",
+        "url": "http://www.slideshare.net/caelumdev/como-o-http2-vai-mudar-sua-vida",
+        "type": "slides",
+        "localPath": "talks/slides/como-o-http2-vai-mudar-sua-vida"
+      }
+    ],
+    "sourceLine": 65
+  },
+  {
+    "id": "talk-2015-encontro-locaweb-rio-de-janeiro-tudo-que-voce-precisa-saber-sobre-picture-e-srcset",
+    "year": 2015,
+    "date": "2015-05-19",
+    "dateLabel": "19/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 19,
+    "sortKey": "2015-05-19",
+    "event": "Encontro Locaweb Rio de Janeiro",
+    "title": "Tudo que você precisa saber sobre picture e srcset",
+    "links": [
+      {
+        "label": "Tudo que você precisa saber sobre picture e srcset",
+        "url": "http://www.slideshare.net/caelumdev/tudo-que-voc-precisa-saber-sobre-ltpicture-e-srcset",
+        "type": "slides",
+        "localPath": "talks/slides/tudo-que-voc-precisa-saber-sobre-ltpicture-e-srcset"
+      }
+    ],
+    "sourceLine": 66
+  },
+  {
+    "id": "talk-2015-encontro-locaweb-porto-alegre-tudo-que-voce-precisa-saber-sobre-picture-e-srcset",
+    "year": 2015,
+    "date": "2015-05-07",
+    "dateLabel": "07/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 7,
+    "sortKey": "2015-05-07",
+    "event": "Encontro Locaweb Porto Alegre",
+    "title": "Tudo que você precisa saber sobre picture e srcset",
+    "links": [
+      {
+        "label": "Tudo que você precisa saber sobre picture e srcset",
+        "url": "http://www.slideshare.net/caelumdev/tudo-que-voc-precisa-saber-sobre-ltpicture-e-srcset",
+        "type": "slides",
+        "localPath": "talks/slides/tudo-que-voc-precisa-saber-sobre-ltpicture-e-srcset"
+      }
+    ],
+    "sourceLine": 67
+  },
+  {
+    "id": "talk-2015-encontro-locaweb-curitiba-tudo-que-voce-precisa-saber-sobre-picture-e-srcset",
+    "year": 2015,
+    "date": "2015-04-11",
+    "dateLabel": "11/Abr",
+    "datePrecision": "day",
+    "month": 4,
+    "day": 11,
+    "sortKey": "2015-04-11",
+    "event": "Encontro Locaweb Curitiba",
+    "title": "Tudo que você precisa saber sobre picture e srcset",
+    "links": [
+      {
+        "label": "Tudo que você precisa saber sobre picture e srcset",
+        "url": "http://www.slideshare.net/caelumdev/tudo-que-voc-precisa-saber-sobre-ltpicture-e-srcset",
+        "type": "slides",
+        "localPath": "talks/slides/tudo-que-voc-precisa-saber-sobre-ltpicture-e-srcset"
+      }
+    ],
+    "sourceLine": 68
+  },
+  {
+    "id": "talk-2015-encontro-locaweb-belo-horizonte-tudo-que-voce-precisa-saber-sobre-picture-e-srcset",
+    "year": 2015,
+    "date": "2015-03-06",
+    "dateLabel": "06/Mar",
+    "datePrecision": "day",
+    "month": 3,
+    "day": 6,
+    "sortKey": "2015-03-06",
+    "event": "Encontro Locaweb Belo Horizonte",
+    "title": "Tudo que você precisa saber sobre picture e srcset",
+    "links": [
+      {
+        "label": "Tudo que você precisa saber sobre picture e srcset",
+        "url": "http://www.slideshare.net/caelumdev/tudo-que-voc-precisa-saber-sobre-ltpicture-e-srcset",
+        "type": "slides",
+        "localPath": "talks/slides/tudo-que-voc-precisa-saber-sobre-ltpicture-e-srcset"
+      }
+    ],
+    "sourceLine": 69
+  },
+  {
+    "id": "talk-2014-devfest-sp-offline-web-do-jeito-certo-com-serviceworkers",
+    "year": 2014,
+    "date": "2014-11-22",
+    "dateLabel": "22/Nov",
+    "datePrecision": "day",
+    "month": 11,
+    "day": 22,
+    "sortKey": "2014-11-22",
+    "event": "DevFest SP",
+    "title": "Offline Web do jeito certo com ServiceWorkers",
+    "links": [
+      {
+        "label": "Offline Web do jeito certo com ServiceWorkers",
+        "url": "http://www.slideshare.net/caelumdev/serviceworkers-sergio",
+        "type": "slides",
+        "localPath": "talks/slides/serviceworkers-sergio"
+      }
+    ],
+    "sourceLine": 73
+  },
+  {
+    "id": "talk-2014-frontinmaceio-http-2-spdy-e-otimizacoes-web",
+    "year": 2014,
+    "date": "2014-11-15",
+    "dateLabel": "15/Nov",
+    "datePrecision": "day",
+    "month": 11,
+    "day": 15,
+    "sortKey": "2014-11-15",
+    "event": "FrontInMaceio",
+    "title": "HTTP/2, SPDY e Otimizações Web",
+    "links": [
+      {
+        "label": "HTTP/2, SPDY e Otimizações Web",
+        "url": "http://www.slideshare.net/caelumdev/http2-spdy-e-otimizaes-web-front-in-macei-2014-srgio-lopes",
+        "type": "slides",
+        "localPath": "talks/slides/http2-spdy-e-otimizaes-web-front-in-macei-2014-srgio-lopes"
+      }
+    ],
+    "sourceLine": 74
+  },
+  {
+    "id": "talk-2014-frontin-porto-alegre-offline-web-do-jeito-certo-com-serviceworkers",
+    "year": 2014,
+    "date": "2014-11-08",
+    "dateLabel": "08/Nov",
+    "datePrecision": "day",
+    "month": 11,
+    "day": 8,
+    "sortKey": "2014-11-08",
+    "event": "FrontIn Porto Alegre",
+    "title": "Offline Web do jeito certo com ServiceWorkers",
+    "links": [
+      {
+        "label": "Offline Web do jeito certo com ServiceWorkers",
+        "url": "http://www.slideshare.net/caelumdev/serviceworkers-sergio",
+        "type": "slides",
+        "localPath": "talks/slides/serviceworkers-sergio"
+      },
+      {
+        "label": "vídeo",
+        "url": "https://www.youtube.com/watch?v=mchPQdKbbus",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 75
+  },
+  {
+    "id": "talk-2014-tablelessconf-offline-web-do-jeito-certo-com-serviceworkers",
+    "year": 2014,
+    "date": "2014-10-23",
+    "dateLabel": "23/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 23,
+    "sortKey": "2014-10-23",
+    "event": "TablelessConf",
+    "title": "Offline Web do jeito certo com ServiceWorkers",
+    "links": [
+      {
+        "label": "Offline Web do jeito certo com ServiceWorkers",
+        "url": "http://www.slideshare.net/caelumdev/serviceworkers-sergio",
+        "type": "slides",
+        "localPath": "talks/slides/serviceworkers-sergio"
+      },
+      {
+        "label": "vídeo",
+        "url": "https://www.eventials.com/tableless/service-workers-o-jeito-certo-de-fazer-offline/?playlist=palestras-do-tableless-conference-2014",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 76
+  },
+  {
+    "id": "talk-2014-semana-computacao-fei-otimizacao-de-performance-web-desafios-do-mundo-mobile",
+    "year": 2014,
+    "date": "2014-10-15",
+    "dateLabel": "15/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 15,
+    "sortKey": "2014-10-15",
+    "event": "Semana Computação FEI",
+    "title": "Otimização de performance Web: desafios do mundo mobile",
+    "links": [
+      {
+        "label": "Otimização de performance Web: desafios do mundo mobile",
+        "url": "http://www.slideshare.net/caelumdev/otimizaes-de-performance-web-desafios-do-mundo-mobile",
+        "type": "slides",
+        "localPath": "talks/slides/otimizaes-de-performance-web-desafios-do-mundo-mobile"
+      }
+    ],
+    "sourceLine": 77
+  },
+  {
+    "id": "talk-2014-mobcamp-campinas-design-responsivo-por-uma-web-unica",
+    "year": 2014,
+    "date": "2014-08-06",
+    "dateLabel": "06/Ago",
+    "datePrecision": "day",
+    "month": 8,
+    "day": 6,
+    "sortKey": "2014-08-06",
+    "event": "MobCamp Campinas",
+    "title": "Design Responsivo por uma Web única",
+    "links": [
+      {
+        "label": "Design Responsivo por uma Web única",
+        "url": "http://www.slideshare.net/caelumdev/design-responsivo-mobcamp-2014",
+        "type": "slides",
+        "localPath": "talks/slides/design-responsivo-mobcamp-2014"
+      }
+    ],
+    "sourceLine": 78
+  },
+  {
+    "id": "talk-2014-mobileconf-rj-a-web-mobile-otimizacoes-e-desafios-de-performance",
+    "year": 2014,
+    "date": "2014-05-31",
+    "dateLabel": "31/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 31,
+    "sortKey": "2014-05-31",
+    "event": "MobileConf RJ",
+    "title": "A web mobile: Otimizações e desafios de performance",
+    "links": [
+      {
+        "label": "A web mobile: Otimizações e desafios de performance",
+        "url": "http://www.slideshare.net/caelumdev/otimizaes-de-performance-web-desafios-do-mundo-mobile",
+        "type": "slides",
+        "localPath": "talks/slides/otimizaes-de-performance-web-desafios-do-mundo-mobile"
+      }
+    ],
+    "sourceLine": 79
+  },
+  {
+    "id": "talk-2014-qcon-sp-rumo-ao-http2-0-o-que-vem-por-ai-e-o-que-voce-pode-utilizar-ja-com-spdy",
+    "year": 2014,
+    "date": "2014-04-09",
+    "dateLabel": "09/Abr",
+    "datePrecision": "day",
+    "month": 4,
+    "day": 9,
+    "sortKey": "2014-04-09",
+    "event": "QCon SP",
+    "title": "Rumo ao HTTP2.0: o que vem por aí e o que você pode utilizar já com SPDY",
+    "links": [
+      {
+        "label": "Rumo ao HTTP2.0: o que vem por aí e o que você pode utilizar já com SPDY",
+        "url": "https://docs.google.com/presentation/d/1BVyBcR5AE2kwY7akcmM0O3dDJ5TccY3ew0U9Ux7wsQs/pub?start=false&loop=false&delayms=3000&utm_content=buffer7886e&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer#slide=id.p",
+        "type": "document",
+        "localPath": "talks/external/qcon-http2/"
+      }
+    ],
+    "sourceLine": 80
+  },
+  {
+    "id": "talk-2013-webbr-w3c-tutorial-tecnicas-para-suportar-telas-de-alta-resolucao-na-web",
+    "year": 2013,
+    "date": "2013-11-18",
+    "dateLabel": "18/Nov",
+    "datePrecision": "day",
+    "month": 11,
+    "day": 18,
+    "sortKey": "2013-11-18",
+    "event": "Webbr W3C",
+    "title": "Tutorial: Técnicas para suportar telas de alta resolução na Web",
+    "links": [
+      {
+        "label": "Tutorial: Técnicas para suportar telas de alta resolução na Web",
+        "url": "/palestra-retina-web/",
+        "type": "internal",
+        "archiveSlug": "palestra-retina-web"
+      }
+    ],
+    "sourceLine": 84,
+    "relatedEntrySlugs": [
+      "palestra-retina-web"
+    ]
+  },
+  {
+    "id": "talk-2013-mobileconf-rio-como-suportar-telas-de-alta-resolucao-eficientemente-na-web-mobile",
+    "year": 2013,
+    "date": "2013-10-19",
+    "dateLabel": "19/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 19,
+    "sortKey": "2013-10-19",
+    "event": "MobileConf Rio",
+    "title": "Como suportar telas de alta resolução eficientemente na Web mobile",
+    "links": [
+      {
+        "label": "Como suportar telas de alta resolução eficientemente na Web mobile",
+        "url": "/palestra-retina-web/",
+        "type": "internal",
+        "archiveSlug": "palestra-retina-web"
+      }
+    ],
+    "sourceLine": 85,
+    "relatedEntrySlugs": [
+      "palestra-retina-web"
+    ]
+  },
+  {
+    "id": "talk-2013-front-in-sampa-alem-do-responsive-design-a-mudanca-de-paradigma-do-design-adaptativo-e-os-multiplos-dispositivos",
+    "year": 2013,
+    "date": "2013-09-14",
+    "dateLabel": "14/Set",
+    "datePrecision": "day",
+    "month": 9,
+    "day": 14,
+    "sortKey": "2013-09-14",
+    "event": "Front in Sampa",
+    "title": "Além do responsive design: a mudança de paradigma do design adaptativo e os múltiplos dispositivos",
+    "links": [
+      {
+        "label": "Além do responsive design: a mudança de paradigma do design adaptativo e os múltiplos dispositivos",
+        "url": "http://www.slideshare.net/caelumdev/alm-do-responsive-design-a-mudana-de-paradigma-do-design-adaptativo-e-os-mltiplos-dispositivos",
+        "type": "slides",
+        "localPath": "talks/slides/alm-do-responsive-design-a-mudana-de-paradigma-do-design-adaptativo-e-os-mltiplos-dispositivos"
+      },
+      {
+        "label": "vídeo",
+        "url": "https://www.youtube.com/watch?v=bJdFqCnxmVY",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 86
+  },
+  {
+    "id": "talk-2013-qcon-sp-otimizacao-de-performance-web-desafios-do-mundo-mobile",
+    "year": 2013,
+    "date": "2013-08-31",
+    "dateLabel": "31/Ago",
+    "datePrecision": "day",
+    "month": 8,
+    "day": 31,
+    "sortKey": "2013-08-31",
+    "event": "QCon SP",
+    "title": "Otimização de performance Web: desafios do mundo mobile",
+    "links": [
+      {
+        "label": "Otimização de performance Web: desafios do mundo mobile",
+        "url": "http://www.slideshare.net/caelumdev/otimizaes-de-performance-web-desafios-do-mundo-mobile",
+        "type": "slides",
+        "localPath": "talks/slides/otimizaes-de-performance-web-desafios-do-mundo-mobile"
+      }
+    ],
+    "sourceLine": 87
+  },
+  {
+    "id": "talk-2013-front-in-bh-repensando-o-front-end-para-telas-de-alta-resolucao",
+    "year": 2013,
+    "date": "2013-08-03",
+    "dateLabel": "03/Ago",
+    "datePrecision": "day",
+    "month": 8,
+    "day": 3,
+    "sortKey": "2013-08-03",
+    "event": "Front In BH",
+    "title": "Repensando o front-end para telas de alta resolução",
+    "links": [
+      {
+        "label": "Repensando o front-end para telas de alta resolução",
+        "url": "/palestra-retina-web/",
+        "type": "internal",
+        "archiveSlug": "palestra-retina-web"
+      }
+    ],
+    "sourceLine": 88,
+    "relatedEntrySlugs": [
+      "palestra-retina-web"
+    ]
+  },
+  {
+    "id": "talk-2013-web-day-dominando-html5-offline-com-appcache",
+    "year": 2013,
+    "date": "2013-07-20",
+    "dateLabel": "20/Jul",
+    "datePrecision": "day",
+    "month": 7,
+    "day": 20,
+    "sortKey": "2013-07-20",
+    "event": "Web Day",
+    "title": "Dominando HTML5 offline com AppCache",
+    "links": [
+      {
+        "label": "Dominando HTML5 offline com AppCache",
+        "url": "/palestra-appcache-html5-offline/",
+        "type": "internal",
+        "archiveSlug": "palestra-appcache-html5-offline"
+      },
+      {
+        "label": "vídeo",
+        "url": "https://www.youtube.com/watch?v=sVBSNJznDF0",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 89,
+    "relatedEntrySlugs": [
+      "palestra-appcache-html5-offline"
+    ]
+  },
+  {
+    "id": "talk-2013-jsconf-tudo-que-voce-precisa-saber-sobre-carregamento-e-execucao-de-js-no-browser",
+    "year": 2013,
+    "date": "2013-06-22",
+    "dateLabel": "22/Jun",
+    "datePrecision": "day",
+    "month": 6,
+    "day": 22,
+    "sortKey": "2013-06-22",
+    "event": "JSConf",
+    "title": "Tudo que você precisa saber sobre carregamento e execução de JS no browser",
+    "links": [
+      {
+        "label": "Tudo que você precisa saber sobre carregamento e execução de JS no browser",
+        "url": "http://www.slideshare.net/caelumdev/javascript-loadingsergiojsconfbr2013",
+        "type": "slides",
+        "localPath": "talks/slides/javascript-loadingsergiojsconfbr2013"
+      }
+    ],
+    "sourceLine": 90
+  },
+  {
+    "id": "talk-2013-noite-tecnica-na-caelum-rio-de-janeiro-design-responsivo-por-uma-web-unica",
+    "year": 2013,
+    "date": "2013-05-23",
+    "dateLabel": "23/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 23,
+    "sortKey": "2013-05-23",
+    "event": "Noite técnica na Caelum Rio de Janeiro",
+    "title": "Design Responsivo por uma Web única",
+    "links": [
+      {
+        "label": "Design Responsivo por uma Web única",
+        "url": "http://www.slideshare.net/caelumdev/design-responsivo-por-uma-web-nica",
+        "type": "slides",
+        "localPath": "talks/slides/design-responsivo-por-uma-web-nica"
+      }
+    ],
+    "sourceLine": 91
+  },
+  {
+    "id": "talk-2013-google-io-extended-open-sampa-dominando-html5-offline-com-appcache",
+    "year": 2013,
+    "date": "2013-05-13",
+    "dateLabel": "13/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 13,
+    "sortKey": "2013-05-13",
+    "event": "Google IO Extended Open Sampa",
+    "title": "Dominando HTML5 offline com AppCache",
+    "links": [
+      {
+        "label": "Dominando HTML5 offline com AppCache",
+        "url": "/palestra-appcache-html5-offline/",
+        "type": "internal",
+        "archiveSlug": "palestra-appcache-html5-offline"
+      }
+    ],
+    "sourceLine": 92,
+    "relatedEntrySlugs": [
+      "palestra-appcache-html5-offline"
+    ]
+  },
+  {
+    "id": "talk-2013-olhoseo-florianopolis-design-responsivo-por-uma-web-unica",
+    "year": 2013,
+    "date": "2013-05-03",
+    "dateLabel": "03/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 3,
+    "sortKey": "2013-05-03",
+    "event": "OlhóSEO - Florianópolis",
+    "title": "Design Responsivo por uma Web única",
+    "links": [
+      {
+        "label": "Design Responsivo por uma Web única",
+        "url": "http://www.slideshare.net/caelumdev/design-responsivo-por-uma-web-nica",
+        "type": "slides",
+        "localPath": "talks/slides/design-responsivo-por-uma-web-nica"
+      }
+    ],
+    "sourceLine": 93
+  },
+  {
+    "id": "talk-2013-devcast-online-ao-vivo-uma-tonelada-de-truques-de-web-mobile",
+    "year": 2013,
+    "date": "2013-04-30",
+    "dateLabel": "30/Abr",
+    "datePrecision": "day",
+    "month": 4,
+    "day": 30,
+    "sortKey": "2013-04-30",
+    "event": "DevCast online ao vivo",
+    "title": "Uma tonelada de truques de web mobile",
+    "links": [
+      {
+        "label": "Uma tonelada de truques de web mobile",
+        "url": "/palestra-mobile-web/",
+        "type": "internal",
+        "archiveSlug": "palestra-mobile-web"
+      },
+      {
+        "label": "gravação do vídeo",
+        "url": "https://www.youtube.com/watch?v=_wMx_Yb2lBk",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 94,
+    "relatedEntrySlugs": [
+      "palestra-mobile-web"
+    ]
+  },
+  {
+    "id": "talk-2013-43o-forum-de-tic-dataprev-brasilia-os-caminhos-de-uma-estrategia-mobile",
+    "year": 2013,
+    "date": "2013-04-23",
+    "dateLabel": "23/Abr",
+    "datePrecision": "day",
+    "month": 4,
+    "day": 23,
+    "sortKey": "2013-04-23",
+    "event": "43º Fórum de TIC Dataprev - Brasília",
+    "title": "Os caminhos de uma estratégia mobile",
+    "links": [
+      {
+        "label": "Os caminhos de uma estratégia mobile",
+        "url": "http://www.slideshare.net/caelumdev/mobile-conf",
+        "type": "slides",
+        "localPath": "talks/slides/mobile-conf"
+      }
+    ],
+    "sourceLine": 95
+  },
+  {
+    "id": "talk-2013-mobile-conf-sp-os-caminhos-de-uma-estrategia-mobile",
+    "year": 2013,
+    "date": "2013-04-05",
+    "dateLabel": "05/Abr",
+    "datePrecision": "day",
+    "month": 4,
+    "day": 5,
+    "sortKey": "2013-04-05",
+    "event": "Mobile Conf SP",
+    "title": "Os caminhos de uma estratégia mobile",
+    "links": [
+      {
+        "label": "Os caminhos de uma estratégia mobile",
+        "url": "http://www.slideshare.net/caelumdev/mobile-conf",
+        "type": "slides",
+        "localPath": "talks/slides/mobile-conf"
+      }
+    ],
+    "sourceLine": 96
+  },
+  {
+    "id": "talk-2013-sampajs-dominando-html5-offline-com-appcache",
+    "year": 2013,
+    "date": "2013-03-09",
+    "dateLabel": "09/Mar",
+    "datePrecision": "day",
+    "month": 3,
+    "day": 9,
+    "sortKey": "2013-03-09",
+    "event": "SampaJS",
+    "title": "Dominando HTML5 offline com AppCache",
+    "links": [
+      {
+        "label": "Dominando HTML5 offline com AppCache",
+        "url": "/palestra-appcache-html5-offline/",
+        "type": "internal",
+        "archiveSlug": "palestra-appcache-html5-offline"
+      },
+      {
+        "label": "vídeo",
+        "url": "https://www.youtube.com/watch?v=mrS4ivgj1Es",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 97,
+    "relatedEntrySlugs": [
+      "palestra-appcache-html5-offline"
+    ]
+  },
+  {
+    "id": "talk-2012-javaone-latin-america-porque-voce-deveria-usar-cdi-em-todos-os-seus-projetos-java",
+    "year": 2012,
+    "date": "2012-12-05",
+    "dateLabel": "05/Dez",
+    "datePrecision": "day",
+    "month": 12,
+    "day": 5,
+    "sortKey": "2012-12-05",
+    "event": "JavaOne Latin America",
+    "title": "Porque você deveria usar CDI em todos os seus projetos Java",
+    "links": [
+      {
+        "label": "Porque você deveria usar CDI em todos os seus projetos Java",
+        "url": "http://www.slideshare.net/caelumdev/porque-voc-deveria-usar-cdi-nos-seus-projetos-java-javaone-la-2012-srgio-lopes",
+        "type": "slides",
+        "localPath": "talks/slides/porque-voc-deveria-usar-cdi-nos-seus-projetos-java-javaone-la-2012-srgio-lopes"
+      }
+    ],
+    "sourceLine": 101
+  },
+  {
+    "id": "talk-2012-devfest-brasil-uma-tonelada-de-truques-de-web-mobile",
+    "year": 2012,
+    "date": "2012-11-30",
+    "dateLabel": "30/Nov",
+    "datePrecision": "day",
+    "month": 11,
+    "day": 30,
+    "sortKey": "2012-11-30",
+    "event": "DevFest Brasil",
+    "title": "Uma tonelada de truques de Web Mobile",
+    "links": [
+      {
+        "label": "Uma tonelada de truques de Web Mobile",
+        "url": "/palestra-mobile-web/",
+        "type": "internal",
+        "archiveSlug": "palestra-mobile-web"
+      }
+    ],
+    "sourceLine": 102,
+    "relatedEntrySlugs": [
+      "palestra-mobile-web"
+    ]
+  },
+  {
+    "id": "talk-2012-front-in-sampa-uma-tonelada-de-truques-de-web-mobile",
+    "year": 2012,
+    "date": "2012-11-03",
+    "dateLabel": "03/Nov",
+    "datePrecision": "day",
+    "month": 11,
+    "day": 3,
+    "sortKey": "2012-11-03",
+    "event": "Front in Sampa",
+    "title": "Uma tonelada de truques de Web Mobile",
+    "links": [
+      {
+        "label": "Uma tonelada de truques de Web Mobile",
+        "url": "/palestra-mobile-web/",
+        "type": "internal",
+        "archiveSlug": "palestra-mobile-web"
+      },
+      {
+        "label": "mesa redonda do 7 masters",
+        "url": "http://www.youtube.com/watch?v=bRrZYlbre7M",
+        "type": "recording"
+      },
+      {
+        "label": "Vídeo oficial",
+        "url": "https://www.youtube.com/watch?v=aH9eVa2cTcM",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 103,
+    "relatedEntrySlugs": [
+      "palestra-mobile-web"
+    ]
+  },
+  {
+    "id": "talk-2012-joomla-day-brasil-por-uma-web-mais-rapida-tecnicas-de-otimizacao-de-sites",
+    "year": 2012,
+    "date": "2012-09-08",
+    "dateLabel": "08/Set",
+    "datePrecision": "day",
+    "month": 9,
+    "day": 8,
+    "sortKey": "2012-09-08",
+    "event": "Joomla Day Brasil",
+    "title": "Por uma Web mais rápida: Técnicas de otimização de Sites",
+    "links": [
+      {
+        "label": "Por uma Web mais rápida: Técnicas de otimização de Sites",
+        "url": "http://www.slideshare.net/caelumdev/frontinbh-2012-por-uma-web-mais-rpida-tcnicas-de-otimizaes-de-sites-por-srgio-lopes",
+        "type": "slides",
+        "localPath": "talks/slides/frontinbh-2012-por-uma-web-mais-rpida-tcnicas-de-otimizaes-de-sites-por-srgio-lopes"
+      }
+    ],
+    "sourceLine": 106
+  },
+  {
+    "id": "talk-2012-qcon-sp-uma-tonelada-de-truques-de-web-mobile",
+    "year": 2012,
+    "date": "2012-08-04",
+    "dateLabel": "04/Ago",
+    "datePrecision": "day",
+    "month": 8,
+    "day": 4,
+    "sortKey": "2012-08-04",
+    "event": "QCon SP",
+    "title": "Uma tonelada de truques de Web Mobile",
+    "links": [
+      {
+        "label": "Uma tonelada de truques de Web Mobile",
+        "url": "/palestra-mobile-web/",
+        "type": "internal",
+        "archiveSlug": "palestra-mobile-web"
+      },
+      {
+        "label": "Vídeo oficial",
+        "url": "http://www.infoq.com/br/presentations/tonelada-truques-web",
+        "type": "recording"
+      },
+      {
+        "label": "Entrevista sobre mobile web",
+        "url": "http://www.infoq.com/br/interviews/novidades-no-web-mobile",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 107,
+    "relatedEntrySlugs": [
+      "palestra-mobile-web"
+    ]
+  },
+  {
+    "id": "talk-2012-front-in-bh-por-uma-web-mais-rapida-tecnicas-de-otimizacao-de-sites",
+    "year": 2012,
+    "date": "2012-07-14",
+    "dateLabel": "14/Jul",
+    "datePrecision": "day",
+    "month": 7,
+    "day": 14,
+    "sortKey": "2012-07-14",
+    "event": "Front in BH",
+    "title": "Por uma Web mais rápida: Técnicas de otimização de Sites",
+    "links": [
+      {
+        "label": "Por uma Web mais rápida: Técnicas de otimização de Sites",
+        "url": "http://www.slideshare.net/caelumdev/frontinbh-2012-por-uma-web-mais-rpida-tcnicas-de-otimizaes-de-sites-por-srgio-lopes",
+        "type": "slides",
+        "localPath": "talks/slides/frontinbh-2012-por-uma-web-mais-rpida-tcnicas-de-otimizaes-de-sites-por-srgio-lopes"
+      },
+      {
+        "label": "Vídeo",
+        "url": "http://www.youtube.com/watch?v=GuPEcngbNAw",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 110,
+    "relatedEntrySlugs": [
+      "frontinbh-otimizacoes-web"
+    ]
+  },
+  {
+    "id": "talk-2012-caelum-night-cdi-e-as-ideias-para-o-futuro-do-vraptor",
+    "year": 2012,
+    "date": "2012-04-19",
+    "dateLabel": "19/Abr",
+    "datePrecision": "day",
+    "month": 4,
+    "day": 19,
+    "sortKey": "2012-04-19",
+    "event": "Caelum Night",
+    "title": "CDI e as ideias para o futuro do VRaptor",
+    "links": [
+      {
+        "label": "CDI e as ideias para o futuro do VRaptor",
+        "url": "http://www.slideshare.net/caelumdev/vraptor-cdiideias",
+        "type": "slides",
+        "localPath": "talks/slides/vraptor-cdiideias"
+      }
+    ],
+    "sourceLine": 112
+  },
+  {
+    "id": "talk-2011-qcon-sp-por-uma-web-mais-rapida-tecnicas-de-otimizacao-de-sites",
+    "year": 2011,
+    "date": "2011-09-10",
+    "dateLabel": "10/Set",
+    "datePrecision": "day",
+    "month": 9,
+    "day": 10,
+    "sortKey": "2011-09-10",
+    "event": "QCon SP",
+    "title": "Por uma Web mais rápida: Técnicas de otimização de Sites",
+    "links": [
+      {
+        "label": "Por uma Web mais rápida: Técnicas de otimização de Sites",
+        "url": "http://www.slideshare.net/caelumdev/qcon-2011-por-uma-web-mais-rpida-tcnicas-de-otimizao-de-sites",
+        "type": "slides",
+        "localPath": "talks/slides/qcon-2011-por-uma-web-mais-rpida-tcnicas-de-otimizao-de-sites"
+      }
+    ],
+    "sourceLine": 116,
+    "notes": [
+      "keynote"
+    ]
+  },
+  {
+    "id": "talk-2011-caelumday-in-rio-praticas-para-um-site-otimizado",
+    "year": 2011,
+    "date": "2011-07-02",
+    "dateLabel": "02/Jul",
+    "datePrecision": "day",
+    "month": 7,
+    "day": 2,
+    "sortKey": "2011-07-02",
+    "event": "CaelumDay in Rio",
+    "title": "Práticas para um Site Otimizado",
+    "links": [
+      {
+        "label": "Práticas para um Site Otimizado",
+        "url": "http://www.slideshare.net/caelumdev/prticas-para-um-site-otimizado-caelumday-in-rio-2011",
+        "type": "slides",
+        "localPath": "talks/slides/prticas-para-um-site-otimizado-caelumday-in-rio-2011"
+      }
+    ],
+    "sourceLine": 117
+  },
+  {
+    "id": "talk-2011-fiap-cloud-computing-e-google-appengine",
+    "year": 2011,
+    "date": "2011-04-12",
+    "dateLabel": "12/Abr",
+    "datePrecision": "day",
+    "month": 4,
+    "day": 12,
+    "sortKey": "2011-04-12",
+    "event": "FIAP",
+    "title": "Cloud computing e Google AppEngine",
+    "links": [],
+    "sourceLine": 118
+  },
+  {
+    "id": "talk-2010-2o-workshop-de-tecnologia-jatai-go-introducao-ao-google-android",
+    "year": 2010,
+    "date": null,
+    "dateLabel": "Out",
+    "datePrecision": "month",
+    "month": 10,
+    "day": null,
+    "sortKey": "2010-10",
+    "event": "2o Workshop de Tecnologia Jataí/GO",
+    "title": "Introdução ao Google Android",
+    "links": [
+      {
+        "label": "Introdução ao Google Android",
+        "url": "http://www.slideshare.net/caelumdev/google-android-wtjatai",
+        "type": "slides",
+        "localPath": "talks/slides/google-android-wtjatai"
+      }
+    ],
+    "sourceLine": 122
+  },
+  {
+    "id": "talk-2010-java-vs-net-o-java-movel-e-o-android",
+    "year": 2010,
+    "date": "2010-10-14",
+    "dateLabel": "14/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 14,
+    "sortKey": "2010-10-14",
+    "event": "Java vs. Net",
+    "title": "O Java móvel e o Android",
+    "links": [
+      {
+        "label": "O Java móvel e o Android",
+        "url": "http://www.slideshare.net/caelumdev/o-java-mvel-e-o-android-evento-java-vs-net",
+        "type": "slides",
+        "localPath": "talks/slides/o-java-mvel-e-o-android-evento-java-vs-net"
+      }
+    ],
+    "sourceLine": 123
+  },
+  {
+    "id": "talk-2010-java-vs-net-persistencia-java-hibernate-e-jpa",
+    "year": 2010,
+    "date": "2010-10-14",
+    "dateLabel": "14/Out",
+    "datePrecision": "day",
+    "month": 10,
+    "day": 14,
+    "sortKey": "2010-10-14",
+    "event": "Java vs. Net",
+    "title": "Persistência Java: Hibernate e JPA",
+    "links": [
+      {
+        "label": "Persistência Java: Hibernate e JPA",
+        "url": "http://www.slideshare.net/caelumdev/persistncia-java-hibernate-e-jpa",
+        "type": "slides",
+        "localPath": "talks/slides/persistncia-java-hibernate-e-jpa"
+      }
+    ],
+    "sourceLine": 124
+  },
+  {
+    "id": "talk-2010-encontro-gtug-vraptor-no-google-appengine",
+    "year": 2010,
+    "date": "2010-09-30",
+    "dateLabel": "30/Set",
+    "datePrecision": "day",
+    "month": 9,
+    "day": 30,
+    "sortKey": "2010-09-30",
+    "event": "Encontro GTUG",
+    "title": "VRaptor no Google AppEngine",
+    "links": [],
+    "sourceLine": 125
+  },
+  {
+    "id": "talk-2010-qcon-sp-mitos-e-verdades-do-cloud-do-google-1-ano-de-experiencias-no-appengine",
+    "year": 2010,
+    "date": "2010-09-19",
+    "dateLabel": "19/Set",
+    "datePrecision": "day",
+    "month": 9,
+    "day": 19,
+    "sortKey": "2010-09-19",
+    "event": "QCon SP",
+    "title": "Mitos e verdades do cloud do Google: 1 ano de experiências no AppEngine",
+    "links": [
+      {
+        "label": "Mitos e verdades do cloud do Google: 1 ano de experiências no AppEngine",
+        "url": "http://www.slideshare.net/caelumdev/mitos-e-verdades-do-cloud-do-google-1-ano-de-experincias-no-appengine-sergio-lopes-qcon-sp-2010",
+        "type": "slides",
+        "localPath": "talks/slides/mitos-e-verdades-do-cloud-do-google-1-ano-de-experincias-no-appengine-sergio-lopes-qcon-sp-2010"
+      },
+      {
+        "label": "Vídeo oficial",
+        "url": "http://www.infoq.com/br/presentations/appengine-google-cloud",
+        "type": "recording"
+      }
+    ],
+    "sourceLine": 126
+  },
+  {
+    "id": "talk-2010-caelum-tech-day-como-o-site-da-caelum-atingiu-100-no-yslow",
+    "year": 2010,
+    "date": "2010-05-15",
+    "dateLabel": "15/Mai",
+    "datePrecision": "day",
+    "month": 5,
+    "day": 15,
+    "sortKey": "2010-05-15",
+    "event": "Caelum Tech Day",
+    "title": "Como o site da Caelum atingiu 100% no YSlow",
+    "links": [],
+    "sourceLine": 128
+  },
+  {
+    "id": "talk-2010-sestinfo-faculdade-metodista-hibernate-e-jpa",
+    "year": 2010,
+    "date": null,
+    "dateLabel": "Maio",
+    "datePrecision": "month",
+    "month": 5,
+    "day": null,
+    "sortKey": "2010-05",
+    "event": "SESTINFO - Faculdade Metodista",
+    "title": "Hibernate e JPA",
+    "links": [],
+    "sourceLine": 129
+  },
+  {
+    "id": "talk-2010-php-conf-como-fabricar-dinheiro-otimizacoes-de-sites-e-porque-isso-vai-deixa-lo-rico",
+    "year": 2010,
+    "date": null,
+    "dateLabel": null,
+    "datePrecision": "year",
+    "month": null,
+    "day": null,
+    "sortKey": "2010",
+    "event": "PHP Conf",
+    "title": "Como fabricar dinheiro: Otimizações de Sites e porque isso vai deixá-lo rico",
+    "links": [
+      {
+        "label": "Como fabricar dinheiro: Otimizações de Sites e porque isso vai deixá-lo rico",
+        "url": "http://www.slideshare.net/caelumdev/como-fabricar-dinheiro-otimizaes-de-sites-e-porque-isso-vai-deixlo-rico-php-conf-2010",
+        "type": "slides",
+        "localPath": "talks/slides/como-fabricar-dinheiro-otimizaes-de-sites-e-porque-isso-vai-deixlo-rico-php-conf-2010"
+      }
+    ],
+    "sourceLine": 130
+  },
+  {
+    "id": "talk-2010-dev-in-sampa-desenvolvimento-movel-com-google-android",
+    "year": 2010,
+    "date": null,
+    "dateLabel": null,
+    "datePrecision": "year",
+    "month": null,
+    "day": null,
+    "sortKey": "2010",
+    "event": "Dev In Sampa",
+    "title": "Desenvolvimento móvel com Google Android",
+    "links": [
+      {
+        "label": "Desenvolvimento móvel com Google Android",
+        "url": "http://www.slideshare.net/caelumdev/desenvolvimento-mvel-com-google-android",
+        "type": "slides",
+        "localPath": "talks/slides/desenvolvimento-mvel-com-google-android"
+      }
+    ],
+    "sourceLine": 131
+  },
+  {
+    "id": "talk-2009-usp-lancamento-do-livro-do-frederick-brooks",
+    "year": 2009,
+    "date": null,
+    "dateLabel": null,
+    "datePrecision": "year",
+    "month": null,
+    "day": null,
+    "sortKey": "2009",
+    "event": "USP",
+    "title": "Lançamento do livro do Frederick Brooks",
+    "links": [],
+    "sourceLine": 135,
+    "notes": [
+      "Arquitetura Java e SOA"
+    ]
+  },
+  {
+    "id": "talk-2009-ii-forum-de-java-serpro-arquitetura-java-e-soa",
+    "year": 2009,
+    "date": null,
+    "dateLabel": "Setembro",
+    "datePrecision": "month",
+    "month": 9,
+    "day": null,
+    "sortKey": "2009-09",
+    "event": "II Fórum de Java SERPRO",
+    "title": "Arquitetura Java e SOA",
+    "links": [],
+    "sourceLine": 136
+  },
+  {
+    "id": "talk-2009-justjava-como-dormir-tranquilo-seguranca-em-aplicacoes-web",
+    "year": 2009,
+    "date": null,
+    "dateLabel": "Setembro",
+    "datePrecision": "month",
+    "month": 9,
+    "day": null,
+    "sortKey": "2009-09",
+    "event": "JustJava",
+    "title": "Como dormir tranquilo: Segurança em Aplicações Web",
+    "links": [],
+    "sourceLine": 137
+  },
+  {
+    "id": "talk-2009-boehringer-introducao-a-java-e-j2me",
+    "year": 2009,
+    "date": "2009-08-17",
+    "dateLabel": "17/Agosto",
+    "datePrecision": "day",
+    "month": 8,
+    "day": 17,
+    "sortKey": "2009-08-17",
+    "event": "Boehringer",
+    "title": "Introdução a Java e J2ME",
+    "links": [],
+    "sourceLine": 138
+  },
+  {
+    "id": "talk-2009-falando-em-java-arquitetura-para-aplicacoes-java-de-medio-porte-com-guilherme-moreira",
+    "year": 2009,
+    "date": null,
+    "dateLabel": "Maio",
+    "datePrecision": "month",
+    "month": 5,
+    "day": null,
+    "sortKey": "2009-05",
+    "event": "Falando em Java",
+    "title": "Arquitetura para aplicações Java de médio porte",
+    "links": [],
+    "sourceLine": 139,
+    "notes": [
+      "com Guilherme Moreira"
+    ]
+  },
+  {
+    "id": "talk-2009-faculdade-metodista-plataforma-java-iniciante",
+    "year": 2009,
+    "date": "2009-03-25",
+    "dateLabel": "25/Mar",
+    "datePrecision": "day",
+    "month": 3,
+    "day": 25,
+    "sortKey": "2009-03-25",
+    "event": "Faculdade Metodista",
+    "title": "Plataforma Java (iniciante",
+    "links": [],
+    "sourceLine": 140
+  },
+  {
+    "id": "talk-2009-soujava-domain-driven-design",
+    "year": 2009,
+    "date": "2009-02-26",
+    "dateLabel": "26/Fev",
+    "datePrecision": "day",
+    "month": 2,
+    "day": 26,
+    "sortKey": "2009-02-26",
+    "event": "SouJava",
+    "title": "Domain Driven Design",
+    "links": [],
+    "sourceLine": 141
+  },
+  {
+    "id": "talk-2008-just-java-domain-driven-design",
+    "year": 2008,
+    "date": null,
+    "dateLabel": null,
+    "datePrecision": "year",
+    "month": null,
+    "day": null,
+    "sortKey": "2008",
+    "event": "Just Java",
+    "title": "Domain Driven Design",
+    "links": [
+      {
+        "label": "Domain Driven Design",
+        "url": "http://www.slideshare.net/caelumdev/domain-driven-design-sergio-lopes-falando-em-java-2008",
+        "type": "slides",
+        "localPath": "talks/slides/domain-driven-design-sergio-lopes-falando-em-java-2008"
+      }
+    ],
+    "sourceLine": 145
+  },
+  {
+    "id": "talk-2008-falando-em-java-domain-driven-design",
+    "year": 2008,
+    "date": null,
+    "dateLabel": null,
+    "datePrecision": "year",
+    "month": null,
+    "day": null,
+    "sortKey": "2008",
+    "event": "Falando em Java",
+    "title": "Domain Driven Design",
+    "links": [
+      {
+        "label": "Domain Driven Design",
+        "url": "http://www.slideshare.net/caelumdev/domain-driven-design-sergio-lopes-falando-em-java-2008",
+        "type": "slides",
+        "localPath": "talks/slides/domain-driven-design-sergio-lopes-falando-em-java-2008"
+      }
+    ],
+    "sourceLine": 146
+  },
+  {
+    "id": "talk-2008-faac-javame",
+    "year": 2008,
+    "date": null,
+    "dateLabel": "Maio",
+    "datePrecision": "month",
+    "month": 5,
+    "day": null,
+    "sortKey": "2008-05",
+    "event": "FAAC",
+    "title": "JavaME",
+    "links": [],
+    "sourceLine": 147
+  },
+  {
+    "id": "talk-2008-faac-javafx",
+    "year": 2008,
+    "date": null,
+    "dateLabel": "Maio",
+    "datePrecision": "month",
+    "month": 5,
+    "day": null,
+    "sortKey": "2008-05",
+    "event": "FAAC",
+    "title": "JavaFX",
+    "links": [],
+    "sourceLine": 148
+  },
+  {
+    "id": "talk-2007-falando-em-java-javafx",
+    "year": 2007,
+    "date": null,
+    "dateLabel": null,
+    "datePrecision": "year",
+    "month": null,
+    "day": null,
+    "sortKey": "2007",
+    "event": "Falando em Java",
+    "title": "JavaFX",
+    "links": [
+      {
+        "label": "JavaFX",
+        "url": "http://www.slideshare.net/caelumdev/javafx-no-falando-em-java-2007-sergio-lopes",
+        "type": "slides",
+        "localPath": "talks/slides/javafx-no-falando-em-java-2007-sergio-lopes"
+      }
+    ],
+    "sourceLine": 152
+  },
+  {
+    "id": "talk-2007-conexao-java-workshop-de-java-me",
+    "year": 2007,
+    "date": null,
+    "dateLabel": null,
+    "datePrecision": "year",
+    "month": null,
+    "day": null,
+    "sortKey": "2007",
+    "event": "Conexão Java",
+    "title": "Workshop de Java ME",
+    "links": [],
+    "sourceLine": 153
+  },
+  {
+    "id": "talk-2007-webmobile-techweek-workshop-javafx",
+    "year": 2007,
+    "date": null,
+    "dateLabel": null,
+    "datePrecision": "year",
+    "month": null,
+    "day": null,
+    "sortKey": "2007",
+    "event": "WebMobile TechWeek",
+    "title": "Workshop JavaFX",
+    "links": [],
+    "sourceLine": 154
+  },
+  {
+    "id": "talk-2007-imes-javafx",
+    "year": 2007,
+    "date": null,
+    "dateLabel": null,
+    "datePrecision": "year",
+    "month": null,
+    "day": null,
+    "sortKey": "2007",
+    "event": "IMES",
+    "title": "JavaFX",
+    "links": [],
+    "sourceLine": 155
+  },
+  {
+    "id": "talk-2006-iii-simposio-de-tecnologia-da-informacao-da-fundacao-educacional-de-fernandopolis-java-para-desenvolvimento-web",
+    "year": 2006,
+    "date": null,
+    "dateLabel": null,
+    "datePrecision": "year",
+    "month": null,
+    "day": null,
+    "sortKey": "2006",
+    "event": "III Simpósio de Técnologia da Informação da Fundação Educacional de Fernandópolis",
+    "title": "Java para desenvolvimento Web",
+    "links": [],
+    "sourceLine": 159
+  },
+  {
+    "id": "talk-2006-conexao-java-workshop-hibernate",
+    "year": 2006,
+    "date": null,
+    "dateLabel": null,
+    "datePrecision": "year",
+    "month": null,
+    "day": null,
+    "sortKey": "2006",
+    "event": "Conexão Java",
+    "title": "Workshop Hibernate",
+    "links": [],
+    "sourceLine": 160
+  },
+  {
+    "id": "talk-2006-conexao-java-java-me-e-game-api",
+    "year": 2006,
+    "date": null,
+    "dateLabel": null,
+    "datePrecision": "year",
+    "month": null,
+    "day": null,
+    "sortKey": "2006",
+    "event": "Conexão Java",
+    "title": "Java ME e Game API",
+    "links": [],
+    "sourceLine": 161
+  },
+  {
+    "id": "talk-2005-conexao-java-dite-as-regras-na-sua-aplicacao-web-mvc-com-ioc-e-reflection",
+    "year": 2005,
+    "date": "2005-08-20",
+    "dateLabel": "20/Ago",
+    "datePrecision": "day",
+    "month": 8,
+    "day": 20,
+    "sortKey": "2005-08-20",
+    "event": "Conexão Java",
+    "title": "Dite as regras na sua aplicação: Web MVC com IoC e Reflection",
+    "links": [
+      {
+        "label": "Dite as regras na sua aplicação: Web MVC com IoC e Reflection",
+        "url": "http://www.tatanka.com.br/palestras/cj2005-Web+MVC+IoC+Reflection/",
+        "type": "document",
+        "localPath": "talks/external/tatanka/"
+      }
+    ],
+    "sourceLine": 165,
+    "notes": [
+      "minha grande estreia :)"
+    ]
+  }
+]

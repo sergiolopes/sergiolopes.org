@@ -1,12 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArchiveCard from '../../components/ArchiveCard.astro';
-import { talks } from '../../lib/archive';
+import TalkRecord from '../../components/TalkRecord.astro';
+import { talks as talkPosts } from '../../lib/archive';
 import { siteUrl, sortedEntries } from '../../lib/site';
+import { sortedTalks, talkYears, talks } from '../../lib/talks';
 import slideDecks from '../../data/talks-external.json';
 import externalMaterials from '../../data/talks-external-links.json';
 
-const listed = sortedEntries(talks);
+const allTalks = sortedTalks(talks);
+const talkGroups = talkYears.map((year) => ({ year, talks: allTalks.filter((talk) => talk.year === year) }));
+const listed = sortedEntries(talkPosts);
 const localDocuments = externalMaterials.filter((item) => item.localPath);
 const recordings = externalMaterials.filter((item) => item.kind === 'recording');
 const collections = externalMaterials.filter((item) => item.kind === 'profile');
@@ -15,12 +19,36 @@ const collections = externalMaterials.filter((item) => item.kind === 'profile');
   <div class="page-shell">
     <header class="section-head">
       <h1>Palestras</h1>
-      <p>Palestras e workshops sobre desenvolvimento web, mobile e tecnologia.</p>
+      <p>Palestras, workshops e painéis.</p>
     </header>
-    {listed.length ? (
-      <div class="archive-grid">{listed.map((entry, index) => <ArchiveCard entry={entry} index={index + 1} />)}</div>
-    ) : (
-      <p class="empty-state">Nenhuma palestra encontrada.</p>
+
+    <nav class="year-nav" aria-label="Índice de palestras por ano">
+      <a class="active" href={siteUrl('palestras')}>Todos</a>
+      {talkYears.map((year) => <a href={siteUrl('palestras/ano/' + year)}>{year}</a>)}
+    </nav>
+
+    <section class="talk-history" aria-labelledby="talk-history-title">
+      <div class="section-head section-head--sub">
+        <h2 id="talk-history-title">Arquivo por ano</h2>
+      </div>
+      {talkGroups.map((group) => (
+        <section class="talk-year" aria-labelledby={`talk-year-${group.year}`}>
+          <h3 id={`talk-year-${group.year}`}>{group.year}</h3>
+          <div class="talk-history__list">
+            {group.talks.map((talk) => <TalkRecord talk={talk} />)}
+          </div>
+        </section>
+      ))}
+    </section>
+
+    {listed.length > 0 && (
+      <section class="talk-posts" aria-labelledby="talk-posts-title">
+        <div class="section-head section-head--sub">
+          <h2 id="talk-posts-title">Páginas preservadas</h2>
+          <p>Quatro páginas do blog antigo têm conteúdo próprio, demos e materiais além do registro do evento.</p>
+        </div>
+        <div class="archive-grid">{listed.map((entry, index) => <ArchiveCard entry={entry} index={index + 1} />)}</div>
+      </section>
     )}
 
     <section class="talk-archive" aria-labelledby="talk-archive-title">
@@ -78,9 +106,12 @@ const collections = externalMaterials.filter((item) => item.kind === 'profile');
 </BaseLayout>
 
 <style>
-  .talk-archive, .talk-recordings { border-top: 1px solid var(--color-line); margin-top: 5rem; padding-top: 3rem; }
+  .talk-history, .talk-posts, .talk-archive, .talk-recordings { border-top: 1px solid var(--color-line); margin-top: 5rem; padding-top: 3rem; }
   .section-head--sub { margin-bottom: 2rem; }
   .section-head--sub h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); letter-spacing: -.04em; line-height: 1.05; margin: 0; }
+  .talk-year + .talk-year { margin-top: 3rem; }
+  .talk-year > h3 { border-bottom: 1px solid var(--color-line); color: var(--color-accent-strong); font-size: 1rem; letter-spacing: .02em; margin: 0; padding-bottom: .75rem; }
+  .talk-history__list { border-top: 1px solid var(--color-line); }
   .material-grid { border-top: 1px solid var(--color-line); }
   .material-card { align-items: start; border-bottom: 1px solid var(--color-line); display: grid; gap: 1.25rem; grid-template-columns: minmax(0, 1fr) auto; padding: 1.2rem 0; }
   .material-card__meta { color: var(--color-accent); font-size: .74rem; letter-spacing: .08em; margin: 0 0 .8rem; text-transform: uppercase; }
