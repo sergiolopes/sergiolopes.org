@@ -1,4 +1,5 @@
 import archiveSource from '../data/archive.json';
+import recoveredSource from '../data/posts-recovered.json';
 
 export type ArchiveKind = 'article' | 'podcast' | 'talk' | 'external';
 
@@ -47,6 +48,10 @@ const additionalPodcasts: PartialEntry[] = Array.isArray(newPodcastsValue)
   ? newPodcastsValue as PartialEntry[]
   : [];
 
+const recoveredEntries: PartialEntry[] = Array.isArray(recoveredSource)
+  ? recoveredSource as PartialEntry[]
+  : [];
+
 function normalizeEntry(value: PartialEntry): ArchiveEntry {
   const recoveredHtml = value.html || value.mirrorHtml || value.snapshotHtml || '';
   return {
@@ -69,6 +74,7 @@ function applyMirror(entry: PartialEntry): ArchiveEntry {
 
 export const entries: ArchiveEntry[] = [
   ...(archiveSource as ArchiveEntry[]),
+  ...recoveredEntries.filter((entry) => !(archiveSource as ArchiveEntry[]).some((existing) => existing.slug === entry.slug)),
   ...additionalPodcasts.filter((podcast) => !(archiveSource as ArchiveEntry[]).some((entry) => entry.slug === podcast.slug)),
 ].map(applyMirror);
 

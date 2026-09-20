@@ -23,6 +23,14 @@ const content = htmlForEntry(entry);
 const isExternalRecord = entry.kind === 'external' || entry.kind === 'podcast';
 const wayback = waybackUrl(entry);
 const hasSnapshot = hasLocalSnapshot({ ...entry, html: content });
+const relatedPublications = Array.isArray(entry.relatedPublications)
+  ? entry.relatedPublications.filter((publication): publication is { label: string; url: string } => (
+    Boolean(publication)
+    && typeof publication === 'object'
+    && typeof (publication as { label?: unknown }).label === 'string'
+    && typeof (publication as { url?: unknown }).url === 'string'
+  ))
+  : [];
 const base = import.meta.env.BASE_URL || '/';
 const assetUrl = (asset: string) => `${base.replace(/\/$/, '')}/${asset.replace(/^\/+/, '')}`;
 const legacyStyles = entry.legacyCss ? [entry.legacyCss] : [];
@@ -58,6 +66,17 @@ if (entry.kind === 'talk') {
           {entry.originalUrl && <li><a href={entry.originalUrl} rel="external noopener">Publicação original</a></li>}
           {wayback && <li><a href={wayback} rel="external noopener">Captura no Wayback Machine</a></li>}
           {hasSnapshot && <li><a href={archiveUrl(entry.slug)}>Cópia local</a></li>}
+        </ul>
+      </aside>
+    )}
+
+    {relatedPublications.length > 0 && (
+      <aside class="archive-entry__links" aria-label="Outras publicações">
+        <strong>Outras publicações</strong>
+        <ul>
+          {relatedPublications.map((publication) => (
+            <li><a href={publication.url} rel="external noopener">{publication.label}</a></li>
+          ))}
         </ul>
       </aside>
     )}

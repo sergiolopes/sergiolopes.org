@@ -34,11 +34,12 @@ function dateValue(value) {
 function mergeEntries(root) {
   const dataRoot = path.join(root, 'src', 'data');
   const archive = readJson(path.join(dataRoot, 'archive.json'), []);
+  const recovered = readJson(path.join(dataRoot, 'posts-recovered.json'), []);
   const additions = readJson(path.join(dataRoot, 'podcasts-new.json'), []);
   const mirrors = readJson(path.join(dataRoot, 'mirrors.json'), {});
   const bySlug = new Map();
 
-  for (const entry of [...archive, ...additions]) {
+  for (const entry of [...archive, ...recovered, ...additions]) {
     if (!entry?.slug || bySlug.has(entry.slug)) continue;
     bySlug.set(entry.slug, { ...entry, ...(mirrors[entry.slug] || {}), slug: entry.slug });
   }
@@ -76,6 +77,48 @@ function siteOrigin() {
 function absoluteUrl(origin, route) {
   const clean = route.replace(/^\/+/, '');
   return clean ? `${origin}/${clean}` : `${origin}/`;
+}
+
+function feedAbsoluteUrl(raw, origin) {
+  const value = String(raw || '');
+  if (!value.startsWith('/') || value.startsWith('//')) return value;
+  const parsedOrigin = new URL(`${origin}/`);
+  const basePath = parsedOrigin.pathname.replace(/\/+$/, '');
+  if (basePath && (value === basePath || value.startsWith(`${basePath}/`))) {
+    return `${parsedOrigin.origin}${value}`;
+  }
+  return `${origin}${value}`;
+}
+
+function absolutizeFeedHtml(html, origin) {
+  let sample = null;
+  const remember = (raw, resolved) => {
+    if (!sample && raw !== resolved) sample = { raw, resolved };
+  };
+  let output = String(html || '').replace(
+    /\b(href|src|poster|action|data-src)=(['"])(.*?)\2/gi,
+    (match, attribute, quote, raw) => {
+      const resolved = feedAbsoluteUrl(raw, origin);
+      remember(raw, resolved);
+      return `${attribute}=${quote}${resolved}${quote}`;
+    },
+  );
+  output = output.replace(/\b(srcset|imagesrcset)=(['"])(.*?)\2/gi, (match, attribute, quote, raw) => {
+    const values = raw.split(',').map((candidate) => {
+      const parts = candidate.trim().split(/\s+/);
+      if (!parts[0]) return candidate;
+      const resolved = feedAbsoluteUrl(parts[0], origin);
+      remember(parts[0], resolved);
+      parts[0] = resolved;
+      return parts.join(' ');
+    });
+    return `${attribute}=${quote}${values.join(', ')}${quote}`;
+  });
+  return { html: output, sample };
+}
+
+function normalizeXmlLineEndings(value) {
+  return value.replace(/[ \t]+(?=\r?\n)/g, '');
 }
 
 function yearOf(entry) {
@@ -119,13 +162,17 @@ function sitemapRoutes(entries, root) {
 function writeFeed(publicRoot, origin, entries) {
   const dated = entries.filter((entry) => validDate(entry.date));
   const latest = dateValue(dated[0]?.date)?.toISOString() || new Date(0).toISOString();
+  let sample = null;
   const atomEntries = entries.map((entry) => {
     const url = absoluteUrl(origin, encodeURIComponent(entry.slug) + '/');
     const updated = dateValue(entry.date)?.toISOString() || latest;
     const warning = entry.feedWarning ? `<p class="feed-warning">${escapeXml(entry.feedWarning)}</p>` : '';
-    const content = String(entry.html || '').trim()
+    const sourceContent = String(entry.html || '').trim()
       ? `${warning}${entry.html}`
       : `${warning}<p>Registro preservado no arquivo. <a href="${escapeXml(entry.originalUrl || url)}">Abrir referência</a>.</p>`;
+    const feedContent = absolutizeFeedHtml(sourceContent, origin);
+    if (!sample && feedContent.sample) sample = feedContent.sample;
+    const content = normalizeXmlLineEndings(escapeXml(feedContent.html));
     return [
       '  <entry>',
       `    <title>${escapeXml(entry.title || entry.slug)}</title>`,
@@ -150,6 +197,9 @@ function writeFeed(publicRoot, origin, entries) {
     '</feed>',
     '',
   ].join('\n');
+  if (sample && !atom.includes(escapeXml(sample.resolved))) {
+    throw new Error(`Atom feed sample link was not resolved: ${sample.raw}`);
+  }
   fs.writeFileSync(path.join(publicRoot, 'feed.xml'), atom);
   // Keep the conventional Atom path for readers that used it historically.
   fs.writeFileSync(path.join(publicRoot, 'atom.xml'), atom);

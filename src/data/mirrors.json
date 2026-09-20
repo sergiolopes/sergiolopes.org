@@ -24,6 +24,18 @@
       "failed": 2
     },
     "archiveReplayUrl": "https://web.archive.org/web/20160306182524id_/http://blog.alura.com.br:80/a-arquitetura-do-novo-site-do-alura/",
+    "relatedPublications": [
+      {
+        "label": "Publicação relacionada no iMasters",
+        "url": "https://imasters.com.br/arquitetura-da-informacao/arquitetura-do-site-da-alura",
+        "type": "original"
+      },
+      {
+        "label": "Captura no Wayback",
+        "url": "https://web.archive.org/web/20181225233139id_/https://imasters.com.br/arquitetura-da-informacao/arquitetura-do-site-da-alura",
+        "type": "wayback"
+      }
+    ],
     "assetMap": {},
     "assetPaths": [],
     "assetFallbacks": 2
@@ -326,7 +338,19 @@
       "downloaded": 1,
       "failed": 0
     },
-    "archiveReplayUrl": "https://web.archive.org/web/20130310040113id_/http://blog.caelum.com.br/seu-codigo-css-pode-ser-mais-limpo-flexivel-e-reaproveitavel/"
+    "archiveReplayUrl": "https://web.archive.org/web/20130310040113id_/http://blog.caelum.com.br/seu-codigo-css-pode-ser-mais-limpo-flexivel-e-reaproveitavel/",
+    "relatedPublications": [
+      {
+        "label": "Republicação no Alura",
+        "url": "https://www.alura.com.br/artigos/seu-codigo-css-pode-ser-mais-limpo-flexivel-e-reaproveitavel",
+        "type": "original"
+      },
+      {
+        "label": "Captura histórica no Wayback",
+        "url": "https://web.archive.org/web/20130310040113/http://blog.caelum.com.br/seu-codigo-css-pode-ser-mais-limpo-flexivel-e-reaproveitavel/",
+        "type": "wayback"
+      }
+    ]
   },
   "caelum-css3-futuro-web": {
     "title": "CSS3 e o futuro da Web",

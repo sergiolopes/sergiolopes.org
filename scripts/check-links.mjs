@@ -100,6 +100,55 @@ function sourceInventory() {
   return { sourcePosts: postFiles.length, archiveEntries: archive.length, missing, duplicated, skipped: false };
 }
 
+function recoveredInventory(htmlFiles) {
+  const dataRoot = path.join(root, 'src', 'data');
+  const archivePath = path.join(dataRoot, 'archive.json');
+  const recoveredPath = path.join(dataRoot, 'posts-recovered.json');
+  const additionsPath = path.join(dataRoot, 'podcasts-new.json');
+  const archive = fs.existsSync(archivePath) ? JSON.parse(fs.readFileSync(archivePath, 'utf8')) : [];
+  const recovered = fs.existsSync(recoveredPath) ? JSON.parse(fs.readFileSync(recoveredPath, 'utf8')) : [];
+  const additions = fs.existsSync(additionsPath) ? JSON.parse(fs.readFileSync(additionsPath, 'utf8')) : [];
+  const allEntries = [...archive, ...recovered, ...additions];
+  const allSlugs = allEntries.map((entry) => entry.slug).filter(Boolean);
+  const duplicated = allSlugs.filter((slug, index, values) => values.indexOf(slug) !== index);
+
+  const pageForSlug = (slug) => htmlFiles.find((file) => {
+    const relative = path.relative(dist, file).replaceAll(path.sep, '/');
+    if (!relative.endsWith('/index.html')) return false;
+    const route = relative.slice(0, -'/index.html'.length);
+    return decodePath(route) === slug;
+  });
+  const missingPages = [];
+  const missingBodies = [];
+  const missingOriginals = [];
+  const missingWaybacks = [];
+  for (const entry of recovered) {
+    const page = pageForSlug(entry.slug);
+    if (!page) {
+      missingPages.push(entry.slug);
+      continue;
+    }
+    const content = fs.readFileSync(page, 'utf8');
+    const hasBody = String(entry.html || entry.mirrorHtml || entry.snapshotHtml || '').trim();
+    if (hasBody && !content.includes('archive-entry__content')) missingBodies.push(entry.slug);
+    for (const [field, failures] of [['originalUrl', missingOriginals], ['waybackUrl', missingWaybacks]]) {
+      const url = entry[field];
+      if (!url) continue;
+      const escaped = String(url).replaceAll('&', '&amp;');
+      if (!content.includes(String(url)) && !content.includes(escaped)) failures.push({ slug: entry.slug, url });
+    }
+  }
+  return {
+    entries: recovered.length,
+    duplicated: [...new Set(duplicated)],
+    missingPages,
+    missingBodies,
+    missingOriginals,
+    missingWaybacks,
+    skipped: false,
+  };
+}
+
 function documentInventory() {
   const documents = walk(path.join(sourceRoot, 'src', 'documents'))
     .map((file) => path.relative(path.join(sourceRoot, 'src', 'documents'), file).replaceAll(path.sep, '/'));
@@ -288,6 +337,7 @@ for (const file of cssFiles) {
 
 const uniqueFailures = [...new Map(failures.map((failure) => [`${failure.from}\n${failure.raw}\n${failure.reason}`, failure])).values()];
 const source = sourceInventory();
+const recovered = recoveredInventory(htmlFiles);
 const documents = documentInventory();
 const talks = talkInventory();
 const talkHistory = talkHistoryInventory();
@@ -296,13 +346,16 @@ console.log(JSON.stringify({
   htmlFiles: htmlFiles.length,
   cssFiles: cssFiles.length,
   source,
+  recovered,
   documents: { count: documents.documents, missing: documents.missing },
   talks,
   talkHistory,
   brokenInternalReferences: uniqueFailures,
 }, null, 2));
 
-if (uniqueFailures.length || source.missing.length || source.duplicated.length || documents.missing.length
+if (uniqueFailures.length || source.missing.length || source.duplicated.length || recovered.duplicated.length
+  || recovered.missingPages.length || recovered.missingBodies.length || recovered.missingOriginals.length
+  || recovered.missingWaybacks.length || documents.missing.length
   || talks.missingLocal.length || talks.slideCountMismatches.length || talks.unclassified?.length || talks.extraClassifications?.length
   || talkHistory.records !== talkHistory.expected || talkHistory.missingIds.length || talkHistory.duplicateIds.length
   || talkHistory.sourceMissing.length || talkHistory.sourceUrlsMissing.length
