@@ -1,10 +1,12 @@
 ---
-const label = 'Alternar entre modo escuro e claro';
+const label = 'Alternar tema';
 ---
 <button class="theme-toggle" type="button" data-theme-toggle aria-label={label} aria-pressed="false">
-  <span class="theme-toggle__sun" aria-hidden="true">☼</span>
-  <span class="theme-toggle__moon" aria-hidden="true">◐</span>
-  <span class="theme-toggle__label">tema</span>
+  <span class="theme-toggle__icon" aria-hidden="true">
+    <svg class="theme-toggle__moon" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.9 10.9A5.3 5.3 0 0 1 5.1 4.1a5.7 5.7 0 1 0 6.8 6.8Z" /></svg>
+    <svg class="theme-toggle__sun" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3" /><path d="M8 1.2v1.4M8 13.4v1.4M1.2 8h1.4M13.4 8h1.4M3.2 3.2l1 1M11.8 11.8l1 1M12.8 3.2l-1 1M4.2 11.8l-1 1" /></svg>
+  </span>
+  <span class="theme-toggle__label">Tema</span>
 </button>
 
 <script is:inline>
@@ -16,11 +18,14 @@ const label = 'Alternar entre modo escuro e claro';
     toggle?.setAttribute('aria-pressed', String(theme === 'light'));
     toggle?.setAttribute('data-theme', theme);
   };
-  setTheme(localStorage.getItem('sergiolopes-theme') || 'dark');
+  try {
+    setTheme(localStorage.getItem('sergiolopes-theme') || 'dark');
+  } catch {
+    setTheme('dark');
+  }
   toggle?.addEventListener('click', () => {
     const next = getTheme() === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('sergiolopes-theme', next);
+    try { localStorage.setItem('sergiolopes-theme', next); } catch {}
     setTheme(next);
   });
 </script>
-

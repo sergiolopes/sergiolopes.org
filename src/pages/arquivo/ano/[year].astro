@@ -14,14 +14,13 @@ const listed = sortedEntries(entriesForYear(year));
 <BaseLayout title={'Arquivo de ' + year} description={'Índice geral do arquivo de Sérgio Lopes em ' + year + '.'}>
   <div class="page-shell">
     <header class="section-head">
-      <div><p class="section-kicker">índice anual · arquivo</p><h1>{year}</h1></div>
-      <p>{listed.length} {listed.length === 1 ? 'registro encontrado' : 'registros encontrados'} neste ano.</p>
+      <h1>{year}</h1>
+      <p>{listed.length} {listed.length === 1 ? 'registro neste ano.' : 'registros neste ano.'}</p>
     </header>
     <nav class="year-nav" aria-label="Navegar entre anos">
-      <a href={siteUrl('arquivo')}>todos</a>
+      <a href={siteUrl('arquivo')}>Todos</a>
       {years.map((item) => <a class:list={{ active: item === year }} href={siteUrl('arquivo/ano/' + item)}>{item}</a>)}
     </nav>
     <div class="archive-grid">{listed.map((entry, index) => <ArchiveCard entry={entry} index={index + 1} />)}</div>
   </div>
 </BaseLayout>
-

@@ -391,9 +391,184 @@ function copyLegacyAssets() {
   fs.copyFileSync(path.join(sourceSrc, 'documents', 'quadro', 'quadro.mp3'), path.join(publicRoot, 'quadro', 'quadro.mp3'));
 }
 
+function talkDeckTemplate({ title, originalUrl, slideCount }) {
+  const escapedTitle = escapeHtml(title);
+  const escapedOriginalUrl = escapeHtml(originalUrl);
+  const slides = Array.from({ length: slideCount }, (_, index) => {
+    const number = index + 1;
+    const label = String(number).padStart(2, '0');
+    const filename = `slide-${String(number).padStart(3, '0')}.webp`;
+    return `<li id="slide-${number}"><a href="${filename}" target="_blank" rel="noopener" aria-label="Abrir slide ${number} em tamanho natural"><img loading="lazy" decoding="async" src="${filename}" alt="Slide ${number} de ${slideCount}"><span class="slide-detail"><span>Slide ${label}</span><span aria-hidden="true">Abrir</span></span></a></li>`;
+  }).join('');
+
+  return `<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101113">
+  <meta name="description" content="Slides de ${escapedTitle} — arquivo de palestras de Sérgio Lopes">
+  <title>${escapedTitle} — Sérgio Lopes</title>
+  <style>
+    @font-face { font-family: "Sergio Sans"; src: url("../../../fonts/pt_sans-web-regular-webfont.ttf") format("truetype"); font-display: swap; font-style: normal; font-weight: 400; }
+    :root {
+      color-scheme: dark;
+      --bg: #101113;
+      --surface: #17191d;
+      --surface-raised: #1d2025;
+      --text: #e8e8eb;
+      --muted: #a5a8b0;
+      --line: #2b2e35;
+      --accent: #ff6b2c;
+      --accent-quiet: rgba(255, 107, 44, .14);
+      font-family: "Sergio Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: var(--bg); scroll-behavior: smooth; }
+    body { min-width: 18rem; margin: 0; background: var(--bg); color: var(--text); font-size: 1rem; line-height: 1.5; }
+    a { color: inherit; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .deck { width: min(100% - 2rem, 82rem); margin: 0 auto; padding: 1.25rem 0 5rem; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3rem; margin-bottom: clamp(4rem, 10vw, 8rem); border-bottom: 1px solid var(--line); }
+    .site-mark, .back-link { color: var(--muted); font-size: .8rem; letter-spacing: .01em; text-decoration: none; }
+    .site-mark { color: var(--text); font-weight: 650; }
+    .site-mark span { color: var(--accent); }
+    .back-link { transition: color .2s ease; }
+    .back-link:hover, .back-link:focus-visible { color: var(--text); }
+    .hero { max-width: 70rem; margin-bottom: clamp(3.5rem, 8vw, 6rem); }
+    h1 { max-width: 60rem; margin: 0; color: var(--text); font-size: clamp(2.35rem, 6vw, 5.5rem); font-weight: 680; letter-spacing: -.045em; line-height: .98; text-wrap: balance; }
+    .hero-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem 1rem; margin: 1.75rem 0 0; color: var(--muted); font-size: .95rem; }
+    .hero-meta a { color: var(--accent); text-underline-offset: .2em; }
+    .hero-meta a:hover { color: #ff986b; }
+    .meta-separator { color: var(--line); }
+    .gallery-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+    h2 { margin: 0; font-size: 1.2rem; font-weight: 650; letter-spacing: -.02em; }
+    .gallery-note { margin: 0; color: var(--muted); font-size: .9rem; }
+    .slides { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.7rem, 1.5vw, 1.25rem); margin: 0; padding: 0; list-style: none; }
+    .slides li { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+    .slides li:hover { border-color: rgba(255, 107, 44, .6); background: var(--surface-raised); transform: translateY(-2px); }
+    .slides a { display: block; text-decoration: none; }
+    .slides img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; background: #0b0c0e; }
+    .slide-detail { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .7rem .8rem .75rem; color: var(--muted); font-size: .75rem; }
+    .slide-detail span:first-child { color: var(--text); font-weight: 650; }
+    .slide-detail span:last-child { color: var(--accent); }
+    @media (max-width: 66rem) { .slides { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 46rem) {
+      .deck { width: min(100% - 1.5rem, 40rem); padding-top: .75rem; }
+      .topbar { margin-bottom: 3.5rem; }
+      .site-mark { font-size: .75rem; }
+      h1 { font-size: clamp(2.2rem, 12vw, 4rem); }
+      .gallery-heading { display: block; }
+      .gallery-note { margin-top: .35rem; }
+      .slides { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
+    }
+    @media (max-width: 25rem) { .slides { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+    ::selection { background: var(--accent); color: #161719; }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <nav class="topbar" aria-label="Navegação do arquivo">
+      <a class="site-mark" href="../../../palestras/">sergiolopes<span>.org</span> / palestras</a>
+      <a class="back-link" href="../../../palestras/">Todas as palestras</a>
+    </nav>
+    <header class="hero">
+      <h1>${escapedTitle}</h1>
+      <p class="hero-meta"><span>${slideCount} slides</span><span class="meta-separator" aria-hidden="true">·</span><a href="${escapedOriginalUrl}" target="_blank" rel="external noopener">Original</a></p>
+    </header>
+    <section aria-labelledby="slides-heading">
+      <div class="gallery-heading">
+        <h2 id="slides-heading">Slides</h2>
+        <p class="gallery-note">Abra qualquer slide para ver a imagem em tamanho natural.</p>
+      </div>
+      <ol class="slides" aria-label="Slides da palestra">${slides}</ol>
+    </section>
+  </main>
+</body>
+</html>
+`;
+}
+
+function writeTalkDeckViewers() {
+  const slideDataPath = path.join(dataRoot, 'talks-external.json');
+  if (!fs.existsSync(slideDataPath)) return;
+  const slideDecks = JSON.parse(fs.readFileSync(slideDataPath, 'utf8'));
+  const publicRoot = path.join(targetRoot, 'public');
+  for (const deck of slideDecks) {
+    const directory = path.join(publicRoot, deck.localPath);
+    if (!fs.existsSync(directory)) continue;
+    const localSlides = fs.readdirSync(directory).filter((name) => /^slide-\d+\.webp$/i.test(name));
+    const slideCount = localSlides.length || deck.slideCount;
+    fs.writeFileSync(path.join(directory, 'index.html'), talkDeckTemplate({
+      title: deck.title,
+      originalUrl: deck.originalUrl,
+      slideCount,
+    }));
+  }
+
+  const qconDirectory = path.join(publicRoot, 'talks', 'external', 'qcon-http2');
+  if (fs.existsSync(qconDirectory)) {
+    fs.writeFileSync(path.join(qconDirectory, 'index.html'), `<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101113">
+  <meta name="description" content="Rumo ao HTTP/2 — arquivo de palestras de Sérgio Lopes">
+  <title>Rumo ao HTTP/2 — Sérgio Lopes</title>
+  <style>
+    @font-face { font-family: "Sergio Sans"; src: url("../../../../fonts/pt_sans-web-regular-webfont.ttf") format("truetype"); font-display: swap; font-style: normal; font-weight: 400; }
+    :root { color-scheme: dark; --bg: #101113; --surface: #17191d; --text: #e8e8eb; --muted: #a5a8b0; --line: #2b2e35; --accent: #ff6b2c; font-family: "Sergio Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: var(--bg); }
+    body { min-width: 18rem; margin: 0; background: var(--bg); color: var(--text); font-size: 1rem; line-height: 1.5; }
+    a { color: inherit; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .page { width: min(100% - 2rem, 82rem); margin: 0 auto; padding: 1.25rem 0 4rem; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3rem; margin-bottom: clamp(4rem, 10vw, 8rem); border-bottom: 1px solid var(--line); }
+    .site-mark, .back-link { color: var(--muted); font-size: .8rem; text-decoration: none; }
+    .site-mark { color: var(--text); font-weight: 650; }
+    .site-mark span { color: var(--accent); }
+    .back-link:hover, .back-link:focus-visible { color: var(--text); }
+    .hero { max-width: 60rem; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+    h1 { margin: 0; font-size: clamp(2.35rem, 6vw, 5.5rem); font-weight: 680; letter-spacing: -.045em; line-height: .98; text-wrap: balance; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: .65rem 1rem; margin: 1.75rem 0 0; color: var(--muted); font-size: .95rem; }
+    .hero-meta a { color: var(--accent); text-underline-offset: .2em; }
+    .viewer-wrap { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: #08090a; }
+    .viewer-actions { display: flex; flex-wrap: wrap; gap: .6rem 1.25rem; padding: 1rem 1.1rem; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    .viewer-actions a { color: var(--accent); text-underline-offset: .2em; }
+    .viewer { display: block; width: 100%; height: min(78vh, 62rem); border: 0; background: #fff; }
+    @media (max-width: 46rem) { .page { width: min(100% - 1.5rem, 40rem); padding-top: .75rem; } .topbar { margin-bottom: 3.5rem; } h1 { font-size: clamp(2.2rem, 12vw, 4rem); } .viewer { height: 72vh; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; } }
+    ::selection { background: var(--accent); color: #161719; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="topbar" aria-label="Navegação do arquivo">
+      <a class="site-mark" href="../../../palestras/">sergiolopes<span>.org</span> / palestras</a>
+      <a class="back-link" href="../../../palestras/">Todas as palestras</a>
+    </nav>
+    <header class="hero">
+      <h1>Rumo ao HTTP/2</h1>
+      <p class="hero-meta"><span>QCon SP · 2014</span><span aria-hidden="true">·</span><a href="https://docs.google.com/presentation/d/1BVyBcR5AE2kwY7akcmM0O3dDJ5TccY3ew0U9Ux7wsQs/pub?start=false&amp;loop=false&amp;delayms=3000&amp;utm_content=buffer7886e&amp;utm_medium=social&amp;utm_source=twitter.com&amp;utm_campaign=buffer#slide=id.p" target="_blank" rel="external noopener">Original</a></p>
+    </header>
+    <section class="viewer-wrap" aria-label="Apresentação em PDF">
+      <div class="viewer-actions"><span>PDF local · 76 páginas</span><a href="../qcon-http2.pdf">Abrir PDF</a></div>
+      <iframe class="viewer" src="../qcon-http2.pdf" title="PDF da apresentação Rumo ao HTTP/2"></iframe>
+    </section>
+  </main>
+</body>
+</html>
+`);
+  }
+}
+
 const entries = await buildArchive();
 buildLegacyRedirects();
 copyLegacyAssets();
+writeTalkDeckViewers();
 // Keep migration and ordinary builds on the same feed/sitemap generator.
 // The generator reads the JSON now written above and has no dependency on
 // the private source checkout during a normal Astro build.

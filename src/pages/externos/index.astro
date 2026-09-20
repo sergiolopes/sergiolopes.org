@@ -9,14 +9,13 @@ const listed = sortedEntries(external);
 <BaseLayout title="Participações externas" description="Artigos e participações de Sérgio Lopes publicados em outros sites.">
   <div class="page-shell">
     <header class="section-head">
-      <div><p class="section-kicker">fora desta casa</p><h1>Participações</h1></div>
-      <p>Artigos publicados originalmente em Caelum, Alura, iMasters e outros lugares, reunidos para não desaparecerem com os links.</p>
+      <h1>Participações externas</h1>
+      <p>Artigos publicados originalmente em Caelum, Alura, iMasters e outros sites.</p>
     </header>
     {listed.length ? (
       <div class="archive-grid">{listed.map((entry, index) => <ArchiveCard entry={entry} index={index + 1} />)}</div>
     ) : (
-      <p class="empty-state">As participações externas estão sendo catalogadas.</p>
+      <p class="empty-state">Nenhuma participação encontrada.</p>
     )}
   </div>
 </BaseLayout>
-

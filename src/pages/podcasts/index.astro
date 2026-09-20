@@ -7,21 +7,20 @@ import { siteUrl, sortedEntries } from '../../lib/site';
 const listed = sortedEntries(podcasts);
 const podcastYears = years.filter((year) => entriesForYear(year, 'podcast').length);
 ---
-<BaseLayout title="Podcasts" description="Participações de Sérgio Lopes em podcasts e conversas gravadas." section="podcasts">
+<BaseLayout title="Podcasts" description="Participações de Sérgio Lopes em podcasts." section="podcasts">
   <div class="page-shell">
     <header class="section-head">
-      <div><p class="section-kicker">conversas gravadas</p><h1>Podcasts</h1></div>
-      <p>Participações em Hipsters Ponto Tech, IA Sob Controle e outras conversas que ficaram pelo caminho.</p>
+      <h1>Podcasts</h1>
+      <p>Conversas de que participei em Hipsters Ponto Tech, IA Sob Controle e outros programas.</p>
     </header>
     <nav class="year-nav" aria-label="Índice por ano">
-      <a class="active" href={siteUrl('podcasts')}>todos</a>
+      <a class="active" href={siteUrl('podcasts')}>Todos</a>
       {podcastYears.map((year) => <a href={siteUrl('podcasts/ano/' + year)}>{year}</a>)}
     </nav>
     {listed.length ? (
       <div class="archive-grid">{listed.map((entry, index) => <ArchiveCard entry={entry} index={index + 1} />)}</div>
     ) : (
-      <p class="empty-state">Os podcasts ainda estão sendo organizados.</p>
+      <p class="empty-state">Nenhuma participação encontrada.</p>
     )}
   </div>
 </BaseLayout>
-

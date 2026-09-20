@@ -6,16 +6,16 @@ import { siteUrl, sortedEntries } from '../../lib/site';
 
 const listed = sortedEntries(entries.filter((entry) => entry.date));
 ---
-<BaseLayout title="Arquivo" description="Índice completo do arquivo pessoal de Sérgio Lopes.">
+<BaseLayout title="Arquivo" description="Índice de artigos, podcasts, palestras e outros registros de Sérgio Lopes.">
   <div class="page-shell">
     <header class="section-head">
-      <div><p class="section-kicker">índice geral</p><h1>Arquivo</h1></div>
-      <p>Uma visão contínua do que foi escrito, apresentado, gravado e publicado ao longo do caminho.</p>
+      <h1>Arquivo</h1>
+      <p>Todos os registros, em ordem cronológica.</p>
     </header>
     <nav class="year-nav" aria-label="Índice por ano">
+      <a class="active" href={siteUrl('arquivo')}>Todos</a>
       {years.map((year) => <a href={siteUrl('arquivo/ano/' + year)}>{year}</a>)}
     </nav>
     <div class="archive-grid">{listed.map((entry, index) => <ArchiveCard entry={entry} index={index + 1} />)}</div>
   </div>
 </BaseLayout>
-

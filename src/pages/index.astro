@@ -4,93 +4,75 @@ import ArchiveCard from '../components/ArchiveCard.astro';
 import { entries, podcasts, talks } from '../lib/archive';
 import { articleEntries, siteBase, siteUrl, sortedEntries } from '../lib/site';
 
-const dated = sortedEntries(entries.filter((entry) => entry.date));
-const latest = dated.slice(0, 6);
+const latest = sortedEntries(entries.filter((entry) => entry.date)).slice(0, 6);
 const articleRecords = articleEntries(entries);
-const firstYear = dated.at(-1)?.date?.slice(0, 4) || '2012';
-const currentYear = new Date().getFullYear().toString();
 ---
-<BaseLayout title="Sérgio Lopes — arquivo" description="Um arquivo pessoal de artigos, palestras, livros e podcasts de Sérgio Lopes.">
+<BaseLayout title="Sérgio Lopes" description="Artigos, palestras, livros e podcasts de Sérgio Lopes.">
   <div class="home">
-    <section class="home-hero page-shell">
-      <div class="home-hero__copy">
-        <p class="section-kicker">arquivo pessoal · {firstYear}—{currentYear}</p>
-        <h1>Coisas que eu<br /><em>fiz e pensei.</em></h1>
-        <p class="home-hero__lead">Um lugar para guardar artigos, palestras, livros e conversas. Algumas ideias ficaram datadas. Outras ainda insistem em voltar.</p>
-        <div class="home-hero__actions">
-          <a class="button-link" href={siteUrl('artigos')}>Explorar artigos</a>
-          <a class="link-arrow" href={siteUrl('sobre')}>sobre este arquivo ↗</a>
+    <section class="home-intro page-shell">
+      <div class="home-intro__copy">
+        <h1>Sérgio Lopes</h1>
+        <p class="home-intro__line">Artigos, palestras, livros e podcasts.</p>
+        <div class="home-intro__actions">
+          <a class="button-link button-link--quiet" href={siteUrl('artigos')}>Ver artigos</a>
+          <a class="link-arrow" href={siteUrl('sobre')}>Sobre Sérgio</a>
         </div>
       </div>
       <figure class="home-portrait">
-        <div class="home-portrait__frame">
-          <img src={siteBase + '/images/sergio-lopes.jpg'} alt="Sérgio Lopes" width="400" height="400" />
-        </div>
-        <figcaption><span>SL</span> São Paulo · Brasil</figcaption>
+        <img src={siteBase + '/images/sergio-lopes.jpg'} alt="Sérgio Lopes" width="400" height="400" />
+        <figcaption>São Paulo, Brasil</figcaption>
       </figure>
     </section>
 
-    <section class="home-stats page-shell" aria-label="Números do arquivo">
-      <div><strong>{articleRecords.length}</strong><span>artigos e mirrors</span></div>
-      <div><strong>{podcasts.length}</strong><span>podcasts</span></div>
-      <div><strong>{talks.length}</strong><span>palestras</span></div>
-      <div><strong>{entries.length}</strong><span>registros</span></div>
-    </section>
-
-    <section class="home-latest page-shell">
-      <div class="section-head">
-        <div><p class="section-kicker">mais recente</p><h2>O arquivo<br /><em>continua.</em></h2></div>
-        <a class="link-arrow" href={siteUrl('arquivo')}>ver tudo ↗</a>
-      </div>
+    <section class="home-latest page-shell" aria-labelledby="latest-title">
+      <header class="section-head">
+        <h2 id="latest-title">Publicações recentes</h2>
+        <a class="link-arrow" href={siteUrl('arquivo')}>Ver todo o conteúdo</a>
+      </header>
       <div class="archive-grid">
         {latest.map((entry, index) => <ArchiveCard entry={entry} index={index + 1} />)}
       </div>
     </section>
 
-    <section class="home-index page-shell">
-      <div class="home-index__intro">
-        <p class="section-kicker">um mapa rápido</p>
-        <h2>Escolha uma<br /><em>gaveta.</em></h2>
-        <p>O site é organizado por tipo de coisa. Por ano, quando fizer sentido. Sem pressa de publicar.</p>
-      </div>
-      <div class="home-index__links">
-        <a href={siteUrl('artigos')}><span>01</span><strong>Artigos</strong><small>{articleRecords.length} textos e mirrors</small></a>
-        <a href={siteUrl('podcasts')}><span>02</span><strong>Podcasts</strong><small>{podcasts.length} conversas</small></a>
-        <a href={siteUrl('palestras')}><span>03</span><strong>Palestras</strong><small>{talks.length} encontros</small></a>
-        <a href={siteUrl('livros')}><span>04</span><strong>Livros</strong><small>alguns projetos</small></a>
-      </div>
+    <section class="home-index page-shell" aria-labelledby="content-title">
+      <header class="section-head">
+        <h2 id="content-title">Navegue por tipo</h2>
+      </header>
+      <nav class="home-index__links" aria-label="Conteúdo por tipo">
+        <a href={siteUrl('artigos')}><strong>Artigos</strong><span>{articleRecords.length} textos</span></a>
+        <a href={siteUrl('podcasts')}><strong>Podcasts</strong><span>{podcasts.length} participações</span></a>
+        <a href={siteUrl('palestras')}><strong>Palestras</strong><span>{talks.length} apresentações</span></a>
+        <a href={siteUrl('livros')}><strong>Livros</strong><span>autoria e colaboração</span></a>
+      </nav>
     </section>
   </div>
 </BaseLayout>
 
 <style>
-  .home-hero { align-items: center; display: grid; gap: 5rem; grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem); min-height: min(42rem, calc(100vh - 5rem)); padding-bottom: 5rem; padding-top: 5rem; }
-  .home-hero h1 { font-size: clamp(3.6rem, 8.5vw, 8.4rem); letter-spacing: -.075em; line-height: .86; margin: 0; }
-  .home-hero h1 em { color: var(--color-accent-strong); font-style: normal; }
-  .home-hero__lead { color: var(--color-muted); font-size: clamp(1.05rem, 1.7vw, 1.35rem); line-height: 1.6; margin: 2rem 0 0; max-width: 34rem; }
-  .home-hero__actions { align-items: center; display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 2.25rem; }
-  .home-portrait { margin: 0; max-width: 24rem; }
-  .home-portrait__frame { background: var(--color-accent); padding: .7rem .7rem 0; position: relative; }
-  .home-portrait img { aspect-ratio: 1; display: block; filter: saturate(.82) contrast(1.04); object-fit: cover; width: 100%; }
-  .home-portrait figcaption { color: var(--color-muted); display: flex; font-size: .7rem; justify-content: space-between; letter-spacing: .08em; padding-top: .65rem; text-transform: uppercase; }
-  .home-portrait figcaption span { color: var(--color-accent-strong); }
-  .home-stats { border-bottom: 1px solid var(--color-line); border-top: 1px solid var(--color-line); display: grid; grid-template-columns: repeat(4, 1fr); padding-bottom: 1.2rem; padding-top: 1.2rem; }
-  .home-stats div { align-items: baseline; border-left: 1px solid var(--color-line); display: flex; flex-direction: column; padding: 0 1.35rem; }
-  .home-stats div:first-child { border-left: 0; padding-left: 0; }
-  .home-stats strong { color: var(--color-text); font-family: var(--font-display); font-size: 2.1rem; font-weight: 500; letter-spacing: -.06em; }
-  .home-stats span { color: var(--color-muted); font-size: .69rem; letter-spacing: .12em; text-transform: uppercase; }
-  .home-latest { padding-bottom: 3rem; padding-top: 5rem; }
-  .home-latest .section-head h2, .home-index h2 { font-size: clamp(2.5rem, 5vw, 4.8rem); letter-spacing: -.06em; line-height: .9; margin: 0; }
-  .home-latest .section-head h2 em, .home-index h2 em { color: var(--color-accent-strong); font-style: normal; }
-  .home-index { border-top: 1px solid var(--color-line); display: grid; gap: 6rem; grid-template-columns: minmax(14rem, .8fr) 1.2fr; padding-bottom: 6rem; padding-top: 5rem; }
-  .home-index__intro p:last-child { color: var(--color-muted); margin: 1.4rem 0 0; max-width: 19rem; }
-  .home-index__links { display: grid; grid-template-columns: repeat(2, 1fr); }
-  .home-index__links a { border-bottom: 1px solid var(--color-line); display: grid; gap: .1rem; grid-template-columns: 2.2rem 1fr auto; padding: 1.2rem 0; text-decoration: none; }
-  .home-index__links a:nth-child(-n+2) { border-top: 1px solid var(--color-line); }
+  .home-intro { align-items: center; display: grid; gap: 3rem; grid-template-columns: minmax(0, 1fr) 7rem; padding-bottom: 3.2rem; padding-top: 4rem; }
+  .home-intro h1 { font-size: clamp(2.8rem, 5vw, 4.8rem); letter-spacing: -.06em; line-height: 1; margin: 0; }
+  .home-intro__line { font-size: clamp(1.15rem, 2vw, 1.4rem); letter-spacing: -.025em; line-height: 1.25; margin: 1rem 0 0; max-width: 35rem; }
+  .home-intro__actions { align-items: center; display: flex; flex-wrap: wrap; gap: 1.15rem; margin-top: 1.5rem; }
+  .home-portrait { margin: 0; max-width: 7rem; }
+  .home-portrait img { aspect-ratio: 1; border: 1px solid var(--color-line); display: block; height: auto; object-fit: cover; width: 100%; }
+  .home-portrait figcaption { color: var(--color-muted); font-size: .75rem; margin-top: .65rem; }
+  .home-latest { padding-bottom: 3.5rem; padding-top: 1rem; }
+  .home-index { border-top: 1px solid var(--color-line); padding-bottom: 5rem; padding-top: 3rem; }
+  .home-index__links { border-top: 1px solid var(--color-line); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-index__links a { align-items: baseline; border-bottom: 1px solid var(--color-line); display: flex; gap: 1rem; justify-content: space-between; padding: 1rem 0; text-decoration: none; }
+  .home-index__links a:nth-child(odd) { padding-right: 2rem; }
+  .home-index__links strong { font-size: 1.08rem; font-weight: 600; }
+  .home-index__links span { color: var(--color-muted); font-size: .84rem; }
   .home-index__links a:hover strong { color: var(--color-accent-strong); }
-  .home-index__links span { color: var(--color-accent); font-size: .7rem; }
-  .home-index__links strong { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; }
-  .home-index__links small { color: var(--color-muted); font-size: .72rem; }
-  @media (max-width: 56rem) { .home-hero { gap: 3rem; grid-template-columns: 1fr 16rem; } .home-hero h1 { font-size: clamp(3.4rem, 8vw, 6rem); } .home-index { gap: 3rem; } }
-  @media (max-width: 45rem) { .home-hero { display: flex; flex-direction: column; min-height: 0; padding-bottom: 3.5rem; padding-top: 3.5rem; } .home-hero__copy { width: 100%; } .home-portrait { align-self: flex-start; max-width: 15rem; } .home-stats { grid-template-columns: repeat(2, 1fr); row-gap: 1rem; } .home-stats div:nth-child(3) { border-left: 0; padding-left: 0; } .home-index { display: block; } .home-index__links { margin-top: 2.5rem; } .home-index__links a { grid-template-columns: 1.8rem 1fr; } .home-index__links small { grid-column: 2; } }
+  @media (max-width: 48rem) {
+    .home-intro { gap: 2rem; grid-template-columns: minmax(0, 1fr) 6rem; padding-bottom: 2.8rem; padding-top: 3.4rem; }
+    .home-intro h1 { font-size: clamp(2.6rem, 11vw, 4rem); }
+    .home-portrait { max-width: 6rem; }
+  }
+  @media (max-width: 32rem) {
+    .home-intro { display: block; min-height: 0; }
+    .home-portrait { margin-top: 2.5rem; }
+    .home-index__links { display: block; }
+    .home-index__links a:nth-child(odd) { padding-right: 0; }
+  }
 </style>
