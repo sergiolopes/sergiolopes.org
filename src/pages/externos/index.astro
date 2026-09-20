@@ -4,7 +4,7 @@ import ArchiveCard from '../../components/ArchiveCard.astro';
 import { external } from '../../lib/archive';
 import { sortedEntries } from '../../lib/site';
 
-const listed = sortedEntries(external);
+const listed = sortedEntries(external.filter((entry) => entry.category !== 'Blog Cultural'));
 ---
 <BaseLayout title="Participações externas" description="Artigos e participações de Sérgio Lopes publicados em outros sites.">
   <div class="page-shell">

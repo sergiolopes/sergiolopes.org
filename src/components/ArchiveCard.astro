@@ -16,7 +16,7 @@ const isArticleShelfEntry = entry.kind === 'article' || (entry.kind === 'externa
 <article class:list={['archive-card', { 'archive-card--compact': compact }] }>
   <div class="archive-card__meta">
     {index !== undefined && <span class="archive-card__index">{String(index).padStart(2, '0')}</span>}
-    <span class="archive-card__kind">{kindLabel(entry.kind)}</span>
+    <span class="archive-card__kind">{entry.category === 'Blog Cultural' ? 'Blog Cultural' : kindLabel(entry.kind)}</span>
     {year && <a class="archive-card__year" href={isArticleShelfEntry ? siteUrl('artigos/ano/' + year) : entry.kind === 'podcast' ? siteUrl('podcasts/ano/' + year) : siteUrl('arquivo/ano/' + year)}>{year}</a>}
   </div>
   <div>

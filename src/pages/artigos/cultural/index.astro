@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArchiveCard from '../../../components/ArchiveCard.astro';
+import { external } from '../../../lib/archive';
+import { siteUrl, sortedEntries } from '../../../lib/site';
+
+const listed = sortedEntries(external.filter((entry) => entry.category === 'Blog Cultural'));
+---
+<BaseLayout title="Blog Cultural" description="Textos do Blog Cultural de Sérgio Lopes, publicados em 2005 e 2006." section="artigos">
+  <div class="page-shell">
+    <header class="section-head">
+      <p><a href={siteUrl('artigos')}>← Artigos</a></p>
+      <h1>Blog Cultural</h1>
+      <p>Livros, filmes, música e exposições. Textos publicados entre 2005 e 2006, recuperados de capturas do Blogger e do WordPress.</p>
+    </header>
+    <div class="archive-grid">{listed.map((entry, index) => <ArchiveCard entry={entry} index={index + 1} />)}</div>
+  </div>
+</BaseLayout>

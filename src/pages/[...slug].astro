@@ -49,7 +49,7 @@ if (entry.kind === 'talk') {
   <article class:list={['archive-entry', `archive-entry--${entry.kind}`, { 'archive-entry--full-page': entry.fullPage }]}> 
     <header class="archive-entry__header">
       <p class="archive-entry__eyebrow">
-        <span>{kindLabel(entry.kind)}</span>
+        <span>{entry.category === 'Blog Cultural' ? 'Texto' : kindLabel(entry.kind)}</span>
         {entry.category && <span> · {entry.category}</span>}
         {year && <span> · {year}</span>}
       </p>
